@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\xxxqmfrman\\Documents\\GitHub\\IVG.CRM\\IVG.CRM\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7C293101-63EB-46E8-9677-D94EF0EB486F}|IVG.CRM.API\\IVG.CRM.API.csproj|c:\\users\\xxxqmfrman\\documents\\github\\ivg.crm\\ivg.crm\\ivg.crm.api\\controllers\\casescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C293101-63EB-46E8-9677-D94EF0EB486F}|IVG.CRM.API\\IVG.CRM.API.csproj|solutionrelative:ivg.crm.api\\controllers\\casescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CasesController.cs",
+              "DocumentMoniker": "C:\\Users\\xxxqmfrman\\Documents\\GitHub\\IVG.CRM\\IVG.CRM\\IVG.CRM.API\\Controllers\\CasesController.cs",
+              "RelativeDocumentMoniker": "IVG.CRM.API\\Controllers\\CasesController.cs",
+              "ToolTip": "C:\\Users\\xxxqmfrman\\Documents\\GitHub\\IVG.CRM\\IVG.CRM\\IVG.CRM.API\\Controllers\\CasesController.cs",
+              "RelativeToolTip": "IVG.CRM.API\\Controllers\\CasesController.cs",
+              "ViewState": "AQIAAMAAAAAAAAAAAAAAANoAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T08:24:46.968Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

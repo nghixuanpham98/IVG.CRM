@@ -1,0 +1,2012 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="ivg.vn">
+    <meta name="description" content="IVG Vietnam Joint Stock Company CRM">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/image/logo.png">
+
+    <!-- Plugins CSS -->
+    <link href="../../assets/bootstrap/fontawesome/css/all.min.css" rel="stylesheet" />
+    <!-- Boostrap CSS -->
+    <link href="../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="../../assets/theme/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/glightbox.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/style.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/tiny-slider.css" rel="stylesheet" />
+    <link href="../../assets/css/ivg-style.css" rel="stylesheet" />
+    <link href="../../assets/css/common.css" rel="stylesheet" />
+</head>
+
+<body class="body-page">
+    <div class="content">
+        <!--Content list-->
+        <div id="contentList">
+            <div>
+                <div class="row">
+                    <ol class="breadcrumb my-0 p-3">
+                        <li class="breadcrumb-item "><i class=" fas fa-home"></i> <a href="#" class="pr-md-3 pl-md-2 pr-2 pl-1">Home</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Settings</a> </li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Collateral</a> </li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Contracts</a> </li>
+                        <li class="breadcrumb-item "><a id="breadcrumbType" href="#" class="px-md-3 px-1 active-1">All Contracts</a> </li>
+                    </ol>
+                </div>
+
+                <div class="row align-items-center p-2">
+                    <div class="col-4">
+                        <div class="input-group">
+                            <input id="txtMainSearch" onchange="onLoadData(0, document.getElementById('hdfTypeOnLoad').value)" placeholder="Type search here..." class="form-control" spellcheck="false" autocomplete="off" type="search">
+
+                            <span onclick="onLoadData(0, document.getElementById('hdfTypeOnLoad').value)" data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="col ivg-align-right">
+                        <div class="btn-group">
+                            <button onclick="viewCreate(1)" class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Thêm mới"><i class="fas fa-plus"></i></button>
+
+                            <button onclick="submitDelete()" class="btn ivg-button del" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Xóa dữ liệu"><i class="fas fa-trash"></i></button>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải lên dữ liệu"><i class="fas fa-upload"></i></button>
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải xuống dữ liệu"><i class="fas fa-download"></i></button>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="btn ivg-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dataTable">
+                <table class="ivg-table">
+                    <thead>
+                        <tr>
+                            <th width="100" data-bs-toggle="dropdown" aria-expanded="false" title="Bộ lọc" class="text-center">
+                                <i class="fa-solid fa-filter p-2"></i>
+
+                                <ul class="dropdown-menu dropdown-menu-end ms-3">
+                                    <li onclick="onLoadData(0, defaultLoadNumb)"><button id="btnFilterAll" class="dropdown-item ivg-button active btn-filter" type="button">All Contracts</button></li>
+                                    <li onclick="onLoadData(0, 0)"><button id="btnFilterDraft" class="dropdown-item ivg-button btn-filter" type="button">Draft Contracts</button></li>
+                                    <li onclick="onLoadData(0, 1)"><button id="btnFilterInvoiced" class="dropdown-item ivg-button btn-filter" type="button">Invoiced Contracts</button></li>
+                                    <li onclick="onLoadData(0, 2)"><button id="btnFilterExpired" class="dropdown-item ivg-button btn-filter" type="button">Expired Contracts</button></li>
+                                    <li onclick="onLoadData(0, 3)"><button id="btnFilterHold" class="dropdown-item ivg-button btn-filter" type="button">On hold Contracts</button></li>
+                                    <li onclick="onLoadData(0, 4)"><button id="btnFilterCanceled" class="dropdown-item ivg-button btn-filter" type="button">Canceled Contracts</button></li>
+                                </ul>
+                            </th>
+
+                            <th>
+                                Contract Code
+                            </th>
+
+                            <th id="thToggleName" class="toggle-th">
+                                Contract Name
+                                <span data-order-name="Name" class="order-icon active p-2">⮟</span>
+                            </th>
+
+                            <th id="thToggleAccountName" class="toggle-th">
+                                Customer
+                                <span data-order-name="AccountName" class="order-icon p-2">⮟</span>
+                            </th>
+
+                            <th id="thToggleStatus" class="toggle-th">
+                                Status
+                                <span data-order-name="Status" class="order-icon p-2">⮟</span>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="dataBody"></tbody>
+                </table>
+            </div>
+
+            <!--Paging-->
+            <div class="row ivg-paging mt-3">
+                <div class="col">
+                    <span><span>Tổng</span>: <b id="totalRecords"></b> <span>dữ liệu</span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                    <span>
+                        <span>Hiển thị</span>
+
+                        <select onchange="onLoadData(1, document.getElementById('hdfTypeOnLoad').value)" id="pageSize">
+                            <option selected>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>75</option>
+                            <option>100</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div class="col" style="text-align:right;">
+                    <ul id="pagingMainContent" class="pagination-lg"></ul>
+                    <input type="hidden" value="1" id="pageIndex" />
+                </div>
+            </div>
+        </div>
+
+        <!--Content details-->
+        <div id="contentDetail" class="display-none">
+            <div class="card">
+                <div class="card-header p-2">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div id="btnDetailSaveClose" onclick="submitUpdate(2)" class="me-2 cursor-pointer btn-handle p-2">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div id="btnDetailSave" onclick="submitUpdate(1)" class="me-2 cursor-pointer btn-handle p-2">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+
+                            <div id="btnDetailInvoice" onclick="submitUpdate(1, 1)" class="me-2 cursor-pointer btn-handle p-2">
+                                <i class="fa-solid fa-file-invoice"></i>
+                                Invoice Contract
+                            </div>
+
+                            <div id="btnDetailHold" onclick="submitUpdate(1, 3)" class="me-2 cursor-pointer btn-handle p-2">
+                                <i class="fa-solid fa-file-shield"></i>
+                                Hold Contract
+                            </div>
+
+                            <div id="btnDetailRelease" onclick="submitUpdate(1, 1)" class="me-2 cursor-pointer btn-handle p-2">
+                                <i class="fa-solid fa-file-shield"></i>
+                                Release Hold
+                            </div>
+
+                            <div id="btnDetailCancel" onclick="submitUpdate(1, 4)" class="me-2 cursor-pointer btn-handle p-2">
+                                <i class="fa-solid fa-file-circle-xmark"></i>
+                                Cancel Contract
+                            </div>
+
+                            <div class="detail-sub">
+                                <div onclick="openAssignBlock()" class="me-2 cursor-pointer btn-handle p-2">
+                                    <i class="fa-solid fa-user-gear"></i>
+                                    Assign
+                                </div>
+
+                                <div id="assignBlock" class="detail-sub-block card">
+                                    <div class="card-header d-flex align-items-center justify-content-between">
+                                        <h6 class="m-0 text-uppercase">Chọn người chỉ định</h6>
+
+                                        <button onclick="closeAssignBlock()" type="button" class="btn-close" aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="card-body p-2">
+                                        <div class="input-group">
+                                            <input id="txtDetailAssign" name="txtDetailAssign" class="form-control" spellcheck="false" autocomplete="off" type="text" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                            <input id="txtDetailAssignVal" type="hidden" />
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer text-end py-0 px-2">
+                                        <button onclick="submitUpdate(2, '', true)" class="btn ivg-button btn-detail-sub__success fw-light">
+                                            Assign
+                                            <i class="fa-solid fa-user-check"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div hidden class="me-2 cursor-pointer btn-handle p-2">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                Set calendar
+                            </div>
+
+                            <div onclick="submitDelete()" class="me-2 cursor-pointer btn-handle p-2">
+                                <i class="fa-solid fa-trash-can"></i>
+                                Delete
+                            </div>
+                        </div>
+
+                        <button onclick="viewDetails()" type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="m-0 text-uppercase">Contract - <span id="titleDetail" class="text-danger col-3"></span></h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="col-3"></div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlDetailStatusReason" class="col-form-label text-start">
+                                    Status Reason
+                                </label>
+
+                                <div>
+                                    <select disabled class="select-card-header select-card-header-disabled form-select" id="ddlDetailStatusReason" name="ddlDetailStatusReason">
+                                        <option value="0" selected>Nháp</option>
+                                        <option value="1">Đã lập hóa đơn</option>
+                                        <option value="2">Hết hạn</option>
+                                        <option value="3">Đang chờ</option>
+                                        <option value="4">Đã hủy</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="txtDetailOwner" class="col-form-label text-start">
+                                    <i class="cursor-pointer fa-solid fa-user me-2"></i>
+                                    Owner
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="txtDetailOwnerBlock">
+                                    <div class="input-group">
+                                        <input disabled id="txtDetailOwner" name="txtDetailOwner" class="input-card-header input-card-header-disabled form-control" spellcheck="false" autocomplete="off" type="text" />
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                        <input id="txtDetailOwnerVal" type="hidden" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="txtDetailCreatedOn" class="col-form-label text-start">
+                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                    Created On
+                                </label>
+
+                                <div>
+                                    <div class="input-group">
+                                        <input id="txtDetailCreatedOn" name="txtDetailCreatedOn" disabled class="input-card-header input-card-header-disabled form-control" spellcheck="false" autocomplete="off" type="text">
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-2">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tabDetail">
+                            <a onclick="viewDetails(document.getElementById('hdfDetailID').value)" id="tabDetailGeneralLink" class="nav-link active nav-custom" data-bs-toggle="tab" href="#tabDetailGeneral">General</a>
+                            <a onclick="onLoadDataLines()" class="nav-link nav-custom" data-bs-toggle="tab" href="#tabDetailContractLines">Contract Lines</a>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContentDetail">
+                        <div class="tab-pane nav-custom active p-2" id="tabDetailGeneral">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            Contract details
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtDetailCode" class="col-lg-4 col-form-label text-start">
+                                                            Contract code
+                                                            <i class="fa-solid fa-user-lock ms-1"></i>
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <input disabled id="txtDetailCode" name="txtDetailCode" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtDetailName" class="col-lg-4 col-form-label text-start">
+                                                            Contract name
+                                                            <span class="obligatory">*</span>
+                                                        </label>
+
+                                                        <div id="txtDetailNameBlock" class="col-lg-8">
+                                                            <input id="txtDetailName" name="txtDetailName" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                            <div class="warning-invalid__title"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtDetailAccount" class="col-lg-4 col-form-label text-start">
+                                                            Customer
+                                                            <span class="obligatory">*</span>
+                                                        </label>
+
+                                                        <div id="txtDetailAccountBlock" class="col-lg-8">
+                                                            <div class="input-group">
+                                                                <input id="txtDetailAccount" name="txtDetailAccount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                                <input id="txtDetailAccountVal" type="hidden" />
+                                                            </div>
+
+                                                            <div class="warning-invalid__title"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtDetailStartDate" class="col-lg-4 col-form-label text-start">
+                                                            Contract Start Date
+                                                            <span class="obligatory">*</span>
+                                                        </label>
+
+                                                        <div id="txtDetailStartDateBlock" class="col-lg-8">
+                                                            <div class="input-group">
+                                                                <input onchange="viewDaysBetweenDates('txtDetailStartDate', 'txtDetailEndDate', 'txtDetailDays', 'txtDetailBillStartDate', 'txtDetailBillEndDate')"
+                                                                       id="txtDetailStartDate" name="txtDetailStartDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                            </div>
+
+                                                            <div class="warning-invalid__title"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtDetailEndDate" class="col-lg-4 col-form-label text-start">
+                                                            Contract End Date
+                                                            <span class="obligatory">*</span>
+                                                        </label>
+
+                                                        <div id="txtDetailEndDateBlock" class="col-lg-8">
+                                                            <div class="input-group">
+                                                                <input onchange="viewDaysBetweenDates('txtDetailStartDate', 'txtDetailEndDate', 'txtDetailDays', 'txtDetailBillStartDate', 'txtDetailBillEndDate')"
+                                                                       id="txtDetailEndDate" name="txtDetailEndDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                            </div>
+
+                                                            <div class="warning-invalid__title"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="txtDetailDays" class="col-lg-4 col-form-label text-start">
+                                                            Duration In Days
+                                                            <i class="fa-solid fa-user-lock ms-1"></i>
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <input disabled id="txtDetailDays" name="txtDetailDays" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group row mb-2">
+                                                        <label for="ddlDetailDiscountType" class="col-lg-4 col-form-label text-start">
+                                                            Discount
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <select disabled data-default-value="2" class="select2 form-select" id="ddlDetailDiscountType" name="ddlDetailDiscountType">
+                                                                <option value="2" selected>Tổng tiền</option>
+                                                                <option value="1">Phần trăm</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="ddlDetailServiceLevel" class="col-lg-4 col-form-label text-start">
+                                                            Service Level
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <select class="select2 form-select" id="ddlDetailServiceLevel" name="ddlDetailServiceLevel">
+                                                                <option value="1">Rất thấp</option>
+                                                                <option value="2">Thấp</option>
+                                                                <option value="3" selected>Trung bình</option>
+                                                                <option value="4">Cao</option>
+                                                                <option value="5">Rất cao</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="ddlDetailProvince" class="col-lg-4 col-form-label text-start">
+                                                            Province
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <select data-default-value="0" onchange="onLoadCommonDistricts('ddlDetailProvince', 'ddlDetailDistrict', 'ddlDetailWard')"
+                                                                    id="ddlDetailProvince" class="select2 form-select" name="ddlDetailProvince"></select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="ddlDetailDistrict" class="col-lg-4 col-form-label text-start">
+                                                            District
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <select data-default-value="0" onchange="onLoadCommonWards('ddlDetailDistrict', 'ddlDetailWard')"
+                                                                    id="ddlDetailDistrict" name="ddlDetailDistrict" class="select2 form-select"></select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="ddlDetailWard" class="col-lg-4 col-form-label text-start">
+                                                            Ward
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <select data-default-value="0" id="ddlDetailWard" name="ddlDetailWard" class="select2 form-select"></select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtDetailAddress" class="col-lg-4 col-form-label text-start">
+                                                            Contract address
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <textarea id="txtDetailAddress" spellcheck="false" rows="2" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="txtDetailDescription" class="col-lg-4 col-form-label text-start">
+                                                            Description
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <textarea id="txtDetailDescription" spellcheck="false" rows="2" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            Billing Information & Pricing
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="card">
+                                                        <div class="card-header fw-bold text-uppercase text-center">
+                                                            Billing Information
+                                                        </div>
+
+                                                        <div class="card-body p-2">
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtDetailBillAccount" class="col-lg-4 col-form-label text-start">
+                                                                    Bill To Customer
+                                                                    <span class="obligatory">*</span>
+                                                                </label>
+
+                                                                <div id="txtDetailBillAccountBlock" class="col-lg-8">
+                                                                    <div class="input-group">
+                                                                        <input id="txtDetailBillAccount" name="txtDetailBillAccount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                                        <input id="txtDetailBillAccountVal" type="hidden" />
+                                                                    </div>
+
+                                                                    <div class="warning-invalid__title"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtDetailBillStartDate" class="col-lg-4 col-form-label text-start">
+                                                                    Billing Start Date
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <div class="input-group">
+                                                                        <input id="txtDetailBillStartDate" name="txtDetailBillStartDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtDetailBillEndDate" class="col-lg-4 col-form-label text-start">
+                                                                    Billing End Date
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <div class="input-group">
+                                                                        <input id="txtDetailBillEndDate" name="txtDetailBillEndDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="ddlDetailBillFrequency" class="col-lg-4 col-form-label text-start">
+                                                                    Billing Frequency
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <select data-default-value="0" class="select2 form-select" id="ddlDetailBillFrequency" name="ddlDetailBillFrequency">
+                                                                        <option value="0" selected>Hàng tháng</option>
+                                                                        <option value="1">Hai tháng một lần</option>
+                                                                        <option value="2">Hàng quý</option>
+                                                                        <option value="3">Bán hàng năm</option>
+                                                                        <option value="4">Hàng năm</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtDetailCancellationDate" class="col-lg-4 col-form-label text-start">
+                                                                    Cancellation Date
+                                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <input disabled id="txtDetailCancellationDate" name="txtDetailCancellationDate" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="ddlDetailBillProvince" class="col-lg-4 col-form-label text-start">
+                                                                    Province
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <select data-default-value="0" onchange="onLoadCommonDistricts('ddlDetailBillProvince', 'ddlDetailBillDistrict', 'ddlDetailBillWard')"
+                                                                            id="ddlDetailBillProvince" class="select2 form-select" name="ddlDetailBillProvince"></select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="ddlDetailBillDistrict" class="col-lg-4 col-form-label text-start">
+                                                                    District
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <select data-default-value="0" onchange="onLoadCommonWards('ddlDetailBillDistrict', 'ddlDetailBillWard')"
+                                                                            id="ddlDetailBillDistrict" name="ddlDetailBillDistrict" class="select2 form-select"></select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="ddlDetailBillWard" class="col-lg-4 col-form-label text-start">
+                                                                    Ward
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <select data-default-value="0" id="ddlDetailBillWard" name="ddlDetailBillWard" class="select2 form-select"></select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtDetailBillAddress" class="col-lg-4 col-form-label text-start">
+                                                                    Bill To Address
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <textarea id="txtDetailBillAddress" spellcheck="false" rows="2" class="form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="card">
+                                                        <div class="card-header fw-bold text-uppercase text-center">
+                                                            Pricing
+                                                        </div>
+
+                                                        <div class="card-body p-2">
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtDetailTotalPrice" class="col-lg-4 col-form-label text-start">
+                                                                    Total Price
+                                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <input disabled id="txtDetailTotalPrice" name="txtDetailTotalPrice" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtDetailTotalDiscount" class="col-lg-4 col-form-label text-start">
+                                                                    Total Discount
+                                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <input disabled id="txtDetailTotalDiscount" name="txtDetailTotalDiscount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtDetailNetPrice" class="col-lg-4 col-form-label text-start">
+                                                                    Net Price
+                                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <input disabled id="txtDetailNetPrice" name="txtDetailNetPrice" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            ACTIVITIES
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tabDetailSub">
+                                                    <a id="tabDetailSubPostsLink" class="nav-link nav-custom active" data-bs-toggle="tab" href="#tabDetailSubPosts">Posts</a>
+                                                    <a class="nav-link nav-custom" data-bs-toggle="tab" href="#tabDetailSubTasks">Tasks</a>
+                                                    <a onclick="onLoadDataNotes()" class="nav-link nav-custom" data-bs-toggle="tab" href="#tabDetailSubNotes">Notes</a>
+                                                </div>
+
+                                                <div class="tab-content" id="nav-tabContentDetailSub">
+                                                    <div class="tab-pane nav-custom p-0 mt-1 active" id="tabDetailSubPosts">
+
+                                                    </div>
+
+                                                    <div class="tab-pane nav-custom p-0 mt-1" id="tabDetailSubTasks">
+
+                                                    </div>
+
+                                                    <div class="tab-pane nav-custom p-0 mt-1" id="tabDetailSubPhonecalls">
+
+                                                    </div>
+
+                                                    <div class="tab-pane nav-custom p-0 mt-1" id="tabDetailSubNotes">
+                                                        <div id="createNoteBtn" class="text-end mb-1">
+                                                            <i onclick='document.getElementById("createNoteBlock").style.display = "block"; document.getElementById("createNoteBtn").style.display = "none";'
+                                                               title="Thêm mới" class="cursor-pointer btn-handle p-2 fas fa-plus font-size-1-2"></i>
+                                                        </div>
+
+                                                        <div id="createNoteBlock" class="card display-none">
+                                                            <div class="card-header fw-bold text-uppercase d-flex align-items-center">
+                                                                <span class="flex-grow-1 text-center">Notes</span>
+                                                                <button onclick='document.getElementById("createNoteBlock").style.display = "none"; document.getElementById("createNoteBtn").style.display = "block";'
+                                                                        title="Đóng" type="button" class="btn-close" aria-label="Close"></button>
+                                                            </div>
+
+                                                            <div class="card-body p-2">
+                                                                <div id="txtNoteTitleBlock" class="form-floating mb-2">
+                                                                    <input id="txtNoteTitle" type="text" spellcheck="false" autocomplete="off" class="form-control fw-bold" />
+
+                                                                    <label for="txtNoteTitle">Title</label>
+
+                                                                    <div class="warning-invalid__title mt-1"></div>
+                                                                </div>
+
+                                                                <div class="form-floating mb-2">
+                                                                    <textarea id="txtNoteContent" spellcheck="false" rows="2" class="form-control"></textarea>
+
+                                                                    <label for="txtNoteContent">Content</label>
+                                                                </div>
+
+                                                                <div class="mb-3">
+                                                                    <form id="frmAttachment" enctype="multipart/form-data" method="POST">
+                                                                        <input id="txtNoteFile" name="txtNoteFile" type="file" multiple class="form-control" />
+                                                                    </form>
+                                                                </div>
+
+                                                                <div class="d-flex align-items-center justify-content-end">
+                                                                    <div onclick="submitCreateNoteCommon()" class="cursor-pointer btn-note p-2">
+                                                                        Done
+                                                                        <i class="fa-solid fa-check"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="card">
+                                                            <div class="card-header fw-bold text-uppercase text-center">
+                                                                Notes list
+                                                            </div>
+
+                                                            <div class="card-body p-0">
+                                                                <ul id="dataNoteList" class="note-list p-2"></ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tabDetailContractLines" class="tab-pane nav-custom p-2">
+                            <div class="card">
+                                <div class="card-header fw-bold text-uppercase d-flex align-items-center">
+                                    <span class="flex-grow-1 text-center">Contract Lines</span>
+
+                                    <i id="btnDetailAddNew" data-bs-toggle="modal" data-bs-target="#modalCreateLine" title="Thêm mới" class="cursor-pointer btn-handle p-2 fas fa-plus font-size-1-2"></i>
+                                </div>
+
+                                <div class="card-body p-2">
+                                    <div class="dataTable dataTableSub">
+                                        <table class="ivg-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Product</th>
+                                                    <th>Allotments Remaining</th>
+                                                    <th>Net</th>
+                                                    <th class="text-center">Handle</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody id="dataBodyLine">
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!--Paging-->
+                                    <div class="row ivg-paging mt-3">
+                                        <div class="col">
+                                            <span><span>Tổng</span>: <b id="totalRecordsLine"></b> <span>dữ liệu</span></span>
+                                            &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                                            <span>
+                                                <span>Hiển thị</span>
+
+                                                <select onchange="onLoadDataLines(1)" id="pageSizeLine">
+                                                    <option selected>10</option>
+                                                    <option>25</option>
+                                                    <option>50</option>
+                                                    <option>75</option>
+                                                    <option>100</option>
+                                                </select>
+                                            </span>
+                                        </div>
+
+                                        <div class="col" style="text-align:right;">
+                                            <ul id="pagingMainContentLine" class="pagination-lg"></ul>
+                                            <input type="hidden" value="1" id="pageIndexLine" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Content create-->
+        <div id="contentCreate" class="display-none">
+            <div class="card">
+                <div class="card-header p-2">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div onclick="submitCreate(2)" class="me-2 cursor-pointer btn-handle p-2">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div onclick="submitCreate(1)" class="cursor-pointer btn-handle p-2">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+                        </div>
+
+                        <button onclick="viewCreate()" type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="m-0 text-uppercase">New Contract</h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="col-3"></div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlStatusReason" class="col-form-label text-start">
+                                    Status Reason
+                                </label>
+
+                                <div>
+                                    <select disabled data-default-value="0" class="select-card-header select-card-header-disabled form-select" id="ddlStatusReason" name="ddlStatusReason">
+                                        <option value="0" selected>Nháp</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="txtOwner" class="col-form-label text-start">
+                                    <i class="cursor-pointer fa-solid fa-user me-2"></i>
+                                    Owner
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="txtOwnerBlock">
+                                    <div class="input-group">
+                                        <input id="txtOwner" name="txtOwner" class="input-card-header form-control" spellcheck="false" autocomplete="off" type="text" />
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                        <input id="txtOwnerVal" type="hidden" />
+                                    </div>
+
+                                    <div class="warning-invalid__title"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="txtCreatedOn" class="col-form-label text-start">
+                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                    Created On
+                                </label>
+
+                                <div>
+                                    <div class="input-group">
+                                        <input id="txtCreatedOn" name="txtCreatedOn" disabled class="input-card-header form-control" spellcheck="false" autocomplete="off" type="text">
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-2">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab">
+                            <a id="tabGeneralLink" class="nav-link active nav-custom" data-bs-toggle="tab" href="#tabGeneral">General</a>
+                            <a class="nav-link nav-custom" data-bs-toggle="tab" href="#tabContractLines">Contract Lines</a>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane active nav-custom p-2" id="tabGeneral">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            Contract details
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtCode" class="col-lg-4 col-form-label text-start">
+                                                            Contract code
+                                                            <i class="fa-solid fa-user-lock ms-1"></i>
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <input disabled id="txtCode" name="txtCode" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtName" class="col-lg-4 col-form-label text-start">
+                                                            Contract name
+                                                            <span class="obligatory">*</span>
+                                                        </label>
+
+                                                        <div id="txtNameBlock" class="col-lg-8">
+                                                            <input id="txtName" name="txtName" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                            <div class="warning-invalid__title"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtAccount" class="col-lg-4 col-form-label text-start">
+                                                            Customer
+                                                            <span class="obligatory">*</span>
+                                                        </label>
+
+                                                        <div id="txtAccountBlock" class="col-lg-8">
+                                                            <div class="input-group">
+                                                                <input id="txtAccount" name="txtAccount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                                <input id="txtAccountVal" type="hidden" />
+                                                            </div>
+
+                                                            <div class="warning-invalid__title"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtStartDate" class="col-lg-4 col-form-label text-start">
+                                                            Contract Start Date
+                                                            <span class="obligatory">*</span>
+                                                        </label>
+
+                                                        <div id="txtStartDateBlock" class="col-lg-8">
+                                                            <div class="input-group">
+                                                                <input onchange="viewDaysBetweenDates('txtStartDate', 'txtEndDate', 'txtDays', 'txtBillStartDate', 'txtBillEndDate')"
+                                                                       id="txtStartDate" name="txtStartDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                            </div>
+
+                                                            <div class="warning-invalid__title"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtEndDate" class="col-lg-4 col-form-label text-start">
+                                                            Contract End Date
+                                                            <span class="obligatory">*</span>
+                                                        </label>
+
+                                                        <div id="txtEndDateBlock" class="col-lg-8">
+                                                            <div class="input-group">
+                                                                <input onchange="viewDaysBetweenDates('txtStartDate', 'txtEndDate', 'txtDays', 'txtBillStartDate', 'txtBillEndDate')"
+                                                                       id="txtEndDate" name="txtEndDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                            </div>
+
+                                                            <div class="warning-invalid__title"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="txtDays" class="col-lg-4 col-form-label text-start">
+                                                            Duration In Days
+                                                            <i class="fa-solid fa-user-lock ms-1"></i>
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <input disabled id="txtDays" name="txtDays" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group row mb-2">
+                                                        <label for="ddlDiscountType" class="col-lg-4 col-form-label text-start">
+                                                            Discount
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <select data-default-value="2" class="select2 form-select" id="ddlDiscountType" name="ddlDiscountType">
+                                                                <option value="2" selected>Tổng tiền</option>
+                                                                <option value="1">Phần trăm</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="ddlServiceLevel" class="col-lg-4 col-form-label text-start">
+                                                            Service Level
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <select data-default-value="3" class="select2 form-select" id="ddlServiceLevel" name="ddlServiceLevel">
+                                                                <option value="1">Rất thấp</option>
+                                                                <option value="2">Thấp</option>
+                                                                <option value="3" selected>Trung bình</option>
+                                                                <option value="4">Cao</option>
+                                                                <option value="5">Rất cao</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="ddlProvince" class="col-lg-4 col-form-label text-start">
+                                                            Province
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <select data-default-value="0"
+                                                                    onchange="onLoadCommonDistricts('ddlProvince', 'ddlDistrict', 'ddlWard', 'ddlBillProvince')"
+                                                                    id="ddlProvince" class="select2 form-select" name="ddlProvince"></select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="ddlDistrict" class="col-lg-4 col-form-label text-start">
+                                                            District
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <select data-default-value="0"
+                                                                    onchange="onLoadCommonWards('ddlDistrict', 'ddlWard', 'ddlBillDistrict')"
+                                                                    id="ddlDistrict" name="ddlDistrict" class="select2 form-select"></select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="ddlWard" class="col-lg-4 col-form-label text-start">
+                                                            Ward
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <select onchange="onLoadCommonMore('ddlWard', 'ddlBillWard', 2)" data-default-value="0" id="ddlWard" name="ddlWard" class="select2 form-select"></select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-2">
+                                                        <label for="txtAddress" class="col-lg-4 col-form-label text-start">
+                                                            Contract address
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <textarea onchange="onLoadCommonMore('txtAddress', 'txtBillAddress', 1)" id="txtAddress" spellcheck="false" rows="2" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="txtDescription" class="col-lg-4 col-form-label text-start">
+                                                            Description
+                                                        </label>
+
+                                                        <div class="col-lg-8">
+                                                            <textarea id="txtDescription" spellcheck="false" rows="2" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            Billing Information & Pricing
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="card">
+                                                        <div class="card-header fw-bold text-uppercase text-center">
+                                                            Billing Information
+                                                        </div>
+
+                                                        <div class="card-body p-2">
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtBillAccount" class="col-lg-4 col-form-label text-start">
+                                                                    Bill To Customer
+                                                                    <span class="obligatory">*</span>
+                                                                </label>
+
+                                                                <div id="txtBillAccountBlock" class="col-lg-8">
+                                                                    <div class="input-group">
+                                                                        <input id="txtBillAccount" name="txtBillAccount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                                        <input id="txtBillAccountVal" type="hidden" />
+                                                                    </div>
+
+                                                                    <div class="warning-invalid__title"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtBillStartDate" class="col-lg-4 col-form-label text-start">
+                                                                    Billing Start Date
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <div class="input-group">
+                                                                        <input id="txtBillStartDate" name="txtBillStartDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtBillEndDate" class="col-lg-4 col-form-label text-start">
+                                                                    Billing End Date
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <div class="input-group">
+                                                                        <input id="txtBillEndDate" name="txtBillEndDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="ddlBillFrequency" class="col-lg-4 col-form-label text-start">
+                                                                    Billing Frequency
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <select data-default-value="0" class="select2 form-select" id="ddlBillFrequency" name="ddlBillFrequency">
+                                                                        <option value="0" selected>Hàng tháng</option>
+                                                                        <option value="1">Hai tháng một lần</option>
+                                                                        <option value="2">Hàng quý</option>
+                                                                        <option value="3">Bán hàng năm</option>
+                                                                        <option value="4">Hàng năm</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtCancellationDate" class="col-lg-4 col-form-label text-start">
+                                                                    Cancellation Date
+                                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <input disabled id="txtCancellationDate" name="txtCancellationDate" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="ddlBillProvince" class="col-lg-4 col-form-label text-start">
+                                                                    Province
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <select data-default-value="0" onchange="onLoadCommonDistricts('ddlBillProvince', 'ddlBillDistrict', 'ddlBillWard')"
+                                                                            id="ddlBillProvince" class="select2 form-select" name="ddlBillProvince"></select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="ddlBillDistrict" class="col-lg-4 col-form-label text-start">
+                                                                    District
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <select data-default-value="0" onchange="onLoadCommonWards('ddlBillDistrict', 'ddlBillWard')"
+                                                                            id="ddlBillDistrict" name="ddlBillDistrict" class="select2 form-select"></select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="ddlBillWard" class="col-lg-4 col-form-label text-start">
+                                                                    Ward
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <select data-default-value="0" id="ddlBillWard" name="ddlBillWard" class="select2 form-select"></select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtBillAddress" class="col-lg-4 col-form-label text-start">
+                                                                    Bill To Address
+                                                                </label>
+
+                                                                <div class="col-lg-8">
+                                                                    <textarea id="txtBillAddress" spellcheck="false" rows="2" class="form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="card">
+                                                        <div class="card-header fw-bold text-uppercase text-center">
+                                                            Pricing
+                                                        </div>
+
+                                                        <div class="card-body p-2">
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtContractID" class="col-lg-4 col-form-label text-start">
+                                                                    Total Price
+                                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                                </label>
+
+                                                                <div id="txtContractIDBlock" class="col-lg-8">
+                                                                    <input disabled id="txtContractID" name="txtContractID" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                                    <div class="warning-invalid__title"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtContractID" class="col-lg-4 col-form-label text-start">
+                                                                    Total Discount
+                                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                                </label>
+
+                                                                <div id="txtContractIDBlock" class="col-lg-8">
+                                                                    <input disabled id="txtContractID" name="txtContractID" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                                    <div class="warning-invalid__title"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-2">
+                                                                <label for="txtContractID" class="col-lg-4 col-form-label text-start">
+                                                                    Net Price
+                                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                                </label>
+
+                                                                <div id="txtContractIDBlock" class="col-lg-8">
+                                                                    <input disabled id="txtContractID" name="txtContractID" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                                    <div class="warning-invalid__title"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            Activities
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tabSub">
+                                                    <a id="tabSubPostsLink" class="nav-link nav-custom active" data-bs-toggle="tab" href="#tabSubPosts">Posts</a>
+                                                    <a class="nav-link nav-custom" data-bs-toggle="tab" href="#tabSubTasks">Tasks</a>
+                                                    <a class="nav-link nav-custom" data-bs-toggle="tab" href="#tabSubNotes">Notes</a>
+                                                </div>
+
+                                                <div class="tab-content" id="nav-tabContentSub">
+                                                    <div class="tab-pane nav-custom p-0 mt-1 active" id="tabSubPosts">
+                                                        To enable this content, create the record.
+                                                    </div>
+
+                                                    <div class="tab-pane nav-custom p-0 mt-1" id="tabSubTasks">
+                                                        To enable this content, create the record.
+                                                    </div>
+
+                                                    <div class="tab-pane nav-custom p-0 mt-1" id="tabSubPhonecalls">
+                                                        To enable this content, create the record.
+                                                    </div>
+
+                                                    <div class="tab-pane nav-custom p-0 mt-1" id="tabSubNotes">
+                                                        To enable this content, create the record.
+                                                    </div>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tabContractLines" class="tab-pane nav-custom p-2">
+                            <div class="card">
+                                <div class="card-header fw-bold text-uppercase text-center">
+                                    Contract Lines
+                                </div>
+
+                                <div class="card-body p-2">
+                                    <div class="dataTable dataTableSub">
+                                        <table class="ivg-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Product</th>
+                                                    <th>Allotments Remaining</th>
+                                                    <th>Net</th>
+                                                    <th class="text-center">Handle</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr><td class='ms-4' colspan='9999'>To enable this content, create the record.</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Save value-->
+    <input type="hidden" id="hdfTypeOnLoad" />
+    <input type="hidden" id="hdfDetailID" />
+    <input type="hidden" id="hdfLineID" />
+    <input type="hidden" id="hdfStatus" />
+    <input type="hidden" id="hdfDiscountType" />
+
+    <input type="hidden" id="hdfDetailAccount" />
+    <input type="hidden" id="hdfDetailAccountID" />
+
+    <input type="hidden" id="hdfDetailStartDate" />
+    <input type="hidden" id="hdfDetailEndDate" />
+
+    <!--Loader-->
+    <div id="loader"></div>
+
+    <!--Modal create line
+    ----------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modalCreateLine" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="modal-header p-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitCreateLine(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitCreateLine(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="clearAllForm('contentCreateLine')" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header fw-bold text-uppercase text-center">
+                            New Contract Line
+                        </div>
+
+                        <div id="contentCreateLine" class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            General
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineTitle" class="col-lg-4 col-form-label text-start">
+                                                    Title
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineTitleBlock" class="col-lg-8">
+                                                    <input id="txtLineTitle" name="txtLineTitle" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineStartDate" class="col-lg-4 col-form-label text-start">
+                                                    Start Date
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineStartDateBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtLineStartDate" name="txtLineStartDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineEndDate" class="col-lg-4 col-form-label text-start">
+                                                    End Date
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineEndDateBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtLineEndDate" name="txtLineEndDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineAccount" class="col-lg-4 col-form-label text-start">
+                                                    Customer
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineAccountBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtLineAccount" name="txtLineAccount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                        <input id="txtLineAccountVal" type="hidden" />
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineSerial" class="col-lg-4 col-form-label text-start">
+                                                    Serial Number
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input id="txtLineSerial" name="txtLineSerial" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineProduct" class="col-lg-4 col-form-label text-start">
+                                                    Product
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtLineProduct" name="txtLineProduct" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                        <input id="txtLineProductVal" type="hidden" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="ddlLineUnit" class="col-lg-4 col-form-label text-start">
+                                                    Unit
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select id="ddlLineUnit" name="ddlLineUnit" class="form-select select2"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="ddlLineProvince" class="col-lg-4 col-form-label text-start">
+                                                    Province
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select data-default-value="0" onchange="onLoadCommonDistricts('ddlLineProvince', 'ddlLineDistrict', 'ddlLineWard')"
+                                                            id="ddlLineProvince" class="select2 form-select" name="ddlLineProvince"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="ddlLineDistrict" class="col-lg-4 col-form-label text-start">
+                                                    District
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select data-default-value="0" onchange="onLoadCommonWards('ddlLineDistrict', 'ddlLineWard')"
+                                                            id="ddlLineDistrict" name="ddlLineDistrict" class="select2 form-select"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="ddlLineWard" class="col-lg-4 col-form-label text-start">
+                                                    Ward
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select data-default-value="0" id="ddlLineWard" name="ddlLineWard" class="select2 form-select"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtLineLocation" class="col-lg-4 col-form-label text-start">
+                                                    Location
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <textarea id="txtLineLocation" spellcheck="false" rows="2" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            Pricing
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineQuantity" class="col-lg-4 col-form-label text-start">
+                                                    Quantity
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input oninput="formatNumberInput(this)" id="txtLineQuantity" name="txtLineQuantity" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineTotalPrice" class="col-lg-4 col-form-label text-start">
+                                                    Total Price
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineTotalPriceBlock" class="col-lg-8">
+                                                    <input oninput="formatNumberInput(this)" id="txtLineTotalPrice" name="txtLineTotalPrice" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDiscount" class="col-lg-4 col-form-label text-start">
+                                                    Discount (<i class="fa-solid fa-sack-dollar"></i>)
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input oninput="formatNumberInput(this)" id="txtLineDiscount" name="txtLineDiscount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLinePercent" class="col-lg-4 col-form-label text-start">
+                                                    Discount (%)
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input oninput="formatNumberInput(this)" id="txtLinePercent" name="txtLinePercent" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineNet" class="col-lg-4 col-form-label text-start">
+                                                    Net
+                                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input disabled id="txtLineNet" name="txtLineNet" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtLineRate" class="col-lg-4 col-form-label text-start">
+                                                    Rate
+                                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input disabled id="txtLineRate" name="txtLineRate" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            Allotment Details
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineTotalCase" class="col-lg-4 col-form-label text-start">
+                                                    Total Cases / Minutes
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineTotalCaseBlock" class="col-lg-8">
+                                                    <input oninput="formatNumberInput(this)" id="txtLineTotalCase" name="txtLineTotalCase" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineUsed" class="col-lg-4 col-form-label text-start">
+                                                    Allotments Used
+                                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input disabled id="txtLineUsed" name="txtLineUsed" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtLineRemaining" class="col-lg-4 col-form-label text-start">
+                                                    Allotments Remaining
+                                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input disabled id="txtLineRemaining" name="txtLineRemaining" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal update line
+    ----------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modalUpdateLine" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="modal-header p-2">
+                    <div class="d-flex align-items-center">
+                        <div id="btnLineDetailSaveClose" onclick="submitUpdateLine(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div id="btnLineDetailSave" onclick="submitUpdateLine(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="viewLineDetails()" type="button" class="btn-close p-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header fw-bold text-uppercase text-center">
+                            Contract Line - <span id="txtLineTitleHeader" class="text-danger"></span>
+                        </div>
+
+                        <div class="card-body p-2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            General
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailTitle" class="col-lg-4 col-form-label text-start">
+                                                    Title
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineDetailTitleBlock" class="col-lg-8">
+                                                    <input id="txtLineDetailTitle" name="txtLineDetailTitle" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailStartDate" class="col-lg-4 col-form-label text-start">
+                                                    Start Date
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineDetailStartDateBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtLineDetailStartDate" name="txtLineDetailStartDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailEndDate" class="col-lg-4 col-form-label text-start">
+                                                    End Date
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineDetailEndDateBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtLineDetailEndDate" name="txtLineDetailEndDate" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailAccount" class="col-lg-4 col-form-label text-start">
+                                                    Customer
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineDetailAccountBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtLineDetailAccount" name="txtLineDetailAccount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                        <input id="txtLineDetailAccountVal" type="hidden" />
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailSerial" class="col-lg-4 col-form-label text-start">
+                                                    Serial Number
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input id="txtLineDetailSerial" name="txtLineDetailSerial" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailProduct" class="col-lg-4 col-form-label text-start">
+                                                    Product
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtLineDetailProduct" name="txtLineDetailProduct" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                        <input id="txtLineDetailProductVal" type="hidden" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="ddlLineDetailUnit" class="col-lg-4 col-form-label text-start">
+                                                    Unit
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select id="ddlLineDetailUnit" name="ddlLineDetailUnit" class="form-select select2"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="ddlLineDetailProvince" class="col-lg-4 col-form-label text-start">
+                                                    Province
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select data-default-value="0" onchange="onLoadCommonDistricts('ddlLineDetailProvince', 'ddlLineDetailDistrict', 'ddlLineDetailWard')"
+                                                            id="ddlLineDetailProvince" class="select2 form-select" name="ddlLineDetailProvince"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="ddlLineDetailDistrict" class="col-lg-4 col-form-label text-start">
+                                                    District
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select data-default-value="0" onchange="onLoadCommonWards('ddlLineDetailDistrict', 'ddlLineDetailWard')"
+                                                            id="ddlLineDetailDistrict" name="ddlLineDetailDistrict" class="select2 form-select"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="ddlLineDetailWard" class="col-lg-4 col-form-label text-start">
+                                                    Ward
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select data-default-value="0" id="ddlLineDetailWard" name="ddlLineDetailWard" class="select2 form-select"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtLineDetailLocation" class="col-lg-4 col-form-label text-start">
+                                                    Location
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <textarea id="txtLineDetailLocation" spellcheck="false" rows="2" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            Pricing
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailQuantity" class="col-lg-4 col-form-label text-start">
+                                                    Quantity
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input oninput="formatNumberInput(this)" id="txtLineDetailQuantity" name="txtLineDetailQuantity" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailTotalPrice" class="col-lg-4 col-form-label text-start">
+                                                    Total Price
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineDetailTotalPriceBlock" class="col-lg-8">
+                                                    <input oninput="formatNumberInput(this)" id="txtLineDetailTotalPrice" name="txtLineDetailTotalPrice" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailDiscount" class="col-lg-4 col-form-label text-start">
+                                                    Discount (<i class="fa-solid fa-sack-dollar"></i>)
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input oninput="formatNumberInput(this)" id="txtLineDetailDiscount" name="txtLineDetailDiscount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailPercent" class="col-lg-4 col-form-label text-start">
+                                                    Discount (%)
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input oninput="formatNumberInput(this)" id="txtLineDetailPercent" name="txtLineDetailPercent" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailNet" class="col-lg-4 col-form-label text-start">
+                                                    Net
+                                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input disabled id="txtLineDetailNet" name="txtLineDetailNet" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtLineDetailRate" class="col-lg-4 col-form-label text-start">
+                                                    Rate
+                                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input disabled id="txtLineDetailRate" name="txtLineDetailRate" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase text-center">
+                                            Allotment Details
+                                        </div>
+
+                                        <div class="card-body p-2">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailTotalCase" class="col-lg-4 col-form-label text-start">
+                                                    Total Cases / Minutes
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtLineDetailTotalCaseBlock" class="col-lg-8">
+                                                    <input oninput="formatNumberInput(this)" id="txtLineDetailTotalCase" name="txtLineDetailTotalCase" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtLineDetailUsed" class="col-lg-4 col-form-label text-start">
+                                                    Allotments Used
+                                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input disabled id="txtLineDetailUsed" name="txtLineDetailUsed" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtLineDetailRemaining" class="col-lg-4 col-form-label text-start">
+                                                    Allotments Remaining
+                                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input disabled id="txtLineDetailRemaining" name="txtLineDetailRemaining" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Template Functions -->
+    <script src="../../assets/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../../assets/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/theme/js/functions.js"></script>
+    <script src="../../assets/theme/js/glightbox.js"></script>
+    <script src="../../assets/theme/js/purecounter_vanilla.js"></script>
+    <script src="../../assets/theme/js/tiny-slider.js"></script>
+    <!--Jquery-->
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <!--Datetime picker-->
+    <link href="../../assets/dtpicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <script src="../../assets/dtpicker/jquery.datetimepicker.full.js"></script>
+    <!--Select2-->
+    <link href="../../assets/select2/select2.min.css" rel="stylesheet" />
+    <script src="../../assets/select2/select2.min.js"></script>
+    <!--Jquery Ui-->
+    <link href="../../assets/jquery-ui/jquery-ui.min-v1.13.2.css" rel="stylesheet" />
+    <script src="../../assets/jquery-ui/jquery-ui.min-v1.13.2.js"></script>
+    <!--Sweat alert-->
+    <script src="../../assets/sweat-alert/sweetalert.min.js"></script>
+    <!--Pagination-->
+    <script src="../../assets/js/pagination.js"></script>
+    <!--Alert Toastr-->
+    <link href="../../assets/toast/toastr.min.css" rel="stylesheet" />
+    <script src="../../assets/toast/toastr.min.js"></script>
+    <!--API Url-->
+    <script src="../../assets/js/api-url.js"></script>
+    <!--Tree table-->
+    <script src="../../assets/tree-table/tree-table.js"></script>
+    <!--IVG JS-->
+    <script src="../../assets/js/common.js"></script>
+    
+    <script src="contracts.js"></script>
+</body>
+</html>

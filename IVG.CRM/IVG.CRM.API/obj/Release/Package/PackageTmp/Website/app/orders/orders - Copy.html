@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Orders</title>
+
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="ivg.vn">
+    <meta name="description" content="IVG Vietnam Joint Stock Company CRM">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/image/logo.png">
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="../../https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/tiny-slider/tiny-slider.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/glightbox/css/glightbox.css">
+    <link href="../../assets/bootstrap/fontawesome/css/all.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+    <!--<link href="../../assets/bootstrap/css/app.min.css" rel="stylesheet" />-->
+    <link href="../../assets/theme/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/glightbox.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/style.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/tiny-slider.css" rel="stylesheet" />
+    <link href="../../assets/select2/select2.min.css" rel="stylesheet" />
+    <link href="../../assets/css/ivg-style.css" rel="stylesheet" />
+
+</head>
+
+<body class="body-page">
+
+    <div class="ivg-page-list">
+        <div class="row align-items-center">
+
+            <div class="col">
+                <div class="mt-2 d-flex">
+                    <ol class="breadcrumb shadow-lg">
+                        <li class="breadcrumb-item "><i class=" fas fa-home"></i> <a href="#" class="pr-md-3 pl-md-2 pr-2 pl-1 ">Sales</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Collateral</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 active-1">Orders</a> </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="col ivg-align-right">
+                <div class=" btn-group">
+                    <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Thêm mới"><i class="fas fa-plus"></i></button>
+                    <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Lưu dữ liệu"><i class="fas fa-save"></i></button>
+                    <button class="btn ivg-button del" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Xóa dữ liệu"><i class="fas fa-trash"></i></button>
+                </div>
+                <div class=" btn-group">
+                    <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải lên dữ liệu"><i class="fas fa-upload"></i></button>
+                    <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải xuống dữ liệu"><i class="fas fa-download"></i></button>
+                </div>
+                <div class="dropdown">
+                    <button class="btn ivg-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="dataTable">
+            <table class="ivg-table" id="tblData"></table>
+        </div>
+
+        <div class="mt-1 ivg-paging row align-items-center">
+            <div class="col">
+                <span>Tổng: <b id="lblTotalRecords">100</b> bản ghi</span>
+                |
+                <span>Hiển thị </span>
+                <select class="ivg-page-size">
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                </select>
+            </div>
+            <div class="col ivg-align-right">
+                <div class="btn-group btn-group-sm">
+                    <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang đầu"><i class="fas fa-angle-double-left"></i></button>
+                    <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang trước"><i class="fas fa-angle-left"></i></button>
+                    <button class="btn ivg-button-disabled" disabled><span>1</span> / <span id="lblTotalPages">2</span></button>
+                    <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang tiếp"><i class="fas fa-angle-right"></i></button>
+                    <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang cuối"><i class="fas fa-angle-double-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="ivg-page-detail" style="display:none">
+
+        <div class="DataDetail container-fluid">
+
+            <button class="ivg-button" onclick="Detail(1)"><i class="fas fa-angle-left"></i> Back to list</button>
+
+            <div class="row">
+
+                <div class="col">
+                    <div class="ivg-form-input">
+                        <div class="ivg-form-input-header">
+                            <h5>SUMMARY</h5>
+                        </div>
+
+                        <div class="ivg-form-input-body">
+
+                            <div class="row">
+
+
+                                <div class="col">
+
+                                    <div class="ivg-form-input-label">General</div>
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Order ID</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="ORD-0001" disabled />
+                                        </div>
+                                    </div> 
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Name</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="phần mềm ghi âm" />
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Currency</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="value">Đồng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Price List</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="value">Giá 2024</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                
+                                <div class="col">
+
+                                    <div hidden>
+                                        <div class="ivg-form-input-label">shipping information</div>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Shipping Method</label>
+                                            </div>
+                                            <div class="col">
+                                                <select class="select2">
+                                                    <option value="value">DHL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Payment Terms</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Freight Terms</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ivg-form-input-label">SALES INFORMATION</div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Opportunity</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="phần mềm ghi âm" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Quote</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="phần mềm ghi âm" disabled />
+                                        </div>
+                                    </div>
+                                     
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Account</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="IVG JSC" />
+                                                <button type="button" class="btn ivg-button">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div> 
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Description</label>
+                                        </div>
+                                        <div class="col">
+                                            <textarea rows="3" class="form-control ivg-input" spellcheck="false"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+                
+           
+                <div class="col">
+                    <div class="ivg-form-input">
+                        <div class="ivg-form-input-header">
+                            <h5>addresses</h5>
+                        </div>
+
+                        <div class="ivg-form-input-body">
+                            <div class="row">
+                                <div class="col">
+
+
+                                    <div class="ivg-form-input-label">Bill To Address</div>
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Address</label>
+                                        </div>
+                                        <div class="col">
+                                            <textarea rows="4" class="form-control ivg-input" spellcheck="false">141 Hoàng Quốc Việt</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Province</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="">Hà Nội</option>
+                                                <option value="">TP.HCM</option>
+                                                <option value="">Đà Nẵng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">District</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="">Quận Cầu Giấy</option>
+                                                <option value="">Quận 1</option>
+                                                <option value="">Quận 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Ward</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="">Nghĩa Đô</option>
+                                                <option value="">Võ Thị Sáu</option>
+                                                <option value="">Đa Kao</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                 
+                                <div class="col">
+
+
+                                    <div class="ivg-form-input-label">Ship To Address</div>
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Address</label>
+                                        </div>
+                                        <div class="col">
+                                            <textarea rows="4" class="form-control ivg-input" spellcheck="false">141 Hoàng Quốc Việt</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Province</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="">Hà Nội</option>
+                                                <option value="">TP.HCM</option>
+                                                <option value="">Đà Nẵng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">District</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="">Quận Cầu Giấy</option>
+                                                <option value="">Quận 1</option>
+                                                <option value="">Quận 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Ward</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="">Nghĩa Đô</option>
+                                                <option value="">Võ Thị Sáu</option>
+                                                <option value="">Đa Kao</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                 
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                 
+
+                 
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="ivg-form-input">
+                        <div class="ivg-form-input-header">
+                            <h5>products</h5>
+                        </div>
+
+                        <div class="ivg-form-input-body">
+ 
+                            <div class="row">
+                                <div class="col-8">
+                                    <div>
+
+                                        <div class="ivg-form-input-label">
+                                            &nbsp;
+                                            <button class="btn ivg-button btn-sm" data-bs-placement="bottom" data-bs-toggle="modal" data-bs-target="#modalNewCase" title="Create new"><i class="fas fa-plus"></i></button>
+                                        </div>
+
+                                        <table class="table table-bordered table-striped table-hover table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product Name</th>
+                                                    <th>Properties</th>
+                                                    <th>Unit</th>
+                                                    <th>Price Per Unit</th>
+                                                    <th>Quantity</th>
+                                                    <th>Discount</th>
+                                                    <th>Extended Amount</th>
+                                                    <th>Suggestions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>phần mềm ghi âm cho 10 điện thoại</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>2,500,000.00</td>
+                                                    <td>10.00</td>
+                                                    <td>0</td>
+                                                    <td>25,000,000.00</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Detail Amount</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input ivg-text-right" spellcheck="false" autocomplete="off" value="25,000,000.00" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">(-) Discount (%)</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">(-) Discount</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Pre-Freight Amount</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input ivg-text-right" spellcheck="false" autocomplete="off" value="25,000,000.00" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">(+) Freight Amount</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">(+) Total Tax</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Total Amount</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input ivg-text-right" spellcheck="false" autocomplete="off" value="25,000,000.00" disabled />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+             
+        </div>
+         
+    </div>
+
+
+    <script src="../../assets/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../../assets/select2/select2.min.js"></script>
+    <!-- Vendors -->
+    <script src="../../assets/vendor/tiny-slider/tiny-slider.js"></script>
+    <script src="../../assets/vendor/glightbox/js/glightbox.js"></script>
+    <script src="../../assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+
+    <!-- Template Functions -->
+    <!--<script src="../../assets/js/functions.js"></script>-->
+
+    <script src="../../assets/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/theme/js/functions.js"></script>
+    <script src="../../assets/theme/js/glightbox.js"></script>
+    <script src="../../assets/theme/js/purecounter_vanilla.js"></script>
+    <script src="../../assets/theme/js/tiny-slider.js"></script>
+
+    <link href="../../assets/dtpicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <script src="../../assets/dtpicker/jquery.datetimepicker.full.js"></script>
+
+    <script src="../../assets/js/common.js?ver=1.1"></script>
+    <script src="orders.js?ver=1.0"></script>
+    
+</body>
+</html>

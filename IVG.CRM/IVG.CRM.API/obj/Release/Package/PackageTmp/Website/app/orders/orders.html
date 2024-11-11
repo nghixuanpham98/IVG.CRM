@@ -1,0 +1,1361 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="ivg.vn">
+    <meta name="description" content="IVG Vietnam Joint Stock Company CRM">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/image/logo.png">
+
+    <!-- Plugins CSS -->
+    <link href="../../assets/bootstrap/fontawesome/css/all.min.css" rel="stylesheet" />
+    <!-- Boostrap CSS -->
+    <link href="../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="../../assets/theme/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/glightbox.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/style.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/tiny-slider.css" rel="stylesheet" />
+    <link href="../../assets/css/ivg-style.css" rel="stylesheet" />
+    <link href="../../assets/css/common.css" rel="stylesheet" />
+</head>
+
+<body class="body-page">
+    <div class="content">
+        <!--Content list-->
+        <div id="contentList">
+            <div>
+                <div class="row">
+                    <ol class="breadcrumb my-0 p-3">
+                        <li class="breadcrumb-item "><i class=" fas fa-home"></i> <a href="#" class="pr-md-3 pl-md-2 pr-2 pl-1">Home</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Sales</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Collateral</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 active-1">Orders</a></li>
+                    </ol>
+                </div>
+
+                <div class="row align-items-center p-2">
+                    <div class="col-4">
+                        <div class="input-group">
+                            <input placeholder="Type search here..." class="form-control" spellcheck="false" autocomplete="off" type="search">
+
+                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="col ivg-align-right">
+                        <div class="btn-group">
+                            <button onclick="viewCreate(1)" class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Thêm mới"><i class="fas fa-plus"></i></button>
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Lưu dữ liệu"><i class="fas fa-save"></i></button>
+                            <button class="btn ivg-button del" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Xóa dữ liệu"><i class="fas fa-trash"></i></button>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải lên dữ liệu"><i class="fas fa-upload"></i></button>
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải xuống dữ liệu"><i class="fas fa-download"></i></button>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="btn ivg-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dataTable">
+                <table class="ivg-table">
+                    <thead>
+                        <tr>
+                            <th data-bs-toggle="dropdown" aria-expanded="false" title="Bộ lọc" class="text-center">
+                                <i class="fa-solid fa-filter p-2"></i>
+
+                                <ul class="dropdown-menu dropdown-menu-end ms-3">
+                                    <li><button class="dropdown-item ivg-button" type="button">-- All --</button></li>
+                                    <li><button class="dropdown-item ivg-button" type="button">Active orders</button></li>
+                                    <li><button class="dropdown-item ivg-button" type="button">My orders</button></li>
+                                </ul>
+                            </th>
+
+                            <th>
+                                Name
+                                <i class="fa-solid fa-caret-down ms-1"></i>
+                            </th>
+
+                            <th>
+                                Status Reason
+                                <i class="fa-solid fa-caret-down ms-1"></i>
+                            </th>
+
+                            <th>
+                                Total Amount
+                                <i class="fa-solid fa-caret-down ms-1"></i>
+                            </th>
+
+                            <th>
+                                Customer
+                                <i class="fa-solid fa-caret-down ms-1"></i>
+                            </th>
+
+                            <th>
+                                Email (Customer)
+                                <i class="fa-solid fa-caret-down ms-1"></i>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ondblclick="viewDetails('1')">
+                            <td class="text-center p-1"><input type="checkbox" class="check-xs cursor-pointer" /></td>
+                            <td onclick="viewDetails('1')" class="table-detail">Phần mềm ghi âm</td>
+                            <td><span class="badge rounded-pill bg-success fw-bold">New</span></td>
+                            <td>25.000.000 VND</td>
+                            <td class="table-detail">IVG</td>
+                            <td>all@ivg.vn</td>
+                        </tr>
+
+                        <tr ondblclick="viewDetails('1')">
+                            <td class="text-center p-1"><input type="checkbox" class="check-xs cursor-pointer" /></td>
+                            <td onclick="viewDetails('1')" class="table-detail">Phần mềm ghi âm</td>
+                            <td><span class="badge rounded-pill bg-warning fw-bold">Complete</span></td>
+                            <td>25.000.000 VND</td>
+                            <td class="table-detail">IVG</td>
+                            <td>all@ivg.vn</td>
+                        </tr>
+
+                        <tr ondblclick="viewDetails('1')">
+                            <td class="text-center p-1"><input type="checkbox" class="check-xs cursor-pointer" /></td>
+                            <td onclick="viewDetails('1')" class="table-detail">Phần mềm ghi âm</td>
+                            <td><span class="badge rounded-pill bg-success fw-bold">New</span></td>
+                            <td>25.000.000 VND</td>
+                            <td class="table-detail">IVG</td>
+                            <td>all@ivg.vn</td>
+                        </tr>
+
+                        <tr ondblclick="viewDetails('1')">
+                            <td class="text-center p-1"><input type="checkbox" class="check-xs cursor-pointer" /></td>
+                            <td onclick="viewDetails('1')" class="table-detail">Phần mềm ghi âm</td>
+                            <td><span class="badge rounded-pill bg-success fw-bold">New</span></td>
+                            <td>25.000.000 VND</td>
+                            <td class="table-detail">IVG</td>
+                            <td>all@ivg.vn</td>
+                        </tr>
+
+                        <tr ondblclick="viewDetails('1')">
+                            <td class="text-center p-1"><input type="checkbox" class="check-xs cursor-pointer" /></td>
+                            <td onclick="viewDetails('1')" class="table-detail">Phần mềm ghi âm</td>
+                            <td><span class="badge rounded-pill bg-success fw-bold">New</span></td>
+                            <td>25.000.000 VND</td>
+                            <td class="table-detail">IVG</td>
+                            <td>all@ivg.vn</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-1 ivg-paging row align-items-center">
+                <div class="col">
+                    <span>Tổng: <b id="lblTotalRecords">100</b> bản ghi</span>
+                    |
+                    <span>Hiển thị </span>
+                    <select class="ivg-page-size">
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="500">500</option>
+                    </select>
+                </div>
+
+                <div class="col ivg-align-right">
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang đầu"><i class="fas fa-angle-double-left"></i></button>
+                        <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang trước"><i class="fas fa-angle-left"></i></button>
+                        <button class="btn ivg-button-disabled" disabled><span>1</span> / <span id="lblTotalPages">2</span></button>
+                        <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang tiếp"><i class="fas fa-angle-right"></i></button>
+                        <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang cuối"><i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Content details-->
+        <div id="contentDetail" class="display-none">
+            <div class="card">
+                <div class="card-header">
+                    <div style="color: var(--main-color-blue-10);" class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-circle-check"></i>
+                                Activate
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                                Deactivate
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-calendar-plus"></i>
+                                Add to marketing list
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-users"></i>
+                                Connect
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-user-gear"></i>
+                                Assign
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-trash-can"></i>
+                                Delete
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                                Refresh
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <i onclick="viewDetails()" data-bs-toggle="tooltip" title="Đóng" class="fa-solid fa-x cursor-pointer px-2"></i>
+                        </div>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="m-0 text-uppercase">Order - <span id="titleDetail" class="text-danger col-3">Phần mềm ghi âm</span></h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                    Total Amount
+                                </label>
+
+                                <div>
+                                    <input value="80.200.000" class="input-card-header__special form-control" spellcheck="false" autocomplete="off" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    Status
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div>
+                                    <select class="select-card-header form-select" id="ddlPriority" name="ddlPriority">
+                                        <option selected>Active</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    Status Reason
+                                </label>
+
+                                <div>
+                                    <select class="select-card-header form-select" id="ddlPriority" name="ddlPriority">
+                                        <option>Pending</option>
+                                        <option selected>New</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    <i class="cursor-pointer fa-solid fa-user me-2"></i>
+                                    Owner
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="ddlCreatedOn">
+                                    <div class="input-group">
+                                        <input value="Nghi Xuan Pham" class="input-card-header form-control" spellcheck="false" autocomplete="off" type="search" />
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tabDetail">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#tabDetailGeneral">General</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#tabDetailProduct">Products</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#tabDetailTimeline">Timeline</a>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabDetailContent">
+                        <div class="tab-pane p-2 active" id="tabDetailGeneral">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            Order details
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Order Code
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-8">
+                                                    <input disabled value="QUO-00008-Q0T4C8" type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Name
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-8">
+                                                    <input value="Làm màn hình theo doi trạng thái điện thoại viên" type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseCustomer" class="col-lg-4 col-form-label text-start">
+                                                    Currency
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseCustomerBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input value="Đồng" type="search" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseCustomer" class="col-lg-4 col-form-label text-start">
+                                                    Price List
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseCustomerBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input value="Giá 2024" type="search" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Prices Locked
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-8">
+                                                    <input disabled value="Yes" type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            Sales infomation
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseCustomer" class="col-lg-4 col-form-label text-start">
+                                                    Opportunity
+                                                </label>
+
+                                                <div id="txtCaseCustomerBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input value="Làm màn hình theo doi trạng thái điện thoại viên" type="search" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseCustomer" class="col-lg-4 col-form-label text-start">
+                                                    Quote
+                                                </label>
+
+                                                <div id="txtCaseCustomerBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input value="Làm màn hình theo doi trạng thái điện thoại viên" type="search" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseCustomer" class="col-lg-4 col-form-label text-start">
+                                                    Potential Customer
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseCustomerBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input value="IVG" type="search" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtCaseContentDetail" class="col-lg-4 col-form-label text-start">
+                                                    Description
+                                                </label>
+
+                                                <div id="txtCaseContentDetailBlock" class="col-lg-8">
+                                                    <textarea id="txtCaseContentDetail" spellcheck="false" name="txtCaseContentDetail" rows="4" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            BILL TO ADDRESS
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Province
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option>-- Select Province --</option>
+                                                        <option>Hà Nội</option>
+                                                        <option selected>TP. Hồ Chí Minh</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    District
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option>-- Select District --</option>
+                                                        <option>Quận 1</option>
+                                                        <option>Quận 7</option>
+                                                        <option selected>Quận Gò Vấp</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Ward
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option>-- Select Ward --</option>
+                                                        <option selected>Phường 6</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtCaseContentDetail" class="col-lg-4 col-form-label text-start">
+                                                    Address
+                                                </label>
+
+                                                <div id="txtCaseContentDetailBlock" class="col-lg-8">
+                                                    <textarea id="txtCaseContentDetail" spellcheck="false" name="txtCaseContentDetail" rows="4" class="form-control">350 Lê Đức Thọ, Phường 6, Quận Gò Vấp</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            SHIP TO ADDRESS
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Province
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option>-- Select Province --</option>
+                                                        <option>Hà Nội</option>
+                                                        <option selected>TP. Hồ Chí Minh</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    District
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option>-- Select District --</option>
+                                                        <option>Quận 1</option>
+                                                        <option>Quận 7</option>
+                                                        <option selected>Quận Gò Vấp</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Ward
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option>-- Select Ward --</option>
+                                                        <option selected>Phường 6</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtCaseContentDetail" class="col-lg-4 col-form-label text-start">
+                                                    Address
+                                                </label>
+
+                                                <div id="txtCaseContentDetailBlock" class="col-lg-8">
+                                                    <textarea id="txtCaseContentDetail" spellcheck="false" name="txtCaseContentDetail" rows="4" class="form-control">350 Lê Đức Thọ, Phường 6, Quận Gò Vấp</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tabDetailProduct" class="tab-pane p-2">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            Price
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Detail Amount
+                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input value="100.000.000" disabled type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Discount (%)
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input value="10" type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Discount
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input value="10.000.000" type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Pre-Freight Amount
+                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input value="100.000.000" disabled type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Freight Amount
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input value="200.000" type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Total Tax
+                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input value="10.000.000" disabled type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Total Amount
+                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input value="80.200.000" disabled type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-7">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase d-flex align-items-center justify-content-between">
+                                            Products
+                                            <i class="cursor-pointer fas fa-plus"></i>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <table class="ivg-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Product Name</th>
+                                                        <th>Properties</th>
+                                                        <th>Unit</th>
+                                                        <th>Price Per Unit</th>
+                                                        <th>Quantity</th>
+                                                        <th>Discount</th>
+                                                        <th>Extended Amount	</th>
+                                                        <th>Suggestions</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr><td class='ms-4' colspan='9999'>No Order Product records are available in this view.</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tabDetailTimeline" class="tab-pane p-2">
+                            <div class="card col-12">
+                                <div class="card-header fw-bold text-uppercase">
+                                    Timeline
+                                </div>
+
+                                <div class="card-body">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tabSub">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#tabSubPosts">Posts</a>
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#tabSubActivities">Activities</a>
+                                            <a hidden class="nav-link" data-bs-toggle="tab" href="#tabSubRecords">KB Records</a>
+                                            <a class="nav-link" data-bs-toggle="tab" href="#tabSubNotes">Notes</a>
+                                        </div>
+
+                                        <div class="tab-content" id="nav-tabContent-sub">
+                                            <div class="p-2" id="tabSubPosts">
+
+                                            </div>
+
+                                            <div class="p-2 active" id="tabSubActivities">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="me-4 cursor-pointer d-flex align-items-center">
+                                                            All
+                                                            <i class="fa-solid fa-sort-down ms-3"></i>
+                                                        </div>
+
+                                                        <div class="me-4 cursor-pointer">
+                                                            Add Phone ...
+                                                        </div>
+
+                                                        <div class="me-4 cursor-pointer">
+                                                            Add Task
+                                                        </div>
+
+                                                        <div class="me-4 cursor-pointer">
+                                                            <i class="fa-solid fa-ellipsis"></i>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="fa-solid fa-arrow-down me-2 cursor-pointer"></i>
+                                                        <i class="fa-solid fa-filter me-2 cursor-pointer"></i>
+                                                        <i class="fa-solid fa-table-cells cursor-pointer"></i>
+                                                    </div>
+                                                </div>
+
+                                                <hr class="m-0" />
+
+                                                <div>
+                                                    We didn't find any activity records.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Content create-->
+        <div id="contentCreate" class="display-none">
+            <div class="card">
+                <div class="card-header">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+                        </div>
+
+                        <div>
+                            <i onclick="viewCreate()" data-bs-toggle="tooltip" title="Đóng" class="fa-solid fa-x cursor-pointer px-2"></i>
+                        </div>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="m-0 text-uppercase">New Order</h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    <i class="fa-solid fa-user-lock me-2"></i>
+                                    Total Amount
+                                </label>
+
+                                <div>
+                                    <input class="input-card-header__special form-control" spellcheck="false" autocomplete="off" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    Status
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div>
+                                    <select class="select-card-header form-select" id="ddlPriority" name="ddlPriority">
+                                        <option selected>Active</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    Status Reason
+                                </label>
+
+                                <div>
+                                    <select class="select-card-header form-select" id="ddlPriority" name="ddlPriority">
+                                        <option>Pending</option>
+                                        <option selected>New</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    <i class="cursor-pointer fa-solid fa-user me-2"></i>
+                                    Owner
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="ddlCreatedOn">
+                                    <div class="input-group">
+                                        <input value="Nghi Xuan Pham" class="input-card-header form-control" spellcheck="false" autocomplete="off" type="search" />
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#tabGeneral">General</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#tabProduct">Products</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#tabTimeline">Timeline</a>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane p-2 active" id="tabGeneral">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            Order details
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Order Code
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-8">
+                                                    <input disabled type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Name
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-8">
+                                                    <input type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseCustomer" class="col-lg-4 col-form-label text-start">
+                                                    Currency
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseCustomerBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtCaseCustomer" name="txtCaseCustomer" type="search" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseCustomer" class="col-lg-4 col-form-label text-start">
+                                                    Price List
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseCustomerBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtCaseCustomer" name="txtCaseCustomer" type="search" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Prices Locked
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-8">
+                                                    <input disabled value="No" type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            Sales infomation
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseCustomer" class="col-lg-4 col-form-label text-start">
+                                                    Opportunity
+                                                </label>
+
+                                                <div id="txtCaseCustomerBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtCaseCustomer" name="txtCaseCustomer" type="search" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseCustomer" class="col-lg-4 col-form-label text-start">
+                                                    Quote
+                                                </label>
+
+                                                <div id="txtCaseCustomerBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtCaseCustomer" name="txtCaseCustomer" type="search" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseCustomer" class="col-lg-4 col-form-label text-start">
+                                                    Potential Customer
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtCaseCustomerBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtCaseCustomer" name="txtCaseCustomer" type="search" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtCaseContentDetail" class="col-lg-4 col-form-label text-start">
+                                                    Description
+                                                </label>
+
+                                                <div id="txtCaseContentDetailBlock" class="col-lg-8">
+                                                    <textarea id="txtCaseContentDetail" spellcheck="false" name="txtCaseContentDetail" rows="4" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            BILL TO ADDRESS
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Province
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option selected>-- Select Province --</option>
+                                                        <option>Hà Nội</option>
+                                                        <option>TP. Hồ Chí Minh</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    District
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option selected>-- Select District --</option>
+                                                        <option>Quận 1</option>
+                                                        <option>Quận 7</option>
+                                                        <option>Quận 3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Ward
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option selected>-- Select Ward --</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtCaseContentDetail" class="col-lg-4 col-form-label text-start">
+                                                    Address
+                                                </label>
+
+                                                <div id="txtCaseContentDetailBlock" class="col-lg-8">
+                                                    <textarea id="txtCaseContentDetail" spellcheck="false" name="txtCaseContentDetail" rows="4" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            SHIP TO ADDRESS
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Province
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option selected>-- Select Province --</option>
+                                                        <option>Hà Nội</option>
+                                                        <option>TP. Hồ Chí Minh</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    District
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option selected>-- Select District --</option>
+                                                        <option>Quận 1</option>
+                                                        <option>Quận 7</option>
+                                                        <option>Quận 3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-lg-4 col-form-label text-start">
+                                                    Ward
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <select class="select2 form-select">
+                                                        <option selected>-- Select Ward --</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtCaseContentDetail" class="col-lg-4 col-form-label text-start">
+                                                    Address
+                                                </label>
+
+                                                <div id="txtCaseContentDetailBlock" class="col-lg-8">
+                                                    <textarea id="txtCaseContentDetail" spellcheck="false" name="txtCaseContentDetail" rows="4" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tabProduct" class="tab-pane p-2">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            Price
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Detail Amount
+                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input disabled type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Discount (%)
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Discount
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Pre-Freight Amount
+                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input disabled type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Freight Amount
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Total Tax
+                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input disabled type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtCaseID" class="col-lg-5 col-form-label text-start">
+                                                    Total Amount
+                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                </label>
+
+                                                <div id="txtCaseIDBlock" class="col-lg-7">
+                                                    <input disabled type="text" spellcheck="false" autocomplete="off" class="form-control">
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-7">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase">
+                                            Products
+                                        </div>
+
+                                        <div class="card-body">
+                                            <table class="ivg-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Product Name</th>
+                                                        <th>Properties</th>
+                                                        <th>Unit</th>
+                                                        <th>Price Per Unit</th>
+                                                        <th>Quantity</th>
+                                                        <th>Discount</th>
+                                                        <th>Extended Amount	</th>
+                                                        <th>Suggestions</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr><td class='ms-4' colspan='9999'>To enable this content, create the record.</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tabTimeline" class="tab-pane p-2">
+                            <div class="card col-12">
+                                <div class="card-header fw-bold text-uppercase">
+                                    Timeline
+                                </div>
+
+                                <div class="card-body">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tabSub">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#tabSubPosts">Posts</a>
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#tabSubActivities">Activities</a>
+                                            <a hidden class="nav-link" data-bs-toggle="tab" href="#tabSubRecords">KB Records</a>
+                                            <a class="nav-link" data-bs-toggle="tab" href="#tabSubNotes">Notes</a>
+                                        </div>
+
+                                        <div class="tab-content" id="nav-tabContent-sub">
+                                            <div class="p-2" id="tabSubPosts">
+
+                                            </div>
+
+                                            <div class="p-2 active" id="tabSubActivities">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="me-4 cursor-pointer d-flex align-items-center">
+                                                            All
+                                                            <i class="fa-solid fa-sort-down ms-3"></i>
+                                                        </div>
+
+                                                        <div class="me-4 cursor-pointer">
+                                                            Add Phone ...
+                                                        </div>
+
+                                                        <div class="me-4 cursor-pointer">
+                                                            Add Task
+                                                        </div>
+
+                                                        <div class="me-4 cursor-pointer">
+                                                            <i class="fa-solid fa-ellipsis"></i>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="fa-solid fa-arrow-down me-2 cursor-pointer"></i>
+                                                        <i class="fa-solid fa-filter me-2 cursor-pointer"></i>
+                                                        <i class="fa-solid fa-table-cells cursor-pointer"></i>
+                                                    </div>
+                                                </div>
+
+                                                <hr class="m-0" />
+
+                                                <div>
+                                                    We didn't find any activity records.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+
+    <!-- Bootstrap-->
+    <!--<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>-->
+    <!-- Template Functions -->
+    <script src="../../assets/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/theme/js/functions.js"></script>
+    <script src="../../assets/theme/js/glightbox.js"></script>
+    <script src="../../assets/theme/js/purecounter_vanilla.js"></script>
+    <script src="../../assets/theme/js/tiny-slider.js"></script>
+    <!--Datetime picker-->
+    <link href="../../assets/dtpicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <script src="../../assets/dtpicker/jquery.datetimepicker.full.js"></script>
+    <!--Select2-->
+    <link href="../../assets/select2/select2.min.css" rel="stylesheet" />
+    <script src="../../assets/select2/select2.min.js"></script>
+    <!--IVG JS-->
+    <script src="../../assets/js/common.js"></script>
+    <script src="orders.js"></script>
+</body>
+</html>

@@ -1,0 +1,703 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="ivg.vn">
+    <meta name="description" content="IVG Vietnam Joint Stock Company CRM">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/image/logo.png">
+
+    <!-- Plugins CSS -->
+    <link href="../../assets/bootstrap/fontawesome/css/all.min.css" rel="stylesheet" />
+    <!-- Boostrap CSS -->
+    <link href="../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="../../assets/theme/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/glightbox.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/style.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/tiny-slider.css" rel="stylesheet" />
+    <link href="../../assets/css/ivg-style.css" rel="stylesheet" />
+    <link href="../../assets/css/common.css" rel="stylesheet" />
+</head>
+
+<body class="body-page">
+    <div class="content">
+        <!--Content list-->
+        <div id="contentList">
+            <div>
+                <div class="row">
+                    <ol class="breadcrumb my-0 p-3">
+                        <li class="breadcrumb-item "><i class=" fas fa-home"></i> <a href="#" class="pr-md-3 pl-md-2 pr-2 pl-1">Home</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Settings</a> </li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Business</a> </li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Product Catalog</a> </li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 active-1">Discount Lists</a> </li>
+                        <li class="breadcrumb-item "><a id="breadcrumbType" href="#" class="px-md-3 px-1 active-1">All Discount Lists</a> </li>
+                    </ol>
+                </div>
+
+                <div class="row align-items-center p-2">
+                    <div class="col-4">
+                        <div class="input-group">
+                            <input id="txtMainSearch" onchange="onLoadData(0, document.getElementById('hdfTypeOnLoad').value)" placeholder="Type search here..." class="form-control" spellcheck="false" autocomplete="off" type="search">
+
+                            <span onchange="onLoadData(0, document.getElementById('hdfTypeOnLoad').value)" data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="col ivg-align-right">
+                        <div class="btn-group">
+                            <button onclick="viewCreate(1)" class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Thêm mới"><i class="fas fa-plus"></i></button>
+
+                            <button onclick="submitDelete()" class="btn ivg-button del" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Xóa dữ liệu"><i class="fas fa-trash"></i></button>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải lên dữ liệu"><i class="fas fa-upload"></i></button>
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải xuống dữ liệu"><i class="fas fa-download"></i></button>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="btn ivg-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dataTable">
+                <table class="ivg-table">
+                    <thead>
+                        <tr>
+                            <th width="100" data-bs-toggle="dropdown" aria-expanded="false" title="Bộ lọc" class="text-center">
+                                <i class="fa-solid fa-filter p-2"></i>
+
+                                <ul class="dropdown-menu dropdown-menu-end ms-3">
+                                    <li onclick="onLoadData(0, defaultLoadNumb)"><button id="btnFilterAll" class="dropdown-item ivg-button btn-filter active" type="button">All Discount Lists</button></li>
+                                    <li onclick="onLoadData(0, 0)"><button id="btnFilterDraft" class="dropdown-item ivg-button btn-filter" type="button">Draft Discount Lists</button></li>
+                                    <li onclick="onLoadData(0, 1)"><button id="btnFilterActive" class="dropdown-item ivg-button btn-filter" type="button">Active Discount Lists</button></li>
+                                    <li onclick="onLoadData(0, 2)"><button id="btnFilterInactive" class="dropdown-item ivg-button btn-filter" type="button">Inactive Discount Lists</button></li>
+                                </ul>
+                            </th>
+
+                            <th id="thToggleName" class="toggle-th">
+                                Name
+                                <span data-order-name="Name" class="order-icon active p-2">⮟</span>
+                            </th>
+
+                            <th id="thToggleType" class="toggle-th">
+                                Type
+                                <span data-order-name="Type" class="order-icon p-2">⮟</span>
+                            </th>
+
+                            <th id="thToggleStatus" class="toggle-th">
+                                Status
+                                <span data-order-name="Status" class="order-icon p-2">⮟</span>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="dataBody"></tbody>
+                </table>
+            </div>
+
+            <!--Paging-->
+            <div class="row ivg-paging mt-3">
+                <div class="col">
+                    <span><span>Tổng</span>: <b id="totalRecords"></b> <span>dữ liệu</span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                    <span>
+                        <span>Hiển thị</span>
+
+                        <select onchange="onLoadData(1, document.getElementById('hdfTypeOnLoad').value)" id="pageSize">
+                            <option selected>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>75</option>
+                            <option>100</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div class="col" style="text-align:right;">
+                    <ul id="pagingMainContent" class="pagination-lg"></ul>
+                    <input type="hidden" value="1" id="pageIndex" />
+                </div>
+            </div>
+        </div>
+
+        <!--Content details-->
+        <div id="contentDetail" class="card display-none">
+            <div class="card-header p-2">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center">
+                        <div id="btnDetailSaveClose" onclick="submitUpdate(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div id="btnDetailSave" onclick="submitUpdate(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+
+                        <div onclick="submitUpdate(1, 1)" id="btnDetailPublish" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-upload"></i>
+                            Publish
+                        </div>
+
+                        <div onclick="submitUpdate(1, 1)" id="btnDetailActivate" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-circle-check"></i>
+                            Activate
+                        </div>
+
+                        <div onclick="submitUpdate(1, 2)" id="btnDetailDeactivate" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-circle-xmark"></i>
+                            Deactivate
+                        </div>
+
+                        <div onclick="submitDelete()" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-trash-can"></i>
+                            Delete
+                        </div>
+                    </div>
+
+                    <button onclick="viewDetails()" type="button" class="btn-close" aria-label="Close"></button>
+                </div>
+
+                <hr class="m-0" />
+
+                <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="m-0 text-uppercase">Discount List - <span id="titleDetail" class="text-danger col-3"></span></h6>
+
+                    <div class="col-8 row d-flex align-items-end justify-content-between">
+                        <div class="col-3"></div>
+
+                        <div class="col-3"></div>
+
+                        <div class="col-3"></div>
+
+                        <div class="col-3">
+                            <label for="ddlDetailStatus" class="col-form-label text-start">
+                                Status
+                                <span class="obligatory">*</span>
+                            </label>
+
+                            <div>
+                                <select disabled id="ddlDetailStatus" name="ddlDetailStatus" class="select-card-header select-card-header-disabled form-select">
+                                    <option value="0">Nháp</option>
+                                    <option value="1">Đang hoạt động</option>
+                                    <option value="2">Ngừng hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body p-2">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab">
+                        <a onclick="viewDetails(document.getElementById('hdfDetailID').value)" id="tabDetailGeneralLink" class="nav-link active nav-custom" data-bs-toggle="tab" href="#tabDetailGeneral">General</a>
+                        <a onclick="onLoadDataDLItems()" id="tabDetailDLItemLink" class="nav-link nav-custom" data-bs-toggle="tab" href="#tabDetailDLItem">Discount List Items</a>
+                    </div>
+                </nav>
+
+                <div class="tab-content">
+                    <div class="tab-pane active nav-custom p-3" id="tabDetailGeneral">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase text-center">
+                                Discount list details
+                            </div>
+
+                            <div class="card-body p-2">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="txtDetailName" class="col-lg-4 col-form-label text-start">
+                                                Name
+                                                <span class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="txtDetailNameBlock" class="col-lg-8">
+                                                <input id="txtDetailName" name="txtDetailName" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="ddlDetailType" class="col-lg-4 col-form-label text-start">
+                                                Type
+                                                <span class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="ddlDetailTypeBlock" class="col-lg-8">
+                                                <select disabled id="ddlDetailType" name="ddlDetailType" class="form-select select2">
+                                                    <option value="1">Phần trăm</option>
+                                                    <option value="2">Số tiền</option>
+                                                </select>
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane nav-custom p-3" id="tabDetailDLItem">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase d-flex align-items-center">
+                                <span class="flex-grow-1 text-center">Discount List Items</span>
+
+                                <i id="btnDetailAddNew" data-bs-toggle="modal" data-bs-target="#modalCreateDLItem" title="Thêm mới" class="cursor-pointer btn-handle p-2 fas fa-plus font-size-1-2"></i>
+                            </div>
+
+                            <div class="card-body p-2">
+                                <div class="dataTable dataTableSub">
+                                    <table class="ivg-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Begin Quantity</th>
+                                                <th>End Quantity</th>
+                                                <th>Percentage</th>
+                                                <th>Amount</th>
+                                                <th class="text-center">Handle</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="dataBodyDLItem">
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!--Paging-->
+                                <div class="row ivg-paging mt-3">
+                                    <div class="col">
+                                        <span><span>Tổng</span>: <b id="totalRecordsDLItem"></b> <span>dữ liệu</span></span>
+                                        &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                                        <span>
+                                            <span>Hiển thị</span>
+
+                                            <select onchange="onLoadDataDLItems(1)" id="pageSizeDLItem">
+                                                <option selected>10</option>
+                                                <option>25</option>
+                                                <option>50</option>
+                                                <option>75</option>
+                                                <option>100</option>
+                                            </select>
+                                        </span>
+                                    </div>
+
+                                    <div class="col" style="text-align:right;">
+                                        <ul id="pagingMainContentDLItem" class="pagination-lg"></ul>
+                                        <input type="hidden" value="1" id="pageIndexDLItem" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Content create-->
+        <div id="contentCreate" class="card display-none">
+            <div class="card-header p-2">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitCreate(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitCreate(1)" class="cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="viewCreate()" type="button" class="btn-close" aria-label="Close"></button>
+                </div>
+
+                <hr class="m-0" />
+
+                <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="m-0 text-uppercase">New Discount List</h6>
+
+                    <div class="col-8 row d-flex align-items-end justify-content-between">
+                        <div class="col-3"></div>
+
+                        <div class="col-3"></div>
+
+                        <div class="col-3"></div>
+
+                        <div class="col-3">
+                            <label for="ddlStatus" class="col-form-label text-start">
+                                Status
+                                <span class="obligatory">*</span>
+                            </label>
+
+                            <div>
+                                <select disabled id="ddlStatus" name="ddlStatus" data-default-value="0" class="select-card-header select-card-header-disabled form-select">
+                                    <option value="0" selected>Nháp</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body p-2">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab">
+                        <a id="tabGeneralLink" class="nav-link active nav-custom" data-bs-toggle="tab" href="#tabGeneral">General</a>
+                        <a id="tabDLItemLink" class="nav-link nav-custom" data-bs-toggle="tab" href="#tabDLItem">Discount List Items</a>
+                    </div>
+                </nav>
+
+                <div class="tab-content">
+                    <div class="tab-pane active nav-custom p-3" id="tabGeneral">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase text-center">
+                                Discount list details
+                            </div>
+
+                            <div class="card-body p-2">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="txtName" class="col-lg-4 col-form-label text-start">
+                                                Name
+                                                <span class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="txtNameBlock" class="col-lg-8">
+                                                <input id="txtName" name="txtName" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="ddlType" class="col-lg-4 col-form-label text-start">
+                                                Type
+                                                <span class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="ddlTypeBlock" class="col-lg-8">
+                                                <select data-default-value="1" id="ddlType" name="ddlType" class="form-select select2">
+                                                    <option value="1">Phần trăm</option>
+                                                    <option value="2">Số tiền</option>
+                                                </select>
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane nav-custom p-3" id="tabDLItem">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase text-center">
+                                Discount List Items
+                            </div>
+
+                            <div class="card-body p-2">
+                                <div class="dataTable dataTableSub">
+                                    <table class="ivg-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Unit</th>
+                                                <th>Amount</th>
+                                                <th class="text-center">Handle</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr><td class='ms-4' colspan='9999'>To enable this content, create the record.</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Save value-->
+    <input type="hidden" id="hdfTypeOnLoad" />
+    <input type="hidden" id="hdfDetailID" />
+    <input type="hidden" id="hdfDLItemID" />
+    <input type="hidden" id="hdfDLCommon" />
+    <input type="hidden" id="hdfTypeDL" />
+
+    <!--Loader-->
+    <div id="loader"></div>
+
+    <!--Modal create discount list item
+    ----------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modalCreateDLItem" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="modal-header p-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitCreateDLItem(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitCreateDLItem(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="clearAllForm('contentCreateDLItem')" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header fw-bold text-uppercase text-center">
+                            New Discount list item
+                        </div>
+
+                        <div id="contentCreateDLItem" class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtDLItemDiscountList" class="col-lg-4 col-form-label text-start">
+                                            Discount List
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input disabled id="txtDLItemDiscountList" name="txtDLItemDiscountList" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtDLItemBegin" class="col-lg-4 col-form-label text-start">
+                                            Begin Quantity
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtDLItemBeginBlock" class="col-lg-8">
+                                            <input id="txtDLItemBegin" oninput="formatNumberInput(this)" name="txtDLItemBegin" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtDLItemEnd" class="col-lg-4 col-form-label text-start">
+                                            End Quantity
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtDLItemEndBlock" class="col-lg-8">
+                                            <input id="txtDLItemEnd" oninput="formatNumberInput(this)" name="txtDLItemEnd" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtDLItemAmount" class="col-lg-4 col-form-label text-start">
+                                            Amount
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtDLItemAmountBlock" class="col-lg-8">
+                                            <input id="txtDLItemAmount" oninput="formatNumberInput(this)" name="txtDLItemAmount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtDLItemPercent" class="col-lg-4 col-form-label text-start">
+                                            Percentage
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtDLItemPercentBlock" class="col-lg-8">
+                                            <input id="txtDLItemPercent" oninput="formatNumberInput(this)" name="txtDLItemPercent" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal update discount list item
+    ----------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modalUpdateDLItem" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="modal-header p-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitUpdateDLItem(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitUpdateDLItem(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="viewDLItemDetails()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header fw-bold text-uppercase text-center">
+                            Discount List Item - <span id="txtDLItemTitle" class="text-danger"></span>
+                        </div>
+
+                        <div class="card-body p-2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtDLItemDetailDiscountList" class="col-lg-4 col-form-label text-start">
+                                            Discount List
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input disabled id="txtDLItemDetailDiscountList" name="txtDLItemDetailDiscountList" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtDLItemDetailBegin" class="col-lg-4 col-form-label text-start">
+                                            Begin Quantity
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtDLItemDetailBeginBlock" class="col-lg-8">
+                                            <input id="txtDLItemDetailBegin" oninput="formatNumberInput(this)" name="txtDLItemDetailBegin" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtDLItemDetailEnd" class="col-lg-4 col-form-label text-start">
+                                            End Quantity
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtDLItemDetailEndBlock" class="col-lg-8">
+                                            <input id="txtDLItemDetailEnd" oninput="formatNumberInput(this)" name="txtDLItemDetailEnd" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtDLItemDetailAmount" class="col-lg-4 col-form-label text-start">
+                                            Amount
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtDLItemDetailAmountBlock" class="col-lg-8">
+                                            <input id="txtDLItemDetailAmount" oninput="formatNumberInput(this)" name="txtDLItemDetailAmount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtDLItemDetailPercent" class="col-lg-4 col-form-label text-start">
+                                            Percentage
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtDLItemDetailPercentBlock" class="col-lg-8">
+                                            <input id="txtDLItemDetailPercent" oninput="formatNumberInput(this)" name="txtDLItemDetailPercent" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template Functions -->
+    <script src="../../assets/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../../assets/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/theme/js/functions.js"></script>
+    <script src="../../assets/theme/js/glightbox.js"></script>
+    <script src="../../assets/theme/js/purecounter_vanilla.js"></script>
+    <script src="../../assets/theme/js/tiny-slider.js"></script>
+    <!--Jquery-->
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <!--Datetime picker-->
+    <link href="../../assets/dtpicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <script src="../../assets/dtpicker/jquery.datetimepicker.full.js"></script>
+    <!--Select2-->
+    <link href="../../assets/select2/select2.min.css" rel="stylesheet" />
+    <script src="../../assets/select2/select2.min.js"></script>
+    <!--Jquery Ui-->
+    <link href="../../assets/jquery-ui/jquery-ui.min-v1.13.2.css" rel="stylesheet" />
+    <script src="../../assets/jquery-ui/jquery-ui.min-v1.13.2.js"></script>
+    <!--Sweat alert-->
+    <script src="../../assets/sweat-alert/sweetalert.min.js"></script>
+    <!--Pagination-->
+    <script src="../../assets/js/pagination.js"></script>
+    <!--Alert Toastr-->
+    <link href="../../assets/toast/toastr.min.css" rel="stylesheet" />
+    <script src="../../assets/toast/toastr.min.js"></script>
+    <!--API Url-->
+    <script src="../../assets/js/api-url.js"></script>
+    <!--Tree table-->
+    <script src="../../assets/tree-table/tree-table.js"></script>
+    <!--IVG JS-->
+    <script src="../../assets/js/common.js"></script>
+    
+    <script src="discount-lists.js"></script>
+</body>
+</html>

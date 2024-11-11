@@ -1,0 +1,245 @@
+﻿:root {
+    --main-color-dark: #011E64;
+    --main-color-medium: #02238B;
+    --main-color-yellow: rgb(254, 206, 9);
+    --main-color-yellow-10: rgb(254, 206, 9,1);
+    --main-color-yellow-9: rgb(254, 206, 9,0.9);
+    --main-color-yellow-8: rgb(254, 206, 9,0.8);
+    --main-color-yellow-7: rgb(254, 206, 9,0.7);
+    --main-color-yellow-6: rgb(254, 206, 9,0.6);
+    --main-color-yellow-5: rgb(254, 206, 9,0.5);
+    --main-color-yellow-4: rgb(254, 206, 9,0.4);
+    --main-color-yellow-3: rgb(254, 206, 9,0.3);
+    --main-color-yellow-2: rgb(254, 206, 9,0.2);
+    --main-color-yellow-1: rgb(254, 206, 9,0.1);
+    --main-color-blue-10: rgb(1, 30, 100,1);
+    --main-color-blue-9: rgb(1, 30, 100,0.9);
+    --main-color-blue-8: rgb(1, 30, 100,0.8);
+    --main-color-blue-7: rgb(1, 30, 100,0.7);
+    --main-color-blue-6: rgb(1, 30, 100,0.6);
+    --main-color-blue-5: rgb(1, 30, 100,0.5);
+    --main-color-blue-4: rgb(1, 30, 100,0.4);
+    --main-color-blue-3: rgb(1, 30, 100,0.3);
+    --main-color-blue-2: rgb(1, 30, 100,0.2);
+    --main-color-blue-1: rgb(1, 30, 100,0.1);
+    --main-color-blue-09: rgb(1, 30, 100,0.09);
+    --main-color-blue-08: rgb(1, 30, 100,0.08);
+    --main-color-blue-07: rgb(1, 30, 100,0.07);
+    --main-color-blue-06: rgb(1, 30, 100,0.06);
+    --main-color-blue-05: rgb(1, 30, 100,0.05);
+    --main-color-blue-04: rgb(1, 30, 100,0.04);
+    --main-color-blue-03: rgb(1, 30, 100,0.03);
+    --main-color-blue-02: rgb(1, 30, 100,0.02);
+    --main-color-blue-01: rgb(1, 30, 100,0.01);
+    --color-white-1: rgb(255, 255, 255,0.1);
+    --color-white-2: rgb(255, 255, 255,0.2);
+    --color-white-3: rgb(255, 255, 255,0.3);
+    --color-white-4: rgb(255, 255, 255,0.4);
+    --color-white-5: rgb(255, 255, 255,0.5);
+    --color-white-6: rgb(255, 255, 255,0.6);
+    --color-white-7: rgb(255, 255, 255,0.7);
+    --color-white-8: rgb(255, 255, 255,0.8);
+    --color-white-9: rgb(255, 255, 255,0.9);
+    --color-white-10: rgb(255, 255, 255,1);
+    --main-color-black-01: rgb(0, 0, 0, 0.01);
+    --main-color-black-02: rgb(0, 0, 0, 0.02);
+    --main-color-black-03: rgb(0, 0, 0, 0.03);
+    --main-color-black-04: rgb(0, 0, 0, 0.04);
+    --main-color-black-05: rgb(0, 0, 0, 0.05);
+    --main-color-black-06: rgb(0, 0, 0, 0.06);
+    --main-color-black-07: rgb(0, 0, 0, 0.07);
+    --main-color-black-08: rgb(0, 0, 0, 0.08);
+    --main-color-black-09: rgb(0, 0, 0, 0.09);
+    --main-color-black-1: rgb(0, 0, 0, 0.1);
+    --main-color-black-2: rgb(0, 0, 0, 0.2);
+    --main-color-black-3: rgb(0, 0, 0, 0.3);
+    --main-color-black-4: rgb(0, 0, 0, 0.4);
+    --main-color-black-5: rgb(0, 0, 0, 0.5);
+    --main-color-black-6: rgb(0, 0, 0, 0.6);
+    --main-color-black-7: rgb(0, 0, 0, 0.7);
+    --main-color-black-8: rgb(0, 0, 0, 0.8);
+    --main-color-black-9: rgb(0, 0, 0, 0.9);
+    --main-color-black-10: rgb(0, 0, 0, 1);
+    --text-grey: #f6f6f6;
+    --main-color-grey: #fefefe;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI';
+}
+
+body {
+    overflow: hidden;
+    background: linear-gradient(90deg, #C7C5F4, #776BCC);
+    background-size: cover;
+    background-position: center;
+    background-color: var(--main-color-blue-10);
+    background: rgb(1,30,100);
+    background: linear-gradient(338deg, rgba(1,30,100,1) 0%, rgba(1,30,100,0.51) 100%);
+    background: var(--main-color-blue-1);
+}
+
+.ivg-bg {
+    background-image: url('../../assets/image/wallpaper/sky_hd-wallpaper-1920x1080.jpg');
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    opacity: .1;
+    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(500px);
+    filter: blur(5px);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.screen {
+    background: linear-gradient(90deg, #8da6d6, #003c97);
+    position: relative;
+    height: 550px;
+    width: 360px;
+    box-shadow: 0px 0px 24px #00296b;
+}
+
+.screen__content {
+    z-index: 1;
+    position: relative;
+    height: 100%;
+}
+
+.screen__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+}
+
+.ivg-scr-bg-shape {
+    transform: rotate(45deg);
+    position: absolute;
+}
+
+.ivg-scr-bg-shape1 {
+    height: 520px;
+    width: 520px;
+    background: #f5f9ff;
+    top: -50px;
+    right: 120px;
+    border-radius: 0 72px 0 0;
+}
+
+.ivg-scr-bg-shape2 {
+    height: 220px;
+    width: 220px;
+    background: #ffd500;
+    background: #00379d;
+    top: -172px;
+    right: 0;
+    border-radius: 32px;
+}
+
+.ivg-scr-bg-shape3 {
+    height: 540px;
+    width: 190px;
+    background: linear-gradient(270deg, #00296b, #374a6e);
+    top: -24px;
+    right: 0;
+    border-radius: 32px;
+}
+
+.ivg-scr-bg-shape4 {
+    height: 400px;
+    width: 200px;
+    background: #00379d;
+    top: 420px;
+    right: 50px;
+    border-radius: 60px;
+}
+
+.login {
+    width: 320px;
+    padding: 30px;
+    padding-top: 156px;
+}
+
+.ivg-login-field {
+    padding: 20px 0px;
+    position: relative;
+}
+
+.ivg-login-icon {
+    position: absolute;
+    top: 30px;
+    color: var(--main-color-blue-10);
+}
+
+.ivg-login-input {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+    font-weight: 700;
+    width: 70%;
+    transition: .2s;
+}
+
+    .ivg-login-input:active,
+    .ivg-login-input:focus,
+    .ivg-login-input:hover {
+        outline: none;
+        border-bottom-color: #6A679E;
+        border-bottom-color: var(--main-color-yellow);
+    }
+
+.login__submit {
+    background: #fff;
+    font-size: 14px;
+    margin-top: 30px;
+    padding: 16px 20px;
+    border-radius: 26px;
+    border: 1px solid #D4D3E8;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #4C489D;
+    box-shadow: 0px 2px 2px #5C5696;
+    cursor: pointer;
+    transition: .2s;
+}
+
+    .login__submit:active,
+    .login__submit:focus,
+    .login__submit:hover {
+        border-color: #6A679E;
+        background: var(--main-color-blue-5);
+        color: var(--main-color-yellow);
+        outline: none;
+    }
+
+.button__icon {
+    font-size: 24px;
+    margin-left: auto;
+    color: #7875B5;
+}
+
+.ivg-logo {
+    display: flex;
+    margin-top: -5em;
+}

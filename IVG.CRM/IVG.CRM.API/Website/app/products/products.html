@@ -1,0 +1,1670 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="ivg.vn">
+    <meta name="description" content="IVG Vietnam Joint Stock Company CRM">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/image/logo.png">
+
+    <!-- Plugins CSS -->
+    <link href="../../assets/bootstrap/fontawesome/css/all.min.css" rel="stylesheet" />
+    <!-- Boostrap CSS -->
+    <link href="../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="../../assets/theme/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/glightbox.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/style.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/tiny-slider.css" rel="stylesheet" />
+    <link href="../../assets/css/ivg-style.css" rel="stylesheet" />
+    <link href="../../assets/css/common.css" rel="stylesheet" />
+</head>
+
+<body class="body-page">
+    <div class="content">
+        <!--Content list-->
+        <div id="contentList">
+            <div>
+                <div class="row">
+                    <ol class="breadcrumb my-0 p-3">
+                        <li class="breadcrumb-item "><i class=" fas fa-home"></i> <a href="#" class="pr-md-3 pl-md-2 pr-2 pl-1">Home</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Settings</a> </li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Business</a> </li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Product Catalog</a> </li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1">Products</a> </li>
+                        <li class="breadcrumb-item "><a id="breadcrumbType" href="#" class="px-md-3 px-1 active-1">All Products</a> </li>
+                    </ol>
+                </div>
+
+                <div class="row align-items-center p-2">
+                    <div class="col-4">
+                        <div class="input-group">
+                            <input id="txtMainSearch" onchange="onLoadData(0, document.getElementById('hdfTypeOnLoad').value)" placeholder="Type search here..." class="form-control" spellcheck="false" autocomplete="off" type="search">
+
+                            <span onclick="onLoadData(0, document.getElementById('hdfTypeOnLoad').value)" data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="col ivg-align-right">
+                        <div class="btn-group">
+                            <div class="btn-group">
+                                <button type="button" class="btn ivg-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li onclick="viewCreate(1)"><button class="dropdown-item ivg-button" type="button"><i class="fa-solid fa-box-archive me-2"></i> Product</button></li>
+                                    <li onclick="viewCreate(2)"><button class="dropdown-item ivg-button" type="button"><i class="fa-solid fa-boxes-packing me-2"></i> Product Bundle</button></li>
+                                    <li onclick="viewCreate(3)"><button class="dropdown-item ivg-button" type="button"><i class="fa-solid fa-boxes-stacked me-2"></i> Product Family</button></li>
+                                </ul>
+                            </div>
+
+
+                            <button onclick="submitDelete()" class="btn ivg-button del" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Xóa dữ liệu"><i class="fas fa-trash"></i></button>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải lên dữ liệu"><i class="fas fa-upload"></i></button>
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải xuống dữ liệu"><i class="fas fa-download"></i></button>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="btn ivg-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dataTable">
+                <table class="ivg-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 100px;" data-bs-toggle="dropdown" aria-expanded="false" title="Bộ lọc" class="text-center">
+                                <i class="fa-solid fa-filter p-2"></i>
+
+                                <ul class="dropdown-menu dropdown-menu-end ms-3">
+                                    <li><button id="btnFilterAll" onclick="onLoadData(0, defaultLoadNumb)" class="dropdown-item ivg-button btn-filter" type="button">All Products</button></li>
+                                    <li><button id="btnFilterProducts" onclick="onLoadData(0, 1)" class="dropdown-item ivg-button btn-filter" type="button">Products</button></li>
+                                    <li><button id="btnFilterBundles" onclick="onLoadData(0, 2)" class="dropdown-item ivg-button btn-filter" type="button">Product Bundles</button></li>
+                                    <li><button id="btnFilterFamilies" onclick="onLoadData(0, 3)" class="dropdown-item ivg-button btn-filter" type="button">Product Families</button></li>
+                                </ul>
+                            </th>
+
+                            <th>Product Code</th>
+
+                            <th id="thToggleName" class="toggle-th" width="280">
+                                Name
+                                <span data-order-name="Name" class="order-icon active p-2">⮟</span>
+                            </th>
+
+                            <th id="thToggleParentName" class="toggle-th" width="280">
+                                Hierarchy Path
+                                <span data-order-name="ParentName" class="order-icon p-2">⮟</span>
+                            </th>
+
+                            <th id="thToggleValidFrom" class="toggle-th" width="120">
+                                Valid From
+                                <span data-order-name="ValidFrom" class="order-icon p-2">⮟</span>
+                            </th>
+
+                            <th id="thToggleValidTo" class="toggle-th" width="120">
+                                Valid To
+                                <span data-order-name="ValidTo" class="order-icon p-2">⮟</span>
+                            </th>
+
+                            <th id="thToggleStatus" class="toggle-th">
+                                Status
+                                <span data-order-name="Status" class="order-icon p-2">⮟</span>
+                            </th>
+
+                            <th id="thToggleType" class="toggle-th">
+                                Product Structure
+                                <span data-order-name="Type" class="order-icon p-2">⮟</span>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="dataBody"></tbody>
+                </table>
+            </div>
+
+            <!--Paging-->
+            <div class="row ivg-paging mt-3">
+                <div class="col">
+                    <span><span>Tổng</span>: <b id="totalRecords"></b> <span>dữ liệu</span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                    <span>
+                        <span>Hiển thị</span>
+
+                        <select onchange="onLoadData(1, document.getElementById('hdfTypeOnLoad').value)" id="pageSize">
+                            <option selected>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>75</option>
+                            <option>100</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div class="col" style="text-align:right;">
+                    <ul id="pagingMainContent" class="pagination-lg"></ul>
+                    <input type="hidden" value="1" id="pageIndex" />
+                </div>
+            </div>
+        </div>
+
+        <!--Content details-->
+        <div id="contentDetail" class="card display-none">
+            <div class="card-header p-2">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center">
+                        <div id="btnProdDetailSaveClose" onclick="submitUpdate(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div id="btnProdDetailSave" onclick="submitUpdate(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+
+                        <div onclick="submitUpdate(1, 1)" id="btnProdDetailPublish" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-upload"></i>
+                            Publish
+                        </div>
+
+                        <div onclick="submitUpdate(1, 1)" id="btnProdDetailActivate" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-circle-check"></i>
+                            Activate
+                        </div>
+
+                        <div onclick="submitUpdate(1, 2)" id="btnProdDetailRevise" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            Revise
+                        </div>
+
+                        <div onclick="submitUpdate(1, 3)" id="btnProdDetailRetire" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-circle-xmark"></i>
+                            Retire
+                        </div>
+
+                        <div onclick="submitDelete()" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-trash-can"></i>
+                            Delete
+                        </div>
+                    </div>
+
+                    <button onclick="viewDetails()" type="button" class="btn-close" aria-label="Close"></button>
+                </div>
+
+                <hr class="m-0" />
+
+                <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="m-0 text-uppercase"><span class="titleType"></span> - <span id="titleProdDetail" class="text-danger col-3"></span></h6>
+
+                    <div class="col-8 row d-flex align-items-end justify-content-between">
+                        <div class="col-3"></div>
+
+                        <div class="col-3"></div>
+
+                        <div class="col-3"></div>
+
+                        <div class="col-3">
+                            <label for="ddlProdDetailStatus" class="col-form-label text-start">
+                                Status
+                                <span class="obligatory">*</span>
+                            </label>
+
+                            <div>
+                                <select disabled id="ddlProdDetailStatus" name="ddlProdDetailStatus" class="select-card-header select-card-header-disabled form-select">
+                                    <option value="0">Nháp</option>
+                                    <option value="1">Đang kinh doanh</option>
+                                    <option value="2">Đang được sửa đổi</option>
+                                    <option value="3">Ngừng kinh doanh</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body p-2">
+                <nav>
+                    <div class="nav nav-tabs">
+                        <a id="tabProdDetailGeneralLink" class="nav-link active nav-custom" data-bs-toggle="tab" href="#tabDetailProductGeneral">General</a>
+                        <a onclick="onLoadDataBundles()" id="tabProdDetailBundleLink" class="nav-link display-none nav-custom" data-bs-toggle="tab" href="#tabDetailProductBundle">Bundle Products</a>
+                        <a onclick="onLoadDataPLItems()" id="tabProdDetailAdditionalLink" class="nav-link display-none nav-custom" data-bs-toggle="tab" href="#tabDetailProductAdditionalDetails">Additional Details</a>
+                    </div>
+                </nav>
+
+                <div class="tab-content">
+                    <div class="tab-pane active nav-custom p-2" id="tabDetailProductGeneral">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card">
+                                    <div class="card-header fw-bold text-uppercase text-center">
+                                        <span class="titleType"></span> details
+                                    </div>
+
+                                    <div class="card-body p-2">
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdDetailCode" class="col-lg-4 col-form-label text-start">
+                                                Product code
+                                                <i class="fa-solid fa-user-lock ms-1"></i>
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <input disabled id="txtProdDetailCode" name="txtProdDetailCode" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdDetailName" class="col-lg-4 col-form-label text-start">
+                                                Name
+                                                <span class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="txtProdDetailNameBlock" class="col-lg-8">
+                                                <input id="txtProdDetailName" name="txtProdDetailName" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdDetailParent" class="col-lg-4 col-form-label text-start">
+                                                Parent
+                                                <i class="fa-solid fa-user-lock ms-1"></i>
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <input disabled id="txtProdDetailParent" name="txtProdDetailParent" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdDetailValidFrom" class="col-lg-4 col-form-label text-start">
+                                                Valid From
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <div class="input-group">
+                                                    <input id="txtProdDetailValidFrom" name="txtProdDetailValidFrom" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                    <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdDetailValidTo" class="col-lg-4 col-form-label text-start">
+                                                Valid To
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <div class="input-group">
+                                                    <input id="txtProdDetailValidTo" name="txtProdDetailValidTo" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                    <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="ddlProdDetailUnitGroup" class="col-lg-4 col-form-label text-start">
+                                                Unit Group
+                                                <i class="fa-solid fa-user-lock ms-1"></i>
+                                                <span id="ddlProdDetailUnitGroupObligatory" class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="ddlProdDetailUnitGroupBlock" class="col-lg-8">
+                                                <select onchange="onLoadUnits('ddlProdDetailUnitGroup', 'ddlProdDetailUnit')" data-default-value="0" id="ddlProdDetailUnitGroup" name="ddlProdDetailUnitGroup" class="form-select select2"></select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="ddlProdDetailUnit" class="col-lg-4 col-form-label text-start">
+                                                Default Unit
+                                                <span id="ddlProdDetailUnitObligatory" class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="ddlProdDetailUnitBlock" class="col-lg-8">
+                                                <select data-default-value="0" id="ddlProdDetailUnit" name="ddlProdDetailUnit" class="form-select select2"></select>
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdDetailPriceList" class="col-lg-4 col-form-label text-start">
+                                                Default Price List
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <div class="input-group">
+                                                    <input id="txtProdDetailPriceList" name="txtProdDetailPriceList" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                    <input id="txtProdDetailPriceListVal" type="hidden" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdDetailDecimals" class="col-lg-4 col-form-label text-start">
+                                                Decimals Supported
+                                                <span id="txtProdDetailDecimalsObligatory" class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="txtProdDetailDecimalsBlock" class="col-lg-8">
+                                                <input id="txtProdDetailDecimals" name="txtProdDetailDecimals" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="ddlProdDetailSubject" class="col-lg-4 col-form-label text-start">
+                                                Subject
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <select data-default-value="0" id="ddlProdDetailSubject" name="ddlProdDetailSubject" class="form-select select2"></select>
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="txtProdDetailDescription" class="col-lg-4 col-form-label text-start">
+                                                Description
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <textarea id="txtProdDetailDescription" spellcheck="false" name="txtProdDetailDescription" rows="3" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header fw-bold text-uppercase text-center">
+                                        ACTIVITIES
+                                    </div>
+
+                                    <div class="card-body p-2">
+                                        <nav>
+                                            <div class="nav nav-tabs" id="nav-tabDetailSub">
+                                                <a onclick="onLoadDataNotes()" class="nav-link active" data-bs-toggle="tab" href="#tabDetailSubNotes">Notes</a>
+                                            </div>
+
+                                            <div class="tab-content" id="nav-tabContentDetailSub">
+                                                <div class="tab-pane active p-0 mt-1" id="tabDetailSubNotes">
+                                                    <div id="createNoteBtn" class="text-end mb-1">
+                                                        <i onclick='document.getElementById("createNoteBlock").style.display = "block"; document.getElementById("createNoteBtn").style.display = "none";'
+                                                           title="Thêm mới" class="cursor-pointer btn-handle p-2 fas fa-plus font-size-1-2"></i>
+                                                    </div>
+
+                                                    <div id="createNoteBlock" class="card display-none">
+                                                        <div class="card-header fw-bold text-uppercase d-flex align-items-center">
+                                                            <span class="flex-grow-1 text-center">Notes</span>
+                                                            <button onclick='document.getElementById("createNoteBlock").style.display = "none"; document.getElementById("createNoteBtn").style.display = "block";'
+                                                                    title="Đóng" type="button" class="btn-close" aria-label="Close"></button>
+                                                        </div>
+
+                                                        <div class="card-body p-2">
+                                                            <div id="txtNoteTitleBlock" class="form-floating mb-2">
+                                                                <input id="txtNoteTitle" type="text" spellcheck="false" autocomplete="off" class="form-control fw-bold" />
+
+                                                                <label for="txtNoteTitle">Title</label>
+
+                                                                <div class="warning-invalid__title mt-1"></div>
+                                                            </div>
+
+                                                            <div class="form-floating mb-2">
+                                                                <textarea id="txtNoteContent" spellcheck="false" rows="2" class="form-control"></textarea>
+
+                                                                <label for="txtNoteContent">Content</label>
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                                <form id="frmAttachment" enctype="multipart/form-data" method="POST">
+                                                                    <input id="txtNoteFile" name="txtNoteFile" type="file" multiple class="form-control" />
+                                                                </form>
+                                                            </div>
+
+                                                            <div class="d-flex align-items-center justify-content-end">
+                                                                <div onclick="submitCreateNoteCommon()" class="cursor-pointer btn-note p-2">
+                                                                    Done
+                                                                    <i class="fa-solid fa-check"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card">
+                                                        <div class="card-header fw-bold text-uppercase text-center">
+                                                            Notes list
+                                                        </div>
+
+                                                        <div class="card-body p-0">
+                                                            <ul id="dataNoteList" class="note-list p-2"></ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane display-none nav-custom p-2" id="tabDetailProductBundle">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase d-flex align-items-center">
+                                <span class="flex-grow-1 text-center">BUNDLE PRODUCTS</span>
+
+                                <i data-bs-toggle="modal" data-bs-target="#modalCreateProdBundle" title="Thêm mới" class="btn-new cursor-pointer btn-handle p-2 fas fa-plus font-size-1-2"></i>
+                            </div>
+
+                            <div class="card-body p-2">
+                                <div class="dataTable dataTableSub">
+                                    <table class="ivg-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Associated Product</th>
+                                                <th>Quantity</th>
+                                                <th>Unit</th>
+                                                <th>Required</th>
+                                                <th class="text-center">Handle</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="dataBodyBundle"></tbody>
+                                    </table>
+                                </div>
+
+                                <!--Paging-->
+                                <div class="row ivg-paging mt-3">
+                                    <div class="col">
+                                        <span><span>Tổng</span>: <b id="totalRecordsBundle"></b> <span>dữ liệu</span></span>
+                                        &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                                        <span>
+                                            <span>Hiển thị</span>
+
+                                            <select onchange="onLoadDataBundles(1)" id="pageSizeBundle">
+                                                <option selected>10</option>
+                                                <option>25</option>
+                                                <option>50</option>
+                                                <option>75</option>
+                                                <option>100</option>
+                                            </select>
+                                        </span>
+                                    </div>
+
+                                    <div class="col" style="text-align:right;">
+                                        <ul id="pagingMainContentBundle" class="pagination-lg"></ul>
+                                        <input type="hidden" value="1" id="pageIndexBundle" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane nav-custom p-2" id="tabDetailProductAdditionalDetails">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header fw-bold text-uppercase d-flex align-items-center">
+                                        <span class="flex-grow-1 text-center">PRICE LIST ITEMS</span>
+                                        
+                                        <i data-bs-toggle="modal" data-bs-target="#modalCreatePLItem" title="Thêm mới" class="btn-new cursor-pointer btn-handle p-2 fas fa-plus font-size-1-2"></i>
+                                    </div>
+
+                                    <div class="card-body p-2">
+                                        <div class="dataTable dataTableSub">
+                                            <table class="ivg-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Price List</th>
+                                                        <th>Unit</th>
+                                                        <th>Amount</th>
+                                                        <th class="text-center">Handle</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody id="dataBodyPLItem"></tbody>
+                                            </table>
+                                        </div>
+
+                                        <!--Paging-->
+                                        <div class="row ivg-paging mt-3">
+                                            <div class="col">
+                                                <span><span>Tổng</span>: <b id="totalRecordsPLItem"></b> <span>dữ liệu</span></span>
+                                                &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                                                <span>
+                                                    <span>Hiển thị</span>
+
+                                                    <select onchange="onLoadDataPLItems(1)" id="pageSizePLItem">
+                                                        <option selected>10</option>
+                                                        <option>25</option>
+                                                        <option>50</option>
+                                                        <option>75</option>
+                                                        <option>100</option>
+                                                    </select>
+                                                </span>
+                                            </div>
+
+                                            <div class="col" style="text-align:right;">
+                                                <ul id="pagingMainContentPLItem" class="pagination-lg"></ul>
+                                                <input type="hidden" value="1" id="pageIndexPLItem" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header fw-bold text-uppercase d-flex align-items-center">
+                                        <span class="flex-grow-1 text-center">PRODUCT RELATIONSHIPS</span>
+                                        
+                                        <i data-bs-toggle="modal" data-bs-target="#modalCreateRelated" title="Thêm mới" class="btn-new cursor-pointer btn-handle p-2 fas fa-plus font-size-1-2"></i>
+                                    </div>
+
+                                    <div class="card-body p-2">
+                                        <div class="dataTable dataTableSub">
+                                            <table class="ivg-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Related Product</th>
+                                                        <th>Sale Relationship Type</th>
+                                                        <th>Direction</th>
+                                                        <th class="text-center">Handle</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody id="dataBodyRelated">
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!--Paging-->
+                                        <div class="row ivg-paging mt-3">
+                                            <div class="col">
+                                                <span><span>Tổng</span>: <b id="totalRecordsRelated"></b> <span>dữ liệu</span></span>
+                                                &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                                                <span>
+                                                    <span>Hiển thị</span>
+
+                                                    <select onchange="onLoadDataRelationships(1)" id="pageSizeRelated">
+                                                        <option selected>10</option>
+                                                        <option>25</option>
+                                                        <option>50</option>
+                                                        <option>75</option>
+                                                        <option>100</option>
+                                                    </select>
+                                                </span>
+                                            </div>
+
+                                            <div class="col" style="text-align:right;">
+                                                <ul id="pagingMainContentRelated" class="pagination-lg"></ul>
+                                                <input type="hidden" value="1" id="pageIndexRelated" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Content create-->
+        <div id="contentCreate" class="card display-none">
+            <div class="card-header p-2">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitCreate(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitCreate(1)" class="cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="viewCreate()" type="button" class="btn-close" aria-label="Close"></button>
+                </div>
+
+                <hr class="m-0" />
+
+                <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="m-0 text-uppercase">New <span class="titleType"></span></h6>
+
+                    <div class="col-8 row d-flex align-items-end justify-content-between">
+                        <div class="col-3"></div>
+
+                        <div class="col-3"></div>
+
+                        <div class="col-3"></div>
+
+                        <div class="col-3">
+                            <label for="ddlProdStatus" class="col-form-label text-start">
+                                Status
+                                <span class="obligatory">*</span>
+                            </label>
+
+                            <div>
+                                <select disabled id="ddlProdStatus" name="ddlProdStatus" data-default-value="0" class="select-card-header select-card-header-disabled form-select">
+                                    <option value="0" selected>Nháp</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body p-2">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab">
+                        <a id="tabProdGeneralLink" class="nav-link active nav-custom" data-bs-toggle="tab" href="#tabProductGeneral">General</a>
+                        <a id="tabProdBundleLink" class="nav-link display-none nav-custom" data-bs-toggle="tab" href="#tabProductBundle">Bundle Products</a>
+                        <a id="tabProdAdditionalLink" class="nav-link display-none nav-custom" data-bs-toggle="tab" href="#tabProductAdditionalDetails">Additional Details</a>
+                    </div>
+                </nav>
+
+                <div class="tab-content">
+                    <div class="tab-pane active nav-custom p-2" id="tabProductGeneral">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card">
+                                    <div class="card-header fw-bold text-uppercase text-center">
+                                        <span class="titleType"></span> details
+                                    </div>
+
+                                    <div class="card-body p-2">
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdCode" class="col-lg-4 col-form-label text-start">
+                                                Product code
+                                                <i class="fa-solid fa-user-lock ms-1"></i>
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <input disabled id="txtProdCode" name="txtProdCode" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdName" class="col-lg-4 col-form-label text-start">
+                                                Name
+                                                <span class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="txtProdNameBlock" class="col-lg-8">
+                                                <input id="txtProdName" name="txtProdName" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdParent" class="col-lg-4 col-form-label text-start">
+                                                Parent
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <div class="input-group">
+                                                    <input id="txtProdParent" name="txtProdParent" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                    <input id="txtProdParentVal" type="hidden" />
+                                                </div>
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdValidFrom" class="col-lg-4 col-form-label text-start">
+                                                Valid From
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <div class="input-group">
+                                                    <input id="txtProdValidFrom" name="txtProdValidFrom" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                    <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdValidTo" class="col-lg-4 col-form-label text-start">
+                                                Valid To
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <div class="input-group">
+                                                    <input id="txtProdValidTo" name="txtProdValidTo" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                    <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="ddlProdUnitGroup" class="col-lg-4 col-form-label text-start">
+                                                Unit Group
+                                                <span id="ddlProdUnitGroupObligatory" class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="ddlProdUnitGroupBlock" class="col-lg-8">
+                                                <select onchange="onLoadUnits('ddlProdUnitGroup', 'ddlProdUnit')" data-default-value="0" id="ddlProdUnitGroup" name="ddlProdUnitGroup" class="form-select select2"></select>
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="ddlProdUnit" class="col-lg-4 col-form-label text-start">
+                                                Default Unit
+                                                <span id="ddlProdUnitObligatory" class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="ddlProdUnitBlock" class="col-lg-8">
+                                                <select data-default-value="0" id="ddlProdUnit" name="ddlProdUnit" class="form-select select2"></select>
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdPriceList" class="col-lg-4 col-form-label text-start">
+                                                Default Price List
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <div class="input-group">
+                                                    <input id="txtProdPriceList" name="txtProdPriceList" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                    <input id="txtProdPriceListVal" type="hidden" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="txtProdDecimals" class="col-lg-4 col-form-label text-start">
+                                                Decimals Supported
+                                                <span id="txtProdDecimalsObligatory" class="obligatory">*</span>
+                                            </label>
+
+                                            <div id="txtProdDecimalsBlock" class="col-lg-8">
+                                                <input id="txtProdDecimals" name="txtProdDecimals" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="ddlProdSubject" class="col-lg-4 col-form-label text-start">
+                                                Subject
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <select data-default-value="0" id="ddlProdSubject" name="ddlProdSubject" class="form-select select2"></select>
+
+                                                <div class="warning-invalid__title mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="txtProdDescription" class="col-lg-4 col-form-label text-start">
+                                                Description
+                                            </label>
+
+                                            <div class="col-lg-8">
+                                                <textarea id="txtProdDescription" spellcheck="false" name="txtProdDescription" rows="2" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header fw-bold text-uppercase text-center">
+                                        Notes
+                                    </div>
+
+                                    <div class="card-body p-2">
+                                        To enable this content, create the record.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane display-none nav-custom p-2" id="tabProductBundle">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase text-center">
+                                BUNDLE PRODUCTS
+                            </div>
+
+                            <div class="card-body p-2">
+                                <div class="dataTable dataTableSub">
+                                    <table class="ivg-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Associated Product</th>
+                                                <th>Properties</th>
+                                                <th>Quantity</th>
+                                                <th>Unit</th>
+                                                <th>Required</th>
+                                                <th class="text-center">Handle</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr><td class='ms-4' colspan='9999'>To enable this content, create the record.</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane nav-custom p-2" id="tabProductAdditionalDetails">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header fw-bold text-uppercase text-center">
+                                        PRICE LIST ITEMS
+                                    </div>
+
+                                    <div class="card-body p-2">
+                                        <div class="dataTable dataTableSub">
+                                            <table class="ivg-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Price List</th>
+                                                        <th>Unit</th>
+                                                        <th>Amount</th>
+                                                        <th class="text-center">Handle</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr><td class='ms-4' colspan='9999'>To enable this content, create the record.</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header fw-bold text-uppercase text-center">
+                                        PRODUCT RELATIONSHIPS
+                                    </div>
+
+                                    <div class="card-body p-2">
+                                        <div class="dataTable dataTableSub">
+                                            <table class="ivg-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Related Product</th>
+                                                        <th>Sale Relationship Type</th>
+                                                        <th>Direction</th>
+                                                        <th class="text-center">Handle</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr><td class='ms-4' colspan='9999'>To enable this content, create the record.</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Save value-->
+    <input type="hidden" id="hdfType" />
+    <input type="hidden" id="hdfDetailID" />
+    <input type="hidden" id="hdfProductBundleID" />
+    <input type="hidden" id="hdfProductCommon" />
+    <input type="hidden" id="hdfUnitGroupID" />
+    <input type="hidden" id="hdfPLItemID" />
+    <input type="hidden" id="hdfRelatedID" />
+    <input type="hidden" id="hdfTypeOnLoad" />
+
+    <input type="hidden" id="hdfUnitID" />
+
+    <!--Loader-->
+    <div id="loader"></div>
+
+    <!--Modal create product bundle
+    ----------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modalCreateProdBundle" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="modal-header p-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitCreateBundle(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitCreateBundle(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="clearAllForm('contentCreateBundle')" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header fw-bold text-uppercase text-center">
+                            New Product Association
+                        </div>
+
+                        <div id="contentCreateBundle" class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtBundle" class="col-lg-4 col-form-label text-start">
+                                            Bundle
+                                            <i class="fa-solid fa-user-lock ms-1"></i>
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input disabled id="txtBundle" name="txtBundle" type="text" spellcheck="false" autocomplete="off" class="form-control prod-common" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtBundleProd" class="col-lg-4 col-form-label text-start">
+                                            Product
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtBundleProdBlock" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtBundleProd" name="txtBundleProd" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                <input id="txtBundleProdVal" type="hidden" />
+                                            </div>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="txtBundleQuantity" class="col-lg-4 col-form-label text-start">
+                                            Quantity
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtBundleQuantityBlock" class="col-lg-8">
+                                            <input id="txtBundleQuantity" name="txtBundleQuantity" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="ddlBundleRequired" class="col-lg-4 col-form-label text-start">
+                                            Required
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <select data-default-value="1" id="ddlBundleRequired" name="ddlBundleRequired" class="form-select select2">
+                                                <option value="1" selected>Không bắt buộc</option>
+                                                <option value="2">Bắt buộc</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="ddlBundleUnit" class="col-lg-4 col-form-label text-start">
+                                            Units
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="ddlBundleUnitBlock" class="col-lg-8">
+                                            <select id="ddlBundleUnit" name="ddlBundleUnit" class="form-select select2"></select>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal update product bundle
+    ----------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modalUpdateProdBundle" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="modal-header p-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitUpdateBundle(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitUpdateBundle(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="viewBundleDetails()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header fw-bold text-uppercase text-center">
+                            Product Association - <span id="txtProdBundleTitle" class="text-danger"></span>
+                        </div>
+
+                        <div class="card-body p-2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtBundleDetail" class="col-lg-4 col-form-label text-start">
+                                            Bundle
+                                            <i class="fa-solid fa-user-lock ms-1"></i>
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input disabled id="txtBundleDetail" name="txtBundleDetail" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtBundleDetailProd" class="col-lg-4 col-form-label text-start">
+                                            Product
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtBundleDetailProdBlock" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtBundleDetailProd" name="txtBundleDetailProd" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                <input id="txtBundleDetailProdVal" type="hidden" />
+                                            </div>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="txtBundleDetailQuantity" class="col-lg-4 col-form-label text-start">
+                                            Quantity
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtBundleDetailQuantityBlock" class="col-lg-8">
+                                            <input id="txtBundleDetailQuantity" name="txtBundleDetailQuantity" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="ddlBundleDetailRequired" class="col-lg-4 col-form-label text-start">
+                                            Required
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <select id="ddlBundleDetailRequired" name="ddlBundleDetailRequired" class="form-select select2">
+                                                <option value="1" selected>Không bắt buộc</option>
+                                                <option value="2">Bắt buộc</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="txtBundleDetailUnit" class="col-lg-4 col-form-label text-start">
+                                            Units
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input disabled id="txtBundleDetailUnit" name="txtBundleDetailUnit" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal create price list item
+    ----------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modalCreatePLItem" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="modal-header p-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitCreatePLItem(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitCreatePLItem(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="clearAllForm('contentCreatePLItem')" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header fw-bold text-uppercase text-center">
+                            New Price list item
+                        </div>
+
+                        <div id="contentCreatePLItem" class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtPLItemProduct" class="col-lg-4 col-form-label text-start">
+                                            Product
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input disabled id="txtPLItemProduct" name="txtPLItemProduct" type="text" spellcheck="false" autocomplete="off" class="form-control prod-common" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtPLItemPriceList" class="col-lg-4 col-form-label text-start">
+                                            Price List
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtPLItemPriceListBlock" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtPLItemPriceList" name="txtPLItemPriceList" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                <input id="txtPLItemPriceListVal" type="hidden" />
+                                            </div>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="ddlPLItemUnit" class="col-lg-4 col-form-label text-start">
+                                            Unit
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="ddlPLItemUnitBlock" class="col-lg-8">
+                                            <select id="ddlPLItemUnit" name="ddlPLItemUnit" class="form-select select2"></select>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtPLItemAmount" class="col-lg-4 col-form-label text-start">
+                                            Amount
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtPLItemAmountBlock" class="col-lg-8">
+                                            <input id="txtPLItemAmount" oninput="formatNumberInput(this)" name="txtPLItemAmount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="txtPLItemDiscount" class="col-lg-4 col-form-label text-start">
+                                            Discount List
+                                        </label>
+
+                                        <div id="txtPLItemDiscountBlock" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtPLItemDiscount" name="txtPLItemDiscount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                <input id="txtPLItemDiscountVal" type="hidden" />
+                                            </div>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal update price list item
+    ----------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modalUpdatePLItem" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="modal-header p-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitUpdatePLItem(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitUpdatePLItem(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="viewPLItemDetails()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header fw-bold text-uppercase text-center">
+                            Price list items - <span id="txtPLItemTitle" class="text-danger"></span>
+                        </div>
+
+                        <div class="card-body p-2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtPLItemDetailProduct" class="col-lg-4 col-form-label text-start">
+                                            Product
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtPLItemDetailProductBlock" class="col-lg-8">
+                                            <input disabled id="txtPLItemDetailProduct" name="txtPLItemDetailProduct" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <input id="txtPLItemDetailProductVal" type="hidden" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtPLItemDetailPriceList" class="col-lg-4 col-form-label text-start">
+                                            Price List
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtPLItemDetailPriceListBlock" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtPLItemDetailPriceList" name="txtPLItemDetailPriceList" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                <input id="txtPLItemDetailPriceListVal" type="hidden" />
+                                            </div>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="ddlPLItemDetailUnit" class="col-lg-4 col-form-label text-start">
+                                            Unit
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="ddlPLItemDetailUnitBlock" class="col-lg-8">
+                                            <select id="ddlPLItemDetailUnit" name="ddlPLItemDetailUnit" class="form-select select2"></select>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtPLItemDetailAmount" class="col-lg-4 col-form-label text-start">
+                                            Amount
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtPLItemDetailAmountBlock" class="col-lg-8">
+                                            <input id="txtPLItemDetailAmount" oninput="formatNumberInput(this)" name="txtPLItemDetailAmount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="txtPLItemDetailDiscount" class="col-lg-4 col-form-label text-start">
+                                            Discount List
+                                        </label>
+
+                                        <div id="txtPLItemDetailDiscountBlock" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtPLItemDetailDiscount" name="txtPLItemDetailDiscount" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                <input id="txtPLItemDetailDiscountVal" type="hidden" />
+                                            </div>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal create related product
+    ----------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modalCreateRelated" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="modal-header p-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitCreateRelated(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitCreateRelated(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="clearAllForm('contentCreateRelated')" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header fw-bold text-uppercase text-center">
+                            New Product relationship
+                        </div>
+
+                        <div id="contentCreateRelated" class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRelated" class="col-lg-4 col-form-label text-start">
+                                            Product
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input disabled id="txtRelated" name="txtRelated" type="text" spellcheck="false" autocomplete="off" class="form-control prod-common" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRelatedProd" class="col-lg-4 col-form-label text-start">
+                                            Related Product
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtRelatedProdBlock" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtRelatedProd" name="txtRelatedProd" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                <input id="txtRelatedProdVal" type="hidden" />
+                                            </div>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="ddlRelatedType" class="col-lg-4 col-form-label text-start">
+                                            Sales Relationship Type
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="ddlRelatedTypeBlock" class="col-lg-8">
+                                            <select data-default-value="0" id="ddlRelatedType" name="ddlRelatedType" class="form-select select2">
+                                                <option value="0" selected>-- Chọn mối quan hệ bán hàng --</option>
+                                                <option value="1">Bán thêm</option>
+                                                <option value="2">Bán kèm theo</option>
+                                                <option value="2">Linh kiện</option>
+                                                <option value="2">Thay thế</option>
+                                            </select>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="ddlRelatedDirection" class="col-lg-4 col-form-label text-start">
+                                            Direction
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="ddlRelatedDirectionBlock" class="col-lg-8">
+                                            <select data-default-value="0" id="ddlRelatedDirection" name="ddlRelatedDirection" class="form-select select2">
+                                                <option value="0" selected>-- Chọn phương hướng --</option>
+                                                <option value="1">Một chiều</option>
+                                                <option value="2">Hai chiều</option>
+                                            </select>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal update related product
+    ----------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modalUpdateRelated" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div style="color: var(--main-color-blue-10); display: flex;" class="modal-header p-2">
+                    <div class="d-flex align-items-center">
+                        <div onclick="submitUpdateRelated(2)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-solid fa-check"></i>
+                            Save & Close
+                        </div>
+
+                        <div onclick="submitUpdateRelated(1)" class="me-2 cursor-pointer btn-handle p-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Save
+                        </div>
+                    </div>
+
+                    <button onclick="viewRelatedDetails()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header fw-bold text-uppercase text-center">
+                            Product relationship - <span id="txtRelatedTitle" class="text-danger"></span>
+                        </div>
+
+                        <div class="card-body p-2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRelatedDetail" class="col-lg-4 col-form-label text-start">
+                                            Product
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input disabled id="txtRelatedDetail" name="txtRelatedDetail" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRelatedDetailProd" class="col-lg-4 col-form-label text-start">
+                                            Related Product
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtRelatedDetailProdBlock" class="col-lg-8">
+                                            <input disabled id="txtRelatedDetailProd" name="txtRelatedDetailProd" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row mb-2">
+                                        <label for="ddlRelatedDetailType" class="col-lg-4 col-form-label text-start">
+                                            Sales Relationship Type
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="ddlRelatedDetailTypeBlock" class="col-lg-8">
+                                            <select data-default-value="0" id="ddlRelatedDetailType" name="ddlRelatedDetailType" class="form-select select2">
+                                                <option value="0" selected>-- Chọn mối quan hệ bán hàng --</option>
+                                                <option value="1">Bán thêm</option>
+                                                <option value="2">Bán kèm theo</option>
+                                                <option value="2">Linh kiện</option>
+                                                <option value="2">Thay thế</option>
+                                            </select>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="ddlRelatedDetailDirection" class="col-lg-4 col-form-label text-start">
+                                            Direction
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="ddlRelatedDetailDirectionBlock" class="col-lg-8">
+                                            <select data-default-value="0" id="ddlRelatedDetailDirection" name="ddlRelatedDetailDirection" class="form-select select2">
+                                                <option value="0" selected>-- Chọn phương hướng --</option>
+                                                <option value="1">Một chiều</option>
+                                                <option value="2">Hai chiều</option>
+                                            </select>
+
+                                            <div class="warning-invalid__title mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Template Functions -->
+    <script src="../../assets/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../../assets/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/theme/js/functions.js"></script>
+    <script src="../../assets/theme/js/glightbox.js"></script>
+    <script src="../../assets/theme/js/purecounter_vanilla.js"></script>
+    <script src="../../assets/theme/js/tiny-slider.js"></script>
+    <!--Jquery-->
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <!--Datetime picker-->
+    <link href="../../assets/dtpicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <script src="../../assets/dtpicker/jquery.datetimepicker.full.js"></script>
+    <!--Select2-->
+    <link href="../../assets/select2/select2.min.css" rel="stylesheet" />
+    <script src="../../assets/select2/select2.min.js"></script>
+    <!--Jquery Ui-->
+    <link href="../../assets/jquery-ui/jquery-ui.min-v1.13.2.css" rel="stylesheet" />
+    <script src="../../assets/jquery-ui/jquery-ui.min-v1.13.2.js"></script>
+    <!--Sweat alert-->
+    <script src="../../assets/sweat-alert/sweetalert.min.js"></script>
+    <!--Pagination-->
+    <script src="../../assets/js/pagination.js"></script>
+    <!--Alert Toastr-->
+    <link href="../../assets/toast/toastr.min.css" rel="stylesheet" />
+    <script src="../../assets/toast/toastr.min.js"></script>
+    <!--API Url-->
+    <script src="../../assets/js/api-url.js"></script>
+    <!--Tree table-->
+    <script src="../../assets/tree-table/tree-table.js"></script>
+    <!--IVG JS-->
+    <script src="../../assets/js/common.js"></script>
+    <script src="products.js"></script>
+</body>
+</html>

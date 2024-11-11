@@ -1,0 +1,1522 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="ivg.vn">
+    <meta name="description" content="IVG Vietnam Joint Stock Company CRM">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/image/logo.png">
+
+    <!-- Plugins CSS -->
+    <link href="../../assets/bootstrap/fontawesome/css/all.min.css" rel="stylesheet" />
+    <!-- Bootstrap-->
+    <link href="../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Theme CSS -->
+    <link href="../../assets/theme/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/glightbox.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/style.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/tiny-slider.css" rel="stylesheet" />
+    <link href="../../assets/css/ivg-style.css" rel="stylesheet" />
+    <link href="../../assets/css/common.css" rel="stylesheet" />
+</head>
+
+<body class="body-page">
+    <div class="content">
+        <!--Content list-->
+        <div id="contentList">
+            <div>
+                <div class="row">
+                    <ol class="breadcrumb my-0 p-3">
+                        <li class="breadcrumb-item "><i class=" fas fa-home"></i> <a href="#" class="pr-md-3 pl-md-2 pr-2 pl-1">Home</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Services</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Services</a> </li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 active-1">Service Calendar</a> </li>
+                    </ol>
+                </div>
+
+                <div class="row align-items-center p-2">
+                    <div class="col-4">
+                        <div class="input-group">
+                            <input placeholder="Type search here..." class="form-control" spellcheck="false" autocomplete="off" type="search">
+
+                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="col ivg-align-right">
+                        <div class=" btn-group">
+                            <div class="btn-group">
+                                <button type="button" class="btn ivg-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li onclick="viewCreate('1')"><button class="dropdown-item ivg-button" type="button"><i class="fas fa-headset me-2"></i> Service Activity</button></li>
+                                    <li onclick="viewCreate('2')"><button class="dropdown-item ivg-button" type="button"><i class="fa-regular fa-calendar-check me-2"></i> Appointment</button></li>
+                                    <li onclick="viewCreate('3')"><button class="dropdown-item ivg-button" type="button"><i class="fa-regular fa-calendar-days me-2"></i> Schedule</button></li>
+                                </ul>
+                            </div>
+
+                            
+                            <button class="btn ivg-button del" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Xóa dữ liệu"><i class="fas fa-trash"></i></button>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải lên dữ liệu"><i class="fas fa-upload"></i></button>
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải xuống dữ liệu"><i class="fas fa-download"></i></button>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="btn ivg-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex p-2">
+                <div id="dp"></div>
+
+                <div class="ms-2">
+                    <div id="nav"></div>
+                </div>
+            </div>
+        </div>
+
+        <!--Content details-->
+        <div id="contentDetail" class="display-none">
+            <div id="contentDetailServiceActivity" class="card display-none">
+                <div class="card-header">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                Mark complete
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                                Close service activity
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-trash-can"></i>
+                                Delete
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                                Refresh
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <i onclick="viewCreate()" data-bs-toggle="tooltip" title="Đóng" class="fa-solid fa-x cursor-pointer px-2"></i>
+                        </div>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="m-0 text-uppercase">SERVICE ACTIVITY - <span id="titleDetail" class="text-danger col-3">Hẹn lịch bảo hành</span></h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="col-3"></div>
+
+                            <div class="col-3"></div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlPriority" class="col-form-label text-start">
+                                    Priority
+                                </label>
+
+                                <div id="ddlPriority">
+                                    <select class="select-card-header form-select" id="ddlPriority" name="ddlPriority">
+                                        <option>High</option>
+                                        <option selected>Normal</option>
+                                        <option>Low</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    <i class="cursor-pointer fa-solid fa-user me-2"></i>
+                                    Owner
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="ddlCreatedOn">
+                                    <div class="input-group">
+                                        <input value="Nghi Xuan Pham" class="input-card-header form-control" spellcheck="false" autocomplete="off" type="search" />
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-2">
+                    <div class="tab-pane row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header fw-bold text-uppercase">
+                                    SERVICE ACTIVITY details
+                                </div>
+
+                                <div class="card-body p-2">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            Subject
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtSubject" class="col-lg-8">
+                                            <input value="Hẹn lịch bảo hành" id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="form-control" />
+
+                                            <div class="warning-invalid__title"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                            Service
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <div class="input-group">
+                                                <input value="Bảo hành sản phẩm" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                            Customers
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <div class="input-group">
+                                                <input value="Nghi Xuan Pham" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                            Site
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <div class="input-group">
+                                                <input value="ivg.vn" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                            Resources
+                                        </label>
+                                        
+                                        <div class="col-lg-8">
+                                            <div class="input-group">
+                                                <input value="" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                            Location
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input value="" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="ddlDurationTask" class="col-lg-4 col-form-label text-start">
+                                            Show time as
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <select class="select2 form-select" id="ddlDurationTask" name="ddlDurationTask">
+                                                <option>Requested</option>
+                                                <option>Tentative</option>
+                                                <option>Reserved</option>
+                                                <option selected>Pending</option>
+                                                <option>In Progress</option>
+                                                <option>Arrived</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="txtDescription" class="col-lg-4 col-form-label text-start">
+                                            Notes
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <textarea spellcheck="false" name="txtDescription" rows="2" class="form-control">Không có ghi chú gì</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header fw-bold text-uppercase">
+                                    Scheduling Information
+                                </div>
+
+                                <div class="card-body p-2">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            Start Time
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtSubject" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input value="2024-05-09 15:05" autocomplete="off" type="text" class="dateTimePickerCustom form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            End Time
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtSubject" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input value="2025-05-09 15:05" id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="dateTimePickerCustom form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label class="col-lg-4 col-form-label text-start">
+                                            Duration
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <select class="select2 form-select">
+                                                <option>1 minutes</option>
+                                                <option selected>30 minutes</option>
+                                                <option>1 hour</option>
+                                                <option>2 hour</option>
+                                                <option>1 day</option>
+                                                <option>2 day</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            Regarding
+                                        </label>
+
+                                        <div id="txtSubject" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input value="Nghi Xuan Pham" spellcheck="false" autocomplete="off" type="search" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            Category
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            Sub-Category
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contentDetailAppointment" class="card display-none">
+                <div class="card-header">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                Mark complete
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                                Close service activity
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-trash-can"></i>
+                                Delete
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                                Refresh
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <i onclick="viewCreate()" data-bs-toggle="tooltip" title="Đóng" class="fa-solid fa-x cursor-pointer px-2"></i>
+                        </div>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="m-0 text-uppercase">Appointment - <span id="titleDetail" class="text-danger col-3">Hoa sơn luận kiếm</span></h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="col-3"></div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlPriority" class="col-form-label text-start">
+                                    Priority
+                                </label>
+
+                                <div id="ddlPriority">
+                                    <select class="select-card-header form-select" id="ddlPriority" name="ddlPriority">
+                                        <option>High</option>
+                                        <option selected>Normal</option>
+                                        <option>Low</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlActivityStatus" class="col-form-label text-start">
+                                    Status
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="ddlActivityStatusBlock">
+                                    <select class="select-card-header form-select">
+                                        <option selected>Open</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    <i class="cursor-pointer fa-solid fa-user me-2"></i>
+                                    Owner
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="ddlCreatedOn">
+                                    <div class="input-group">
+                                        <input value="Nghi Xuan Pham" class="input-card-header form-control" spellcheck="false" autocomplete="off" type="search" />
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane card-body row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase">
+                                Appointment details
+                            </div>
+
+                            <div class="card-body p-2">
+                                <div class="form-group row mb-2">
+                                    <label for="txtFrom" class="col-lg-3 col-form-label text-start">
+                                        Required
+                                    </label>
+
+                                    <div class="col-lg-9">
+                                        <div class="input-group">
+                                            <input value="Nghi Xuan Pham" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtFrom" class="col-lg-3 col-form-label text-start">
+                                        Optional
+                                    </label>
+
+                                    <div class="col-lg-9">
+                                        <div class="input-group">
+                                            <input id="txtFrom" name="txtFrom" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtFrom" class="col-lg-3 col-form-label text-start">
+                                        Subject
+                                        <span class="obligatory">*</span>
+                                    </label>
+
+                                    <div class="col-lg-9">
+                                        <input value="Hoa sơn luận kiếm" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtFrom" class="col-lg-3 col-form-label text-start">
+                                        Location
+                                    </label>
+
+                                    <div class="col-lg-9">
+                                        <input type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtFrom" class="col-lg-3 col-form-label text-start">
+                                        Regarding
+                                    </label>
+
+                                    <div class="col-lg-9">
+                                        <div class="input-group">
+                                            <input type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase">
+                                Attachment
+                            </div>
+
+                            <div class="card-body p-2">
+                                <table class="ivg-table">
+                                    <thead>
+                                        <tr>
+                                            <th>File Name</th>
+                                            <th>File Size (Bytes)</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr><td class='ms-4' colspan='9999'>To enable this content, create the record.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contentDetailSchedule" class="card display-none">
+                <div class="card-header">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                Mark complete
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                                Refresh
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <i onclick="viewCreate()" data-bs-toggle="tooltip" title="Đóng" class="fa-solid fa-x cursor-pointer px-2"></i>
+                        </div>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="text-uppercase m-0">New Schedule Service Activity</h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="col-3"></div>
+
+                            <div class="col-3">
+                            </div>
+
+                            <div class="col-3">
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    <i class="cursor-pointer fa-solid fa-user me-2"></i>
+                                    Owner
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="ddlCreatedOn">
+                                    <div class="input-group">
+                                        <input value="Nghi Xuan Pham" class="input-card-header form-control" spellcheck="false" autocomplete="off" type="search" />
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane card-body row">
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase">
+                                Appointment details
+                            </div>
+
+                            <div class="card-body p-2">
+                                <div class="form-group row mb-2">
+                                    <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                        Service
+                                        <span class="obligatory">*</span>
+                                    </label>
+
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                        Customers
+                                    </label>
+
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                        Resources
+                                    </label>
+
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                        Site
+                                    </label>
+
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label class="col-lg-4 col-form-label text-start">
+                                        Start Date
+                                    </label>
+
+                                    <div id="txtDetailCaseSubjectBlock" class="col-lg-8">
+                                        <select class="select2 form-select">
+                                            <option selected>As Soon As Possible</option>
+                                            <option>Specific Date...</option>
+                                            <option>Range of Dates</option>
+                                            <option>Today</option>
+                                            <option>Tomorrow</option>
+                                            <option>This week</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label class="col-lg-4 col-form-label text-start">
+                                        Start Time
+                                    </label>
+
+                                    <div class="d-flex align-items-center justify-content-between col-lg-8">
+                                        <div class="col-lg-6">
+                                            <select class="select2 form-select">
+                                                <option>As Soon As Possible</option>
+                                                <option>Specific Time...</option>
+                                                <option selected>Range of Times...</option>
+                                                <option>Today</option>
+                                                <option>Tomorrow</option>
+                                                <option>This week</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-lg-5">
+                                            <div class="input-group">
+                                                <input id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="dateTimePickerCustom form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label class="col-lg-4 col-form-label text-start">
+                                        Duration
+                                    </label>
+
+                                    <div class="col-lg-8">
+                                        <select class="select2 form-select">
+                                            <option>1 minutes</option>
+                                            <option selected>30 minutes</option>
+                                            <option>1 hour</option>
+                                            <option>2 hour</option>
+                                            <option>1 day</option>
+                                            <option>2 day</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase">
+                                Available Times
+                            </div>
+
+                            <div class="card-body p-2">
+                                <table class="ivg-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Service</th>
+                                            <th>Resouces</th>
+                                            <th>Site</th>
+                                            <th>Scheduled Start</th>
+                                            <th>Scheduled End</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr><td class='ms-4' colspan='9999'>No records are available in this view.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Content create-->
+        <div id="contentCreate" class="display-none">
+            <div id="contentCreateServiceActivity" class="card display-none">
+                <div class="card-header">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                Mark complete
+                            </div>
+                        </div>
+
+                        <div>
+                            <i onclick="viewCreate()" data-bs-toggle="tooltip" title="Đóng" class="fa-solid fa-x cursor-pointer px-2"></i>
+                        </div>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="text-uppercase m-0">New Service Activity</h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="col-3"></div>
+
+                            <div class="col-3"></div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlPriority" class="col-form-label text-start">
+                                    Priority
+                                </label>
+
+                                <div id="ddlPriority">
+                                    <select class="select-card-header form-select" id="ddlPriority" name="ddlPriority">
+                                        <option>High</option>
+                                        <option selected>Normal</option>
+                                        <option>Low</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    <i class="cursor-pointer fa-solid fa-user me-2"></i>
+                                    Owner
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="ddlCreatedOn">
+                                    <div class="input-group">
+                                        <input value="Nghi Xuan Pham" class="input-card-header form-control" spellcheck="false" autocomplete="off" type="search" />
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-2">
+                    <div class="tab-pane row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header fw-bold text-uppercase">
+                                    SERVICE ACTIVITY details
+                                </div>
+
+                                <div class="card-body p-2">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            Subject
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtSubject" class="col-lg-8">
+                                            <input id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="form-control" />
+
+                                            <div class="warning-invalid__title"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                            Service
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                            Customers
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                            Site
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                            Resources
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                            Location
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input id="txtRegarding" name="txtRegarding" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="ddlDurationTask" class="col-lg-4 col-form-label text-start">
+                                            Show time as
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <select class="select2 form-select" id="ddlDurationTask" name="ddlDurationTask">
+                                                <option>Requested</option>
+                                                <option>Tentative</option>
+                                                <option>Reserved</option>
+                                                <option selected>Pending</option>
+                                                <option>In Progress</option>
+                                                <option>Arrived</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="txtDescription" class="col-lg-4 col-form-label text-start">
+                                            Notes
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <textarea id="txtDescription" spellcheck="false" name="txtDescription" rows="2" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header fw-bold text-uppercase">
+                                    Scheduling Information
+                                </div>
+
+                                <div class="card-body p-2">
+                                    <div class="form-group row mb-2">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            Start Time
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtSubject" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="dateTimePickerCustom form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            End Time
+                                            <span class="obligatory">*</span>
+                                        </label>
+
+                                        <div id="txtSubject" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="dateTimePickerCustom form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label class="col-lg-4 col-form-label text-start">
+                                            Duration
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <select class="select2 form-select">
+                                                <option>1 minutes</option>
+                                                <option selected>30 minutes</option>
+                                                <option>1 hour</option>
+                                                <option>2 hour</option>
+                                                <option>1 day</option>
+                                                <option>2 day</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            Regarding
+                                        </label>
+
+                                        <div id="txtSubject" class="col-lg-8">
+                                            <div class="input-group">
+                                                <input id="txtSubject" spellcheck="false" autocomplete="off" type="search" class="form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            Category
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="txtSubject" class="col-lg-4 col-form-label text-start">
+                                            Sub-Category
+                                        </label>
+
+                                        <div class="col-lg-8">
+                                            <input id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contentCreateAppointment" class="card display-none">
+                <div class="card-header">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                Mark complete
+                            </div>
+                        </div>
+
+                        <div>
+                            <i onclick="viewCreate()" data-bs-toggle="tooltip" title="Đóng" class="fa-solid fa-x cursor-pointer px-2"></i>
+                        </div>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="text-uppercase m-0">New Appointment</h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="col-3"></div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlPriority" class="col-form-label text-start">
+                                    Priority
+                                </label>
+
+                                <div id="ddlPriority">
+                                    <select class="select-card-header form-select" id="ddlPriority" name="ddlPriority">
+                                        <option>High</option>
+                                        <option selected>Normal</option>
+                                        <option>Low</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlActivityStatus" class="col-form-label text-start">
+                                    Status
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="ddlActivityStatusBlock">
+                                    <select class="select-card-header form-select">
+                                        <option selected>Open</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    <i class="cursor-pointer fa-solid fa-user me-2"></i>
+                                    Owner
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="ddlCreatedOn">
+                                    <div class="input-group">
+                                        <input value="Nghi Xuan Pham" class="input-card-header form-control" spellcheck="false" autocomplete="off" type="search" />
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane card-body row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase">
+                                Appointment details
+                            </div>
+
+                            <div class="card-body p-2">
+                                <div class="form-group row mb-2">
+                                    <label for="txtFrom" class="col-lg-3 col-form-label text-start">
+                                        Required
+                                    </label>
+
+                                    <div class="col-lg-9">
+                                        <div class="input-group">
+                                            <input type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtFrom" class="col-lg-3 col-form-label text-start">
+                                        Optional
+                                    </label>
+
+                                    <div class="col-lg-9">
+                                        <div class="input-group">
+                                            <input id="txtFrom" name="txtFrom" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtFrom" class="col-lg-3 col-form-label text-start">
+                                        Subject
+                                        <span class="obligatory">*</span>
+                                    </label>
+
+                                    <div class="col-lg-9">
+                                        <input type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtFrom" class="col-lg-3 col-form-label text-start">
+                                        Location
+                                    </label>
+
+                                    <div class="col-lg-9">
+                                        <input type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtFrom" class="col-lg-3 col-form-label text-start">
+                                        Regarding
+                                    </label>
+
+                                    <div class="col-lg-9">
+                                        <div class="input-group">
+                                            <input type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase">
+                                Attachment
+                            </div>
+
+                            <div class="card-body p-2">
+                                <table class="ivg-table">
+                                    <thead>
+                                        <tr>
+                                            <th>File Name</th>
+                                            <th>File Size (Bytes)</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr><td class='ms-4' colspan='9999'>To enable this content, create the record.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contentCreateSchedule" class="card display-none">
+                <div class="card-header">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                Mark complete
+                            </div>
+                        </div>
+
+                        <div>
+                            <i onclick="viewCreate()" data-bs-toggle="tooltip" title="Đóng" class="fa-solid fa-x cursor-pointer px-2"></i>
+                        </div>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="text-uppercase m-0">New Schedule Service Activity</h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="col-3"></div>
+
+                            <div class="col-3">
+                            </div>
+
+                            <div class="col-3">
+                            </div>
+
+                            <div class="form-group col-3">
+                                <label for="ddlCreatedOn" class="col-form-label text-start">
+                                    <i class="cursor-pointer fa-solid fa-user me-2"></i>
+                                    Owner
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div id="ddlCreatedOn">
+                                    <div class="input-group">
+                                        <input value="Nghi Xuan Pham" class="input-card-header form-control" spellcheck="false" autocomplete="off" type="search" />
+
+                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane card-body row">
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase">
+                                Appointment details
+                            </div>
+
+                            <div class="card-body p-2">
+                                <div class="form-group row mb-2">
+                                    <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                        Service
+                                        <span class="obligatory">*</span>
+                                    </label>
+
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                        Customers
+                                    </label>
+
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                        Resources
+                                    </label>
+
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="txtRegarding" class="col-lg-4 col-form-label text-start">
+                                        Site
+                                    </label>
+
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <input id="txtRegarding" name="txtRegarding" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                            <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label class="col-lg-4 col-form-label text-start">
+                                        Start Date
+                                    </label>
+
+                                    <div id="txtDetailCaseSubjectBlock" class="col-lg-8">
+                                        <select class="select2 form-select">
+                                            <option selected>As Soon As Possible</option>
+                                            <option>Specific Date...</option>
+                                            <option>Range of Dates</option>
+                                            <option>Today</option>
+                                            <option>Tomorrow</option>
+                                            <option>This week</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label class="col-lg-4 col-form-label text-start">
+                                        Start Time
+                                    </label>
+
+                                    <div class="d-flex align-items-center justify-content-between col-lg-8">
+                                        <div class="col-lg-6">
+                                            <select class="select2 form-select">
+                                                <option>As Soon As Possible</option>
+                                                <option>Specific Time...</option>
+                                                <option selected>Range of Times...</option>
+                                                <option>Today</option>
+                                                <option>Tomorrow</option>
+                                                <option>This week</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-lg-5">
+                                            <div class="input-group">
+                                                <input id="txtSubject" spellcheck="false" autocomplete="off" type="text" class="dateTimePickerCustom form-control" />
+
+                                                <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label class="col-lg-4 col-form-label text-start">
+                                        Duration
+                                    </label>
+
+                                    <div class="col-lg-8">
+                                        <select class="select2 form-select">
+                                            <option>1 minutes</option>
+                                            <option selected>30 minutes</option>
+                                            <option>1 hour</option>
+                                            <option>2 hour</option>
+                                            <option>1 day</option>
+                                            <option>2 day</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-header fw-bold text-uppercase">
+                                Available Times
+                            </div>
+
+                            <div class="card-body p-2">
+                                <table class="ivg-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Service</th>
+                                            <th>Resouces</th>
+                                            <th>Site</th>
+                                            <th>Scheduled Start</th>
+                                            <th>Scheduled End</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr><td class='ms-4' colspan='9999'>No records are available in this view.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+    <!-- Template Functions -->
+    <script src="../../assets/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/theme/js/functions.js"></script>
+    <script src="../../assets/theme/js/glightbox.js"></script>
+    <script src="../../assets/theme/js/purecounter_vanilla.js"></script>
+    <script src="../../assets/theme/js/tiny-slider.js"></script>
+    <!--Datetime picker-->
+    <link href="../../assets/dtpicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <script src="../../assets/dtpicker/jquery.datetimepicker.full.js"></script>
+    <!--Select2-->
+    <link href="../../assets/select2/select2.min.css" rel="stylesheet" />
+    <script src="../../assets/select2/select2.min.js"></script>
+    <!--Quill editor-->
+    <link href="../../assets/quill/quill.snow.css" rel="stylesheet" />
+    <script src="../../assets/quill/quill.js"></script>
+    <!--Daypilot-->
+    <script src="../../assets/daypilot/daypilot-all.min.js"></script>
+    <script src="../../assets/daypilot/v2/app.js"></script>
+    <!--IVG JS-->
+    <script src="../../assets/js/common.js"></script>
+    <script src="service-calendar.js"></script>
+</body>
+</html>
+

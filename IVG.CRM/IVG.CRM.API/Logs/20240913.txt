@@ -1,0 +1,6 @@
+
+11:45:03	13-Sep-24 11:45:03 - Received Webhook: {"app_id":"3458727098795796717","user_id_by_app":"7805272442711811998","event_name":"user_send_text","timestamp":"1726202700366","sender":{"id":"5511728893503375128"},"recipient":{"id":"579745863508352884"},"message":{"msg_id":"This is message id","text":"This is testing message"}}
+
+11:45:24	13-Sep-24 11:45:24 - Received Webhook: {"app_id":"3458727098795796717","user_id_by_app":"7805272442711811998","event_name":"user_send_text","timestamp":"1726202724032","sender":{"id":"5511728893503375128"},"recipient":{"id":"579745863508352884"},"message":{"msg_id":"This is message id","text":"This is testing message"}}
+
+13:44:35	13-Sep-24 13:44:35 - Received Webhook: {"app_id":"3458727098795796717","user_id_by_app":"7805272442711811998","event_name":"user_send_location","timestamp":"1726209874769","sender":{"id":"5511728893503375128"},"recipient":{"id":"579745863508352884"},"message":{"msg_id":"This is message id","text":"This is testing message","attachments":[{"payload":{"coordinates":{"latitude":"10.7642473","longitude":"106.6564313999999"}},"type":"location"}]}}

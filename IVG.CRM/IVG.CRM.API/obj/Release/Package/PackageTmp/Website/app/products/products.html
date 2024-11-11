@@ -1,0 +1,711 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="ivg.vn">
+    <meta name="description" content="IVG Vietnam Joint Stock Company CRM">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/image/logo.png">
+
+    <!-- Plugins CSS -->
+    <link href="../../assets/bootstrap/fontawesome/css/all.min.css" rel="stylesheet" />
+    <!-- Boostrap CSS -->
+    <link href="../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="../../assets/theme/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/glightbox.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/style.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/tiny-slider.css" rel="stylesheet" />
+    <link href="../../assets/css/ivg-style.css" rel="stylesheet" />
+    <link href="../../assets/css/common.css" rel="stylesheet" />
+</head>
+
+<body class="body-page">
+    <div class="content">
+        <!--Content list-->
+        <div id="contentList">
+            <div>
+                <div class="row">
+                    <ol class="breadcrumb my-0 p-3">
+                        <li class="breadcrumb-item "><i class=" fas fa-home"></i> <a href="#" class="pr-md-3 pl-md-2 pr-2 pl-1">Home</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Collateral</a> </li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 active-1">Products</a> </li>
+                    </ol>
+                </div>
+
+                <div class="row align-items-center p-2">
+                    <div class="col-4">
+                        <div class="input-group">
+                            <input id="txtMainSearch" onchange="onLoadData()" placeholder="Type search here..." class="form-control" spellcheck="false" autocomplete="off" type="search">
+
+                            <span onclick="onLoadData()" data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="col ivg-align-right">
+                        <div class="btn-group">
+                            <button onclick="viewCreate(1)" class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Thêm mới"><i class="fas fa-plus"></i></button>
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Lưu dữ liệu"><i class="fas fa-save"></i></button>
+                            <button onclick="submitDelete()" class="btn ivg-button del" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Xóa dữ liệu"><i class="fas fa-trash"></i></button>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải lên dữ liệu"><i class="fas fa-upload"></i></button>
+                            <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải xuống dữ liệu"><i class="fas fa-download"></i></button>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="btn ivg-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dataTable">
+                <table class="ivg-table">
+                    <thead>
+                        <tr>
+                            <th data-bs-toggle="dropdown" aria-expanded="false" title="Bộ lọc" class="text-center">
+                                <i class="fa-solid fa-filter p-2"></i>
+
+                                <ul class="dropdown-menu dropdown-menu-end ms-3">
+                                    <li><button class="dropdown-item ivg-button" type="button">-- All --</button></li>
+                                    <li><button class="dropdown-item ivg-button" type="button">Active Product Bundles</button></li>
+                                    <li><button class="dropdown-item ivg-button" type="button">Draft Product Bundles</button></li>
+                                    <li><button class="dropdown-item ivg-button" type="button">Retired Product Bundles</button></li>
+                                </ul>
+                            </th>
+
+                            <th>Product Code</th>
+
+                            <th>
+                                Name
+                                <i class="fa-solid fa-caret-down ms-1"></i>
+                            </th>
+
+                            <th>
+                                Valid From
+                                <i class="fa-solid fa-caret-down ms-1"></i>
+                            </th>
+
+                            <th>
+                                Valid To
+                                <i class="fa-solid fa-caret-down ms-1"></i>
+                            </th>
+
+                            <th>
+                                Status
+                                <i class="fa-solid fa-caret-down ms-1"></i>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="dataTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <!--Paging-->
+            <div class="row ivg-paging mt-3">
+                <div class="col">
+                    <span><span>Tổng</span>: <b id="totalRecords"></b> <span>dữ liệu</span></span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                    <span>
+                        <span>Hiển thị</span>
+
+                        <select onchange="onLoadData(1)" id="pageSize">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>15</option>
+                            <option>100</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div class="col" style="text-align:right;">
+                    <ul id="pagingMainContent" class="pagination-lg"></ul>
+                    <input type="hidden" value="1" id="pageIndex" />
+                </div>
+            </div>
+        </div>
+
+        <!--Content details-->
+        <div id="contentDetail" class="display-none">
+            <div id="contentDetailProduct" class="card display-none">
+                <div class="card-header">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-circle-check"></i>
+                                Activate
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                Revise
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                                Retire
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-trash-can"></i>
+                                Delete
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                                Refresh
+                            </div>
+
+                            <div class="me-4 cursor-pointer">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <i onclick="viewDetails()" data-bs-toggle="tooltip" title="Đóng" class="fa-solid fa-x cursor-pointer px-2"></i>
+                        </div>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="m-0 text-uppercase">Product - <span id="titleDetail" class="text-danger col-3">PRO-00016-M8B6W2</span></h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="col-3"></div>
+
+                            <div class="col-3"></div>
+
+                            <div class="col-3"></div>
+
+                            <div class="col-3">
+                                <label for="ddlStatusDetail" class="col-form-label text-start">
+                                    Status
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div>
+                                    <select id="ddlStatusDetail" name="ddlStatusDetail" data-default-value="0" class="select-card-header form-select">
+                                        <option value="0" selected>Nháp</option>
+                                        <option value="1">Đang kinh doanh</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <nav>
+                        <div class="nav nav-tabs">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#tabDetailProductGeneral">General</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#tabDetailProductAdditionalDetails">Additional Details</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#tabDetailProductNotes">Notes</a>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content">
+                        <div class="tab-pane p-2 active" id="tabDetailProductGeneral">
+                            <div class="card">
+                                <div class="card-header fw-bold text-uppercase">
+                                    Product details
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtDetailCode" class="col-lg-4 col-form-label text-start">
+                                                    Product code
+                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input disabled id="txtDetailCode" name="txtDetailCode" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtDetailName" class="col-lg-4 col-form-label text-start">
+                                                    Name
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtDetailNameBlock" class="col-lg-8">
+                                                    <input id="txtDetailName" name="txtDetailName" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtDetailValidFrom" class="col-lg-4 col-form-label text-start">
+                                                    Valid From
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtDetailValidFrom" name="txtDetailValidFrom" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtDetailValidTo" class="col-lg-4 col-form-label text-start">
+                                                    Valid To
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtDetailValidTo" name="txtDetailValidTo" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtDetailUnit" class="col-lg-4 col-form-label text-start">
+                                                    Unit
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtDetailUnit" name="txtDetailUnit" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtDetailPriceList" class="col-lg-4 col-form-label text-start">
+                                                    Price List
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtDetailPriceList" name="txtDetailPriceList" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtDetailSubject" class="col-lg-4 col-form-label text-start">
+                                                    Subject
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtDetailSubject" name="txtDetailSubject" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtDetailDescription" class="col-lg-4 col-form-label text-start">
+                                                    Description
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <textarea id="txtDetailDescription" spellcheck="false" name="txtDetailDescription" rows="2" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane p-2" id="tabDetailProductAdditionalDetails">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase d-flex align-items-center justify-content-between">
+                                            PRICE LIST ITEMS
+                                            <i hidden class="cursor-pointer fas fa-plus"></i>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <table class="ivg-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Price List</th>
+                                                        <th>Unit</th>
+                                                        <th>Pricing Method</th>
+                                                        <th>Amount</th>
+                                                        <th>Percentage</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr><td class='ms-4' colspan='9999'>No Price List Item records found.</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase d-flex align-items-center justify-content-between">
+                                            PRODUCT RELATIONSHIPS
+                                            <i hidden class="cursor-pointer fas fa-plus"></i>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <table class="ivg-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Related Product</th>
+                                                        <th>Sale Relationship Type</th>
+                                                        <th>Direction</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr><td class='ms-4' colspan='9999'>No Product Relationship records found.</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Content create-->
+        <div id="contentCreate" class="display-none">
+            <div id="contentCreateProduct" class="card display-none">
+                <div class="card-header p-2">
+                    <div style="color: var(--main-color-blue-10); display: flex;" class="align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            <div onclick="submitCreate(2)" class="me-3 cursor-pointer btn-handle p-2">
+                                <i class="fa-solid fa-check"></i>
+                                Save & Close
+                            </div>
+
+                            <div onclick="submitCreate(1)" class="cursor-pointer btn-handle p-2">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Save
+                            </div>
+                        </div>
+
+                        <div>
+                            <i onclick="viewCreate()" data-bs-toggle="tooltip" title="Đóng" class="fa-solid fa-x cursor-pointer px-2"></i>
+                        </div>
+                    </div>
+
+                    <hr class="m-0" />
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="m-0 text-uppercase">New Product</h6>
+
+                        <div class="col-8 row d-flex align-items-end justify-content-between">
+                            <div class="col-3"></div>
+
+                            <div class="col-3"></div>
+
+                            <div class="col-3"></div>
+
+                            <div class="col-3">
+                                <label for="ddlStatus" class="col-form-label text-start">
+                                    Status
+                                    <span class="obligatory">*</span>
+                                </label>
+
+                                <div>
+                                    <select id="ddlStatus" name="ddlStatus" data-default-value="0" class="select-card-header form-select">
+                                        <option value="0" selected>Nháp</option>
+                                        <option value="1">Đang kinh doanh</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#tabProductGeneral">General</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#tabProductAdditionalDetails">Additional Details</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#tabProductNotes">Notes</a>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content">
+                        <div class="tab-pane p-2 active" id="tabProductGeneral">
+                            <div class="card">
+                                <div class="card-header fw-bold text-uppercase">
+                                    Product details
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtCode" class="col-lg-4 col-form-label text-start">
+                                                    Product code
+                                                    <i class="fa-solid fa-user-lock ms-1"></i>
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <input disabled id="txtCode" name="txtCode" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtName" class="col-lg-4 col-form-label text-start">
+                                                    Name
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtNameBlock" class="col-lg-8">
+                                                    <input id="txtName" name="txtName" type="text" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtValidFrom" class="col-lg-4 col-form-label text-start">
+                                                    Valid From
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtValidFrom" name="txtValidFrom" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtValidTo" class="col-lg-4 col-form-label text-start">
+                                                    Valid To
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtValidTo" name="txtValidTo" type="text" spellcheck="false" autocomplete="off" class="form-control datePickerCustom">
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Thời gian" data-bs-original-title="Thời gian" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-calendar-days"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-2">
+                                                <label for="txtUnit" class="col-lg-4 col-form-label text-start">
+                                                    Unit
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtUnitBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtUnit" name="txtUnit" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                        <input id="txtUnitVal" type="hidden" />
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtPriceList" class="col-lg-4 col-form-label text-start">
+                                                    Price List
+                                                    <span class="obligatory">*</span>
+                                                </label>
+
+                                                <div id="txtPriceListBlock" class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtPriceList" name="txtPriceList" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                        <input id="txtPriceListVal" type="hidden" />
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <label for="txtGroup" class="col-lg-4 col-form-label text-start">
+                                                    Product Groups
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <input id="txtGroup" name="txtGroup" type="search" spellcheck="false" autocomplete="off" class="form-control" />
+
+                                                        <span data-bs-placement="right" data-bs-toggle="tooltip" aria-label="Tìm kiếm" data-bs-original-title="Tìm kiếm" class="input-group-text cursor-pointer ivg-button"><i class="icon-xs fa-solid fa-search"></i></span>
+
+                                                        <input id="txtGroupVal" type="hidden" />
+                                                    </div>
+
+                                                    <div class="warning-invalid__title"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="txtDescription" class="col-lg-4 col-form-label text-start">
+                                                    Description
+                                                </label>
+
+                                                <div class="col-lg-8">
+                                                    <textarea id="txtDescription" spellcheck="false" name="txtDescription" rows="1" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane p-2" id="tabProductAdditionalDetails">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase d-flex align-items-center justify-content-between">
+                                            PRICE LIST ITEMS
+                                            <i hidden class="cursor-pointer fas fa-plus"></i>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <table class="ivg-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Price List</th>
+                                                        <th>Unit</th>
+                                                        <th>Pricing Method</th>
+                                                        <th>Amount</th>
+                                                        <th>Percentage</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr><td class='ms-4' colspan='9999'>To enable this content, create the record.</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header fw-bold text-uppercase d-flex align-items-center justify-content-between">
+                                            PRODUCT RELATIONSHIPS
+                                            <i hidden class="cursor-pointer fas fa-plus"></i>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <table class="ivg-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Related Product</th>
+                                                        <th>Sale Relationship Type</th>
+                                                        <th>Direction</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr><td class='ms-4' colspan='9999'>To enable this content, create the record.</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Loader-->
+    <div id="loader"></div>
+
+    <!-- Template Functions -->
+    <script src="../../assets/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../../assets/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/theme/js/functions.js"></script>
+    <script src="../../assets/theme/js/glightbox.js"></script>
+    <script src="../../assets/theme/js/purecounter_vanilla.js"></script>
+    <script src="../../assets/theme/js/tiny-slider.js"></script>
+    <!--Jquery-->
+    <script src="../../assets/jquery/jquery.min.js"></script>
+    <!--Datetime picker-->
+    <link href="../../assets/dtpicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <script src="../../assets/dtpicker/jquery.datetimepicker.full.js"></script>
+    <!--Select2-->
+    <link href="../../assets/select2/select2.min.css" rel="stylesheet" />
+    <script src="../../assets/select2/select2.min.js"></script>
+    <!--Jquery Ui-->
+    <link href="../../assets/jquery-ui/jquery-ui.min-v1.13.2.css" rel="stylesheet" />
+    <script src="../../assets/jquery-ui/jquery-ui.min-v1.13.2.js"></script>
+    <!--Sweat alert-->
+    <script src="../../assets/sweat-alert/sweetalert.min.js"></script>
+    <!--Pagination-->
+    <script src="../../assets/js/pagination.js"></script>
+    <!--Alert Toastr-->
+    <link href="../../assets/toast/toastr.min.css" rel="stylesheet" />
+    <script src="../../assets/toast/toastr.min.js"></script>
+    <!--API Url-->
+    <script src="../../assets/js/api-url.js"></script>
+    <!--IVG JS-->
+    <script src="../../assets/js/common.js"></script>
+    <script src="products.js"></script>
+</body>
+</html>

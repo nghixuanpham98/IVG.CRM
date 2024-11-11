@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IVG - CRM</title>
+
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="ivg.vn">
+    <meta name="description" content="IVG Vietnam Joint Stock Company CRM">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/image/logo.png">
+
+    <!-- Plugins CSS -->
+    <link href="assets/bootstrap/fontawesome/css/all.min.css" rel="stylesheet" />
+    <!-- Boostrap CSS -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="assets/theme/css/all.min.css" rel="stylesheet" />
+    <link href="assets/theme/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/theme/css/glightbox.css" rel="stylesheet" />
+    <link href="assets/theme/css/style.css" rel="stylesheet" />
+    <link href="assets/theme/css/tiny-slider.css" rel="stylesheet" />
+    <link href="assets/css/ivg-style.css" rel="stylesheet" />
+    <link href="assets/css/common.css" rel="stylesheet" />
+</head>
+
+<body class="body">
+    <!-- Header -->
+    <header class="navbar-light navbar-sticky header-static navbar-sticky-on">
+        <!-- Nav START -->
+        <nav class="navbar navbar-expand-xl">
+            <div class="container-fluid px-3 px-xl-5">
+                <!-- Logo START -->
+                <a onclick="indexAccessPage('dashboard')" class="navbar-brand" href="#dashboard">
+                    <div class="ivg-logo">
+                        <!-- <span>CRM</span> -->
+                        <img class="light-mode-item navbar-brand-item" src="assets/image/logo/Logo_âm bản_ngang.png" alt="logo">
+                    </div>
+                </a>
+                <!-- Logo END -->
+
+                <!-- Responsive navbar toggler START -->
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-animation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+                <!-- Responsive navbar toggler END -->
+
+                <!-- Main navbar START -->
+                <div class="navbar-collapse w-100 collapse" id="navbarCollapse">
+                    <!-- Nav category menu START -->
+                    <ul class="navbar-nav navbar-nav-scroll me-auto"></ul>
+
+                    <!-- Nav category menu END -->
+
+                    <!-- Nav Main menu START -->
+                    <ul class="navbar-nav navbar-nav-scroll me-auto">
+                        <!-- Nav item Dashboard -->
+                        <li onclick="indexAccessPage('dashboard')" class="nav-item">
+                            <a id="mnDashboard" class="nav-link active menu" href="#dashboard" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-chart-column"></i> DASHBOARD</a>
+                        </li>
+
+                        <!-- Nav item Sales -->
+                        <li class="nav-item dropdown dropdown-fullwidth">
+                            <a class="nav-link dropdown-toggle menu" id="mnSales" href="javascript:void(0);" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-people-group"></i> SALES</a>
+
+                            <div class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+                                <div style="position:absolute;opacity:.05;right:0;bottom:0;z-index:-1" class="p-2">
+                                    <img src="assets/image/svg/people-group-svgrepo-com.svg" width="120" style="filter:grayscale(100)" />
+                                </div>
+
+                                <div class="row p-3">
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fas fa-briefcase"></i> My Work</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li onclick="indexAccessPage('sale-dashboard')" class="mb-1"><a id="mnSaleDashboard" class="dropdown-item menu" href="#sales/dashboard"><i class="fa-solid fa-chart-column"></i> Dashboard</a></li>
+                                            <li onclick="indexAccessPage('activities', 1)"><a id="mnSaleActivities" class="dropdown-item menu" href="#activities"><i class="fas fa-list-check"></i> Activities</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fas fa-users"></i> Customers</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li id="tabAccount" onclick="indexAccessPage('accounts', 1)" class="mb-1"><a id="mnSaleAccounts" class="dropdown-item menu" href="javascript:void(0);"><i class="fas fa-users"></i> Accounts  <i class="fas fa-check-circle text-success"></i></a></li>
+                                            <li id="tabContact" onclick="indexAccessPage('contacts', 1)"><a id="mnSaleContacts" class="dropdown-item menu" href="javascript:void(0);"><i class="fas fa-contact-card"></i> Contacts  <i class="fas fa-check-circle text-success"></i></a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fas fa-user-tie"></i> Sales</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li onclick="indexAccessPage('sale-leads')" class="mb-1"><a id="mnSaleLeads" class="dropdown-item menu" href="javascript:void(0);"><i class="fas fa-users-viewfinder"></i> Leads <i class="fas fa-check-circle text-success"></i></a></li>
+                                            <li id="tabOpportunity" onclick="indexAccessPage('sale-opportunities')" class="mb-1"><a id="mnSaleOpportunities" class="dropdown-item menu" href="javascript:void(0);"><i class="fas fa-clipboard"></i> Opportunities <i class="fas fa-check-circle text-success"></i></a></li>
+                                            <li onclick="indexAccessPage('sale-competitors')"><a id="mnSaleCompetitors" class="dropdown-item menu" href="javascript:void(0);"><i class="fas fa-user-tie"></i> Competitors</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div hidden class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fas fa-bullhorn"></i> Marketing</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li onclick="indexAccessPage('sale-marketing')" class="mb-1"><a id="mnSaleMarketing" class="dropdown-item menu" href="#sales/marketing-lists"><i class="fas fa-bullhorn"></i> Marketing Lists</a></li>
+                                            <li onclick="indexAccessPage('sale-campaigns')" class="mb-1"><a id="mnSaleCampaigns" class="dropdown-item menu" href="#sales/quick-campaigns"><i class="fas fa-bullhorn"></i> Quick Campaigns</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fas fa-boxes-packing"></i> Collateral</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li onclick="indexAccessPage('sale-quotes')" class="mb-1"><a id="mnSaleQuotes" class="dropdown-item menu" href="#sales/quotes"><i class="fas fa-coins"></i> Quotes</a></li>
+                                            <li onclick="indexAccessPage('sale-orders')" class="mb-1"><a id="mnSaleOrders" class="dropdown-item menu" href="#sales/orders"><i class="fas fa-receipt"></i> Orders</a></li>
+                                            <li onclick="indexAccessPage('sale-invoices')" class="mb-1"><a id="mnSaleInvoices" class="dropdown-item menu" href="#sales/invoices"><i class="fas fa-file-invoice"></i> Invoices</a></li>
+                                            <li hidden><a class="dropdown-item" href="javascript:void(0);"><i class="fas fa-folder-open"></i> Sales Literature</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fa-solid fa-toolbox"></i> Tools</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li onclick="indexAccessPage('reports', 1)" class="mb-1"><a id="mnSaleReports" class="dropdown-item menu" href="#reports"><i class="fas fa-chart-column"></i> Reports</a></li>
+                                            <li class="mb-1"><a class="dropdown-item" href="javascript:void(0);"><i class="fas fa-bell"></i> Alerts</a></li>
+                                            <li onclick="indexAccessPage('calendar', 1)"><a id="mnSaleCalendar" class="dropdown-item menu" href="#calendar"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div hidden class="row p-3">
+                                    <div hidden class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fas fa-bullseye"></i> Goals</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li><a class="dropdown-item" href="javascript:void(0);"><i class="fas fa-bullseye"></i> Goals</a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);"><i class="fas fa-bullseye"></i> Goal Metrics</a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);"><i class="fas fa-bullseye"></i> Rollup Queries</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col">&nbsp;</div>
+
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Nav item Services -->
+                        <li class="nav-item dropdown dropdown-fullwidth">
+                            <a id="mnServices" class="nav-link dropdown-toggle menu" href="javascript:void(0);" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-boxes-packing"></i> SERVICES
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+                                <div style="position:absolute;opacity:.05;right:0;bottom:0;z-index:-1" class="p-2">
+                                    <img src="assets/image/svg/call-center-operator-svgrepo-com.svg" width="120" style="filter:grayscale(100)" />
+                                </div>
+
+                                <div class="row p-3">
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fas fa-briefcase"></i> My Work</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li class="mb-1" onclick="indexAccessPage('service-dashboard')"><a id="mnServDashboard" class="dropdown-item menu" href="javascript:void(0);"><i class="fa-solid fa-chart-column"></i> Dashboard</a></li>
+                                            <li onclick="indexAccessPage('activities', 2)"><a id="mnServActivities" class="dropdown-item menu" href="#activities"><i class="fas fa-list-check"></i> Activities</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fa-solid fa-headset"></i> Telesales</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li id="" class="mb-1"><a id="" class="dropdown-item menu" href="javascript:void(0);"><i class="fa-solid fa-phone-flip"></i> Inbound Calls</a></li>
+
+                                            <li id="" class="mb-1"><a id="" class="dropdown-item menu" href="javascript:void(0);"><i class="fa-solid fa-phone"></i> Outbound Calls</a></li>
+
+                                            <li id=""><a id="" class="dropdown-item menu" href="javascript:void(0);"><i class="fa-solid fa-phone-slash"></i> Abandoned Calls</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fa-solid fa-comment"></i> Zalo</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li onclick="indexAccessPage('zalo-oa')" class="mb-1"><a id="mnServZaloOA" class="dropdown-item menu" href="javascript:void(0);"><i class="fa-solid fa-house-circle-check"></i> Official Account</a></li>
+
+                                            <li onclick="indexAccessPage('zalo-followers')" class="mb-1"><a id="mnServZaloFollowers" class="dropdown-item menu" href="javascript:void(0);"><i class="fas fa-users"></i> Followers</a></li>
+
+                                            <li onclick="indexAccessPage('zalo-chat')"><a id="mnServZaloChat" class="dropdown-item menu" href="javascript:void(0);"><i class="fa-solid fa-comments"></i> Chat</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fa-solid fa-envelopes-bulk"></i> Mailchimp</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li id="" class="mb-1"><a id="" class="dropdown-item menu" href="javascript:void(0);"><i class="fas fa-bullhorn"></i> Campaigns</a></li>
+
+                                            <li id="" class="mb-1"><a id="" class="dropdown-item menu" href="javascript:void(0);"><i class="fas fa-users"></i> Audiences</a></li>
+
+                                            <li id="" class="mb-1"><a id="" class="dropdown-item menu" href="javascript:void(0);"><i class="fa-solid fa-sliders"></i> Automations</a></li>
+
+                                            <li id="" class="mb-1"><a id="" class="dropdown-item menu" href="javascript:void(0);"><i class="fa-solid fa-chart-column"></i> Analytics</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fa-solid fa-toolbox"></i> Tools</h6>
+
+                                        <hr />
+
+                                        <ul class="list-unstyled">
+                                            <li onclick="indexAccessPage('reports', 2)" class="mb-1"><a id="mnServReports" class="dropdown-item menu" href="#reports"><i class="fas fa-chart-column"></i> Reports</a></li>
+                                            <li class="mb-1"><a class="dropdown-item" href="javascript:void(0);"><i class="fas fa-bell"></i> Alerts</a></li>
+                                            <li onclick="indexAccessPage('calendar', 2)"><a id="mnServCalendar1" class="dropdown-item menu" href="#services/calendar"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Nav item Settings -->
+                        <li class="nav-item dropdown dropdown-fullwidth">
+                            <a id="mnSettings" class="nav-link dropdown-toggle menu" href="javascript:void(0);" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-screwdriver-wrench"></i> SETTINGS
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+                                <div style="position:absolute;opacity:.05;right:0;bottom:0;z-index:-1">
+                                    <img src="assets/image/svg/cogs-svgrepo-com.svg" width="120" style="filter:grayscale(100)" />
+                                </div>
+
+                                <div class="row p-3">
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fas fa-briefcase"></i> Business</h6>
+
+                                        <hr />
+
+                                        <ul hidden class="list-unstyled">
+                                            <li class="dropdown mb-1">
+                                                <a id="mnSettingManagements" class="dropdown-item dropdown-toggle menu" href="javascript:void(0);"><i class="fa-solid fa-chalkboard-user me-1"></i>Business Management <i class="fas fa-check-circle text-success"></i></a>
+
+                                                <ul style="left: 20%;" class="dropdown-menu dropdown-menu-end">
+                                                    <li onclick="indexAccessPage('subjects')" class="p-1">
+                                                        <a id="mnSettingSubjects" href="#subjects" class="dropdown-item menu">Subjects</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-unstyled">
+                                            <li class="dropdown mb-1">
+                                                <a id="mnSettingCatalogs" class="dropdown-item dropdown-toggle menu" href="javascript:void(0);"><i class="fa-solid fa-boxes-packing me-1"></i>Product Catalog <i class="fas fa-check-circle text-success"></i></a>
+
+                                                <ul style="left: 20%;" class="dropdown-menu dropdown-menu-end">
+                                                    <li onclick="indexAccessPage('products')" class="p-1 pb-0">
+                                                        <a id="mnSettingProducts" href="#products" class="dropdown-item menu">Families & Products</a>
+                                                    </li>
+
+                                                    <li onclick="indexAccessPage('unit-groups')" class="p-1 pb-0">
+                                                        <a id="mnSettingUnitGroups" href="#unit-groups" class="dropdown-item menu">Unit Groups</a>
+                                                    </li>
+
+                                                    <li onclick="indexAccessPage('price-lists')" class="p-1 pb-0">
+                                                        <a id="mnSettingPriceLists" href="#price-lists" class="dropdown-item menu">Price Lists</a>
+                                                    </li>
+
+                                                    <li onclick="indexAccessPage('discount-lists')" class="p-1">
+                                                        <a id="mnSettingDiscountLists" href="#discount-lists" class="dropdown-item menu">Discount Lists</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fa-solid fa-sliders"></i> Customization</h6>
+
+                                        <hr />
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fa-solid fa-database"></i> System</h6>
+
+                                        <hr />
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="mb-0 ivg-text-blue"><i class="fa-solid fa-house-circle-check"></i> Process Center</h6>
+
+                                        <hr />
+                                    </div>
+                                </div>
+
+                                <div class="row p-3">
+                                    <div class="col">
+                                    </div>
+
+                                    <div class="col">
+                                    </div>
+
+                                    <div class="col">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Nav Main menu END -->
+
+                    <!-- Nav Search START -->
+                    <div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center" hidden>
+                        <div class="nav-item w-100">
+                            <form class="position-relative">
+                                <input class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search">
+
+                                <button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
+                                    <i class="fas fa-search fs-6 "></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Nav Search END -->
+                </div>
+                <!-- Main navbar END -->
+
+                <!-- Profile START -->
+                <div class="dropdown ms-1 ms-lg-0">
+                    <a class="avatar avatar-sm p-0" href="javascript:void(0);" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="avatar-img rounded-circle" src="assets/image/avatar/icons8-user-64 (2).png" alt="avatar">
+                        <!-- <img class="avatar-img rounded-circle" src="assets/image/avatar/icons8-user-60.png" alt="avatar"> -->
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+                        <!-- Profile info -->
+                        <li class="px-2 mb-2">
+                            <div class="d-flex align-items-center">
+                                <!-- Avatar -->
+                                <div class="avatar me-3">
+                                    <img class="avatar-img rounded-circle shadow" src="assets/image/avatar/icons8-user-64.png" alt="avatar">
+                                </div>
+
+                                <div>
+                                    <a class="h6" href="javascript:void(0);">Administrator</a>
+
+                                    <p class="small m-0">all@ivg.vn</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <!-- Links -->
+                        <li><a class="dropdown-item" href="javascript:void(0);"><i class="fas fa-pen fa-fw me-2"></i>Edit Profile</a></li>
+
+                        <li><a class="dropdown-item" href="javascript:void(0);"><i class="fas fa-cogs fa-fw me-2"></i>Account Settings</a></li>
+
+                        <li><a class="dropdown-item" href="javascript:void(0);"><i class="fas fa-info fa-fw me-2"></i>Help</a></li>
+
+                        <li onclick="returnLogin()"><a class="dropdown-item bg-danger-soft-hover" href="javascript:void(0);"><i class="fas fa-power-off fa-fw me-2"></i>Sign Out</a></li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <div class="bg-light dark-mode-switch theme-icon-active d-flex align-items-center p-1 rounded mt-2">
+                                <button type="button" class="btn btn-sm mb-0 btnLanguage me-1" data-bs-theme-value="light" id="btnLanguageEN" onclick="index_switch_language()">
+                                    <img src="assets/image/svg/flag-us-svgrepo-com.svg" width="20" />
+                                    English
+                                </button>
+
+                                <button type="button" class="btn btn-sm mb-0 btnLanguage active" data-bs-theme-value="dark" id="btnLanguageVI" onclick="index_switch_language(1)">
+                                    <img src="assets/image/svg/flag-for-flag-vietnam-svgrepo-com.svg" width="20" />
+                                    Tiếng Việt
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Profile END -->
+            </div>
+        </nav>
+        <!-- Nav END -->
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <div class="mt-5">
+            <iframe id="ivg-content" class="ivg-page-content"></iframe>
+        </div>
+    </main>
+
+    <input id="hdfViewDetailID" hidden />
+
+    <!-- Loader -->
+    <div id="loader"></div>
+
+    <!-- Jquery -->
+    <script src="assets/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+
+    <!-- Template Functions -->
+    <script src="assets/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/theme/js/functions.js"></script>
+    <script src="assets/theme/js/glightbox.js"></script>
+    <script src="assets/theme/js/purecounter_vanilla.js"></script>
+    <script src="assets/theme/js/tiny-slider.js"></script>
+    <!-- Datetime picker -->
+    <link href="assets/dtpicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <script src="assets/dtpicker/jquery.datetimepicker.full.js"></script>
+    <!-- Alert Toastr -->
+    <link href="assets/toast/toastr.min.css" rel="stylesheet" />
+    <script src="assets/toast/toastr.min.js"></script>
+    <!-- Select2 -->
+    <link href="assets/select2/select2.min.css" rel="stylesheet" />
+    <script src="assets/select2/select2.min.js"></script>
+    <!-- Browser JS -->
+    <script src="assets/browser/bowser.js"></script>
+    <!-- IVG JS -->
+    <script src="assets/js/common.js?ver=1.8"></script>
+    <script src="assets/js/check-page.js"></script>
+    <script src="assets/js/index.js?ver=1.8"></script>
+</body>
+</html>

@@ -1,0 +1,1471 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contacts</title>
+
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="ivg.vn">
+    <meta name="description" content="IVG Vietnam Joint Stock Company CRM">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/image/logo.png">
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="../../https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/tiny-slider/tiny-slider.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/glightbox/css/glightbox.css">
+    <link href="../../assets/bootstrap/fontawesome/css/all.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+    <!--<link href="../../assets/bootstrap/css/app.min.css" rel="stylesheet" />-->
+    <link href="../../assets/theme/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/glightbox.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/style.css" rel="stylesheet" />
+    <link href="../../assets/theme/css/tiny-slider.css" rel="stylesheet" />
+    <link href="../../assets/select2/select2.min.css" rel="stylesheet" />
+    <link href="../../assets/css/ivg-style.css" rel="stylesheet" />
+
+</head>
+
+<body class="body-page">
+
+    <div class="ivg-page-list">
+        <div class="row align-items-center">
+
+            <div class="col">
+                <div class="mt-2 d-flex">
+                    <ol class="breadcrumb shadow-lg">
+                        <li class="breadcrumb-item "><i class=" fas fa-home"></i> <a href="#" class="pr-md-3 pl-md-2 pr-2 pl-1 ">Sales</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">Customers</a></li>
+                        <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 active-1">Contacts</a> </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="col ivg-align-right">
+                <div class=" btn-group">
+                    <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Thêm mới"><i class="fas fa-plus"></i></button>
+                    <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Lưu dữ liệu"><i class="fas fa-save"></i></button>
+                    <button class="btn ivg-button del" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Xóa dữ liệu"><i class="fas fa-trash"></i></button>
+                </div>
+                <div class=" btn-group">
+                    <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải lên dữ liệu"><i class="fas fa-upload"></i></button>
+                    <button class="btn ivg-button" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Tải xuống dữ liệu"><i class="fas fa-download"></i></button>
+                </div>
+                <div class="dropdown">
+                    <button class="btn ivg-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="dataTable">
+            <table class="ivg-table" id="tblData"></table>
+        </div>
+
+        <div class="mt-1 ivg-paging row align-items-center">
+            <div class="col">
+                <span>Tổng: <b id="lblTotalRecords">100</b> bản ghi</span>
+                |
+                <span>Hiển thị </span>
+                <select class="ivg-page-size">
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                </select>
+            </div>
+            <div class="col ivg-align-right">
+                <div class="btn-group btn-group-sm">
+                    <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang đầu"><i class="fas fa-angle-double-left"></i></button>
+                    <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang trước"><i class="fas fa-angle-left"></i></button>
+                    <button class="btn ivg-button-disabled" disabled><span>1</span> / <span id="lblTotalPages">2</span></button>
+                    <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang tiếp"><i class="fas fa-angle-right"></i></button>
+                    <button class="btn ivg-button" data-bs-toggle="tooltip" title="Trang cuối"><i class="fas fa-angle-double-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ivg-page-detail" style="display:none">
+
+        <div class="DataDetail container-fluid">
+
+            <button class="ivg-button" onclick="Detail(1)"><i class="fas fa-angle-left"></i> Back to list</button>
+
+            <div class="row">
+
+
+                <div class="col">
+                    <div class="ivg-form-input">
+                        <div class="ivg-form-input-header">
+                            <h5>SUMMARY</h5>
+                        </div>
+
+                        <div class="ivg-form-input-body">
+
+                            <div class="row">
+                                <div class="col-8">
+
+                                    <div class="ivg-form-input-label">contact information</div>
+
+                                    <div class="row">
+                                        <div class="col">
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">First Name</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="A" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Last Name<span class="ivg-required">*</span></label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="Nghị" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Job Title</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="IT" />
+                                                </div>
+                                            </div>
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Email</label>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="#" id="hdfMailTo" hidden></a>
+                                                    <div class="input-group">
+                                                        <input class="form-control ivg-input" type="email" spellcheck="false" autocomplete="off" value="nghipx@ivg.vn" id="txtEmail" />
+                                                        <button onclick="MailTo()" class="btn ivg-button" data-bs-toggle="tooltip" title="Click to compose"><i class="fas fa-envelope"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Business Phone</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="" />
+                                                </div>
+                                            </div>
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Mobile Phone</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="090" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col">
+                                            <!--<div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Preferred Method of Contact</label>
+                                                </div>
+                                                <div class="col">
+                                                    <select class="select2">
+                                                        <option value="">Any</option>
+                                                        <option value="">Email</option>
+                                                        <option value="">Phone</option>
+                                                        <option value="">Fax</option>
+                                                        <option value="">Mail</option>
+                                                    </select>
+                                                </div>
+                                            </div>-->
+
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Account Name</label>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="input-group">
+                                                        <input class="form-control ivg-input" spellcheck="false" autocomplete="off" disabled value="IVG" />
+                                                        <button class="btn ivg-button"><i class="fas fa-search"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Company</label>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="input-group">
+                                                        <input class="form-control ivg-input" spellcheck="false" autocomplete="off" disabled value="IVG" />
+                                                        <button class="btn ivg-button"><i class="fas fa-search"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div>
+
+                                                <!--<div class="ivg-form-input-label">personal</div>-->
+
+                                                <div class="row align-items-center">
+                                                    <div class="col-4">
+                                                        <label class="ivg-label">Gender</label>
+                                                    </div>
+                                                    <div class="col">
+                                                        <input class="ivg-radio" type="radio" name="ckgender" id="ckgender1" checked /> <label class="ivg-label" for="ckgender1"> Male</label> &nbsp;
+                                                        <input class="ivg-radio" type="radio" name="ckgender" id="ckgender2" /> <label class="ivg-label" for="ckgender2"> Female</label>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row align-items-center">
+                                                    <div class="col-4">
+                                                        <label class="ivg-label">Birthday</label>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="input-group">
+                                                            <input class="form-control ivg-input datePickerCustom" id="txtBirthday" spellcheck="false" autocomplete="off" />
+                                                            <button class="btn ivg-button" onclick='$("#txtBirthday").focus()'><i class="fas fa-calendar-alt"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row align-items-center">
+                                                    <div class="col-4">
+                                                        <label class="ivg-label">Description</label>
+                                                    </div>
+                                                    <div class="col">
+                                                        <textarea rows="3" class="form-control ivg-input" spellcheck="false"></textarea>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="col">
+
+                                    <div class="ivg-form-input-label">ADDRESS</div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Address</label>
+                                        </div>
+                                        <div class="col">
+                                            <textarea rows="4" class="form-control ivg-input" spellcheck="false"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Province</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="">Hà Nội</option>
+                                                <option value="">TP.HCM</option>
+                                                <option value="">Đà Nẵng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">District</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="">Quận Cầu Giấy</option>
+                                                <option value="">Quận 1</option>
+                                                <option value="">Quận 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Ward</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="select2">
+                                                <option value="">Nghĩa Đô</option>
+                                                <option value="">Võ Thị Sáu</option>
+                                                <option value="">Đa Kao</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+
+                    <div class="ivg-form-input">
+
+                        <div class="ivg-form-input-header">
+                            <h5>#</h5>
+                        </div>
+
+                        <div class="ivg-form-input-body">
+                            <div class="row">
+                                <div class="col">
+
+                                    <div>
+
+
+                                        <div class="ivg-form-input-label">
+                                            RECENT CASES &nbsp;
+                                            <button class="btn ivg-button btn-sm" data-bs-placement="bottom" data-bs-toggle="modal" data-bs-target="#modalNewCase" title="Create new"><i class="fas fa-plus"></i></button>
+                                        </div>
+
+                                        <table class="table table-bordered table-striped table-hover table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Status</th>
+                                                    <th>Case title</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col">
+
+                                    <div>
+                                        <div class="ivg-form-input-label">
+                                            RECENT OPPORTUNITIES &nbsp;
+                                            <button class="btn ivg-button btn-sm" data-bs-placement="bottom" data-bs-toggle="modal" data-bs-target="#modalNewOpportunity" title="Create new"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                        <table class="table table-bordered table-striped table-hover table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Topic</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div hidden>
+                                <div class="ivg-form-input-label">
+                                    ENTITLEMENTS &nbsp;
+                                    <button class="btn ivg-button btn-sm" data-bs-placement="bottom" data-bs-toggle="modal" data-bs-target="#modalNewEntitlement" title="Create new"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <table class="table table-bordered table-striped table-hover table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Entitlement Name</th>
+                                            <th>Remaining Terms</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" hidden>
+
+                <div class="col">
+
+
+                    <div class="ivg-form-input">
+                        <div class="ivg-form-input-header">
+                            <h5>details</h5>
+                        </div>
+
+                        <div class="ivg-form-input-body row">
+
+                            <div class="row">
+                                <div class="col">
+
+
+
+                                </div>
+                                <div class="col">
+                                    <div>
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Marital Status</label>
+                                            </div>
+                                            <div class="col">
+                                                <select class="select2">
+                                                    <option value="">Single</option>
+                                                    <option value="">Married</option>
+                                                    <option value="">Private</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Spouse / Partner Name</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Anniversary</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="ivg-form-input-label">marketing</div>
+
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Originating Lead</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Last Campaign Date</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Marketing Materials</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="ivg-radio" type="radio" name="cksend" id="cksend1" checked /> <label class="ivg-label" for="cksend1"> Send</label> &nbsp;
+                                                <input class="ivg-radio" type="radio" name="cksend" id="cksend2" /> <label class="ivg-label" for="cksend2"> Do not send</label>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                                <div class="col">
+                                    <div>
+
+                                        <div class="ivg-form-input-label">BILLING</div>
+
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Currency</label>
+                                            </div>
+                                            <div class="col">
+                                                <select class="select2">
+                                                    <option value="value">Đồng</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Credit Limit</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Credit Hold</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="ivg-radio" type="radio" name="ckcredithold" id="ckcredithold1" checked /> <label class="ivg-label" for="ckcredithold1"> Yes</label> &nbsp;
+                                                <input class="ivg-radio" type="radio" name="ckcredithold" id="ckcredithold2" /> <label class="ivg-label" for="ckcredithold2"> No</label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Payment Terms</label>
+                                            </div>
+                                            <div class="col">
+                                                <select class="select2">
+                                                    <option value="">Net 30</option>
+                                                    <option value="">2% 10, Net 30</option>
+                                                    <option value="">Net 45</option>
+                                                    <option value="">Net 60</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="row">
+
+                                <div class="col">
+
+                                    <div class="ivg-form-input-label">&nbsp;</div>
+
+
+                                </div>
+
+                                <div class="col">
+                                    <div>
+
+
+
+                                        <div class="ivg-form-input-label">CONTACT PREFERENCES</div>
+
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Contact Method</label>
+                                            </div>
+                                            <div class="col">
+                                                <select class="select2">
+                                                    <option value="">Any</option>
+                                                    <option value="">Email</option>
+                                                    <option value="">Phone</option>
+                                                    <option value="">Fax</option>
+                                                    <option value="">Mail</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Email</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="ivg-radio" type="radio" name="ckemail" id="ckemail1" checked /> <label class="ivg-label" for="ckemail1"> Allow</label> &nbsp;
+                                                <input class="ivg-radio" type="radio" name="ckemail" id="ckemail2" /> <label class="ivg-label" for="ckemail2"> Do Not Allow</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Follow Email</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="ivg-radio" type="radio" name="ckfollowemail" id="ckfollowemail1" checked /> <label class="ivg-label" for="ckfollowemail1"> Allow</label> &nbsp;
+                                                <input class="ivg-radio" type="radio" name="ckfollowemail" id="ckfollowemail2" /> <label class="ivg-label" for="ckfollowemail2"> Do Not Allow</label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Bulk  Email</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="ivg-radio" type="radio" name="ckbulkemail" id="ckbulkemail1" /> <label class="ivg-label" for="ckbulkemail1"> Allow</label> &nbsp;
+                                                <input class="ivg-radio" type="radio" name="ckbulkemail" id="ckbulkemail2" checked /> <label class="ivg-label" for="ckbulkemail2"> Do Not Allow</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Phone</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="ivg-radio" type="radio" name="ckphone" id="ckphone1" checked /> <label class="ivg-label" for="ckphone1"> Allow</label> &nbsp;
+                                                <input class="ivg-radio" type="radio" name="ckphone" id="ckphone2" /> <label class="ivg-label" for="ckphone2"> Do Not Allow</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Fax</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="ivg-radio" type="radio" name="ckfax" id="ckfax1" /> <label class="ivg-label" for="ckfax1"> Allow</label> &nbsp;
+                                                <input class="ivg-radio" type="radio" name="ckfax" id="ckfax2" checked /> <label class="ivg-label" for="ckfax2"> Do Not Allow</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Mail</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="ivg-radio" type="radio" name="ckmail" id="ckmail1" checked /> <label class="ivg-label" for="ckmail1"> Allow</label> &nbsp;
+                                                <input class="ivg-radio" type="radio" name="ckmail" id="ckmail2" /> <label class="ivg-label" for="ckmail2"> Do Not Allow</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+
+                                    <div>
+
+                                        <div class="ivg-form-input-label">shipping</div>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Shipping Method</label>
+                                            </div>
+                                            <div class="col">
+                                                <select class="select2">
+                                                    <option value="value">DHL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-4">
+                                                <label class="ivg-label">Freight Terms</label>
+                                            </div>
+                                            <div class="col">
+                                                <select class="select2">
+                                                    <option value="value">FOB</option>
+                                                    <option value="value">No charge</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="ivg-form-input-label">child accounts</div>
+
+                                    <table class="table table-bordered table-striped table-hover table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Account Name</th>
+                                                <th>Main Phone</th>
+                                                <th>Email</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div>
+
+            <div class="modal fade" id="modalAccount" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" ">Select parent account</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <table class="ivg-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Account Name</th>
+                                            <th>Address</th>
+                                            <th>Phone</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Vendor 1</td>
+                                            <td>Address 1</td>
+                                            <td>0392093221</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vendor 2</td>
+                                            <td>Address 2</td>
+                                            <td>0392093221</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button hidden type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewAccount">
+                                Create new Account
+                            </button>
+                            <button type="button" class="btn btn-primary">Done</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalNewAccount" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-blue">Create new Vendor</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="ivg-form-input-body row">
+
+                                <div class="col">
+
+                                    <div class="ivg-form-input-label">details</div>
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Account Name<span class="ivg-required">*</span></label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="IVG" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Phone</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Primary Account</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                                <button type="button" class="btn ivg-button" data-bs-toggle="modal" data-bs-target="#modalAccount">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Annual Revenue</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">No. of Employees</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Description</label>
+                                        </div>
+                                        <div class="col">
+                                            <textarea class="form-control ivg-input" spellcheck="false"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col">
+
+                                    <div class="ivg-form-input-label">address</div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Street 1</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Street 2</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">City</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">ZIP/Postal Code</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-save"></i> Save & Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalNewOpportunity" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-blue">Create new Opportunity</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="ivg-form-input-body row">
+
+                                <div class="col">
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Topic<span class="ivg-required">*</span></label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Contact</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Account<span class="ivg-required">*</span></label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="IVG" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col">
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Budget Amount</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Est. Revenue</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Est. Close Date</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Customer Need</label>
+                                        </div>
+                                        <div class="col">
+                                            <textarea rows="3" class="form-control ivg-input"></textarea>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-save"></i> Save & Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalNewCase" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-blue">Create new Case</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="ivg-form-input-body row">
+
+                                <div class="col">
+                                    <div class="ivg-form-input-label">case details</div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Customer<span class="ivg-required">*</span></label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="IVG" disabled />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Case Title<span class="ivg-required">*</span></label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Subject</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Case Type</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Contact</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Assign to Others</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="CRM Install" disabled />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Parent Case</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="col">
+                                    <div class="ivg-form-input-label">other details</div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Origin</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Product</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Entitlement</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">First Response By</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Resolve By</label>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            <label class="ivg-label">Description</label>
+                                        </div>
+                                        <div class="col">
+                                            <textarea class="form-control ivg-input" rows="3"></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-save"></i> Save & Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalNewEntitlement" role="dialog" data-backdrop="static" data-keyboard="false">
+
+                <div class="modal-dialog modal-fullscreen" role="document">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-blue">Create new Entitlement</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="ivg-form-input-body">
+
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div>
+                                            <div class="ivg-form-input-label">informations</div>
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Name<span class="ivg-required">*</span></label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Primary Customer<span class="ivg-required">*</span></label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" value="IVG" disabled />
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Start Date</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">End Date</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Restrict based on entitlement terms<span class="ivg-required">*</span></label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">SLA</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Owner<span class="ivg-required">*</span></label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Description</label>
+                                                </div>
+                                                <div class="col">
+                                                    <textarea rows="3" class="form-control ivg-input" spellcheck="false"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="col-4">
+                                                    <label class="ivg-label">Is Default</label>
+                                                </div>
+                                                <div class="col">
+                                                    <label class="ivg-checkbox">
+                                                        &nbsp;
+                                                        <input type="checkbox" checked="checked">
+                                                        <span class="ivg-checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-8">
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div>
+                                                    <div class="ivg-form-input-label">ENTITLEMENT TERMS</div>
+
+                                                    <div class="row align-items-center">
+                                                        <div class="col-4">
+                                                            <label class="ivg-label">Allocation TypeRequired</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <select class="select2">
+                                                                <option value="value">Number of cases</option>
+                                                                <option value="value">Number of hours</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row align-items-center">
+                                                        <div class="col-4">
+                                                            <label class="ivg-label">ADecrease Remaining On Required</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <select class="select2">
+                                                                <option value="value">Case Resolution</option>
+                                                                <option value="value">Case Creation</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row align-items-center">
+                                                        <div class="col-4">
+                                                            <label class="ivg-label">Total Terms</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" />
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row align-items-center">
+                                                        <div class="col-4">
+                                                            <label class="ivg-label">Remaining Terms</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input class="form-control ivg-input" spellcheck="false" autocomplete="off" disabled />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col">
+                                                <div>
+                                                    <div class="ivg-form-input-label">products</div>
+                                                    <table class="table table-hover table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Product ID</th>
+                                                                <th>Product Type</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr><td colspan="99">To enable this content, create the record.</td></tr>
+                                                            <tr><td colspan="99">&nbsp;</td></tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="ivg-form-input-label">ENTITLEMENT CHANNEL</div>
+                                                <table class="table table-hover table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Total Terms</th>
+                                                            <th>Remaining Terms</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="99">To enable this content, create the record.</td>
+
+                                                        </tr>
+                                                        <tr><td colspan="99">&nbsp;</td></tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col">
+                                                <div class="ivg-form-input-label">contact</div>
+                                                <table class="table table-hover table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Full Name</th>
+                                                            <th>Email</th>
+                                                            <th>Company Name</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="99">To enable this content, create the record.</td>
+                                                        </tr>
+                                                        <tr><td colspan="99">&nbsp;</td></tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-save"></i> Save & Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="../../assets/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../../assets/select2/select2.min.js"></script>
+    <!-- Vendors -->
+    <script src="../../assets/vendor/tiny-slider/tiny-slider.js"></script>
+    <script src="../../assets/vendor/glightbox/js/glightbox.js"></script>
+    <script src="../../assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+
+    <!-- Template Functions -->
+    <!--<script src="../../assets/js/functions.js"></script>-->
+
+    <script src="../../assets/theme/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/theme/js/functions.js"></script>
+    <script src="../../assets/theme/js/glightbox.js"></script>
+    <script src="../../assets/theme/js/purecounter_vanilla.js"></script>
+    <script src="../../assets/theme/js/tiny-slider.js"></script>
+
+    <link href="../../assets/dtpicker/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <script src="../../assets/dtpicker/jquery.datetimepicker.full.js"></script>
+
+    <script src="../../assets/js/common.js?ver=1.1"></script>
+    <script src="contacts.js?ver=1.1"></script>
+    
+</body>
+</html>
